@@ -1,3 +1,3 @@
 # Corewar
 
-Notre champion s'appelle Provencale
+Notre champion s'appelle Provencal
