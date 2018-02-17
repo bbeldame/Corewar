@@ -33,6 +33,16 @@ void 	delete_asm(t_asm *param)
 	// free(param);
 }
 
+void 	msg_header(int c_er, t_asm *param)
+{
+	if (c_er == 30)
+		ft_printf("Error : Champion name too long (%d) max %d\n",
+			ft_strlen(param->name_prg), PROG_NAME_LENGTH);
+	else if (c_er == 31)
+		ft_printf("Error : Champion comment too long (%d) max %d\n",
+			ft_strlen(param->comment_prg), COMMENT_LENGTH);
+}
+
 char 	*set_msg_error(int c_er)
 {
 	if (c_er == 10)
@@ -41,8 +51,12 @@ char 	*set_msg_error(int c_er)
 		return ("open failure");
 	else if (c_er == 12)
 		return ("invalide extension");
+	else if (c_er == 13)
+		return ("Unknow champ name");
+	else if (c_er == 14)
+		return ("Unknow champ comment");
 	else if (c_er == 20)
-		return ("bad header");
+		return ("");
 	else if (c_er == 21)
 		return ("bad body");
 	else
@@ -52,14 +66,17 @@ char 	*set_msg_error(int c_er)
 /*
 **			c_er : 1x => no num line
 **				   2x => num line
+**	L77 ft_print_asm() => fonction pour le debug peut provoquer des segfault
 */
 
 void 	exit_msg_error(int c_er, int n_line, t_asm *param)
 {
 	char 	*msg;
 
-
-	ft_print_asm(param);
+	if (c_er != 11)
+		ft_print_asm(param);
+	if (c_er >= 30 && c_er < 40)
+		msg_header(c_er, param);
 	if (param)
 		delete_asm(param);
 	msg = set_msg_error(c_er);
@@ -67,6 +84,8 @@ void 	exit_msg_error(int c_er, int n_line, t_asm *param)
 		ft_printf("Error : %s at L%d\n", msg, n_line);
 	else if (c_er >= 10 && c_er < 20)
 		ft_printf("Error : %s\n", msg);
+	else if (c_er >=30 && c_er < 40)
+		exit(EXIT_FAILURE);
 	else
 		ft_printf("Error : Unknow c_er\n");
 	exit(EXIT_FAILURE);

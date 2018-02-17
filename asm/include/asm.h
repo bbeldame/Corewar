@@ -59,6 +59,7 @@ void 	exit_msg_error(int c_er, int n_line, t_asm *param);
 
 void 	ft_parser(t_asm *param);
 void 	ft_parse_body(t_asm *param);
+int 	set_name_comment(t_asm *param);
 
 /*
 ** 		verif extension and name
@@ -74,6 +75,12 @@ char	*set_name_cor(char *name);
 t_asm 	*init_t_asm(char *name);
 void  	ft_add_end_file_list(t_file_list **list, char *line, int num_l);
 int 	size_list(t_file_list **list);
+
+/*
+** 		Utilitaire
+*/
+
+void 	print_header(t_asm *param);
 
 /*
 ** 		Utilitaire

@@ -1,5 +1,5 @@
-.name "zork"
-.comment "I'M ALIIIIVE"
+.name "zorkinette"
+.comment "tes"
 
 l2:		sti r1, %:live, %1
 
