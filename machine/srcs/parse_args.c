@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_args.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: msakwins <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: bbeldame <bbeldame@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/18 16:07:14 by msakwins          #+#    #+#             */
-/*   Updated: 2018/02/18 16:54:20 by msakwins         ###   ########.fr       */
+/*   Updated: 2018/02/18 20:19:18 by bbeldame         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ void		parse_args(t_env *env, int argc, char **argv)
 		if (env->nb_players > MAX_PLAYERS)
 		{
 			ft_printf("nb = %d\n", env->nb_players);
-			ft_exit(1, 1);
+			ft_exit(2, "Too many players");
 		}
 		i++;
 	}

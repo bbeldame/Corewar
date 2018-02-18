@@ -6,7 +6,7 @@
 /*   By: bbeldame <bbeldame@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/18 16:28:40 by msakwins          #+#    #+#             */
-/*   Updated: 2018/02/18 20:11:22 by bbeldame         ###   ########.fr       */
+/*   Updated: 2018/02/18 20:18:02 by bbeldame         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,6 @@ typedef struct		s_env
 void	init_arena(t_env *env);
 void	init(t_env *env);
 void	parse_args(t_env *env, int argc, char **argv);
-void	ft_exit(int i, int j);
-void	str_error_flags(int j);
+void	ft_exit(int i, char *str);
 
 #endif
