@@ -3,17 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   vm.h                                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: msakwins <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: bbeldame <bbeldame@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/18 16:28:40 by msakwins          #+#    #+#             */
-/*   Updated: 2018/02/18 16:54:24 by msakwins         ###   ########.fr       */
+/*   Updated: 2018/02/18 20:11:22 by bbeldame         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef VM_H
 # define VM_H
 
-# include "../../op.h"
+# include "op.h"
 # include "limits.h"
 # include "../../libft/includes/libft.h"
 # include "../../libft/includes/ft_printf.h"
