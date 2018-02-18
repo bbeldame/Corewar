@@ -6,7 +6,7 @@
 #    By: bbeldame <bbeldame@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/02/18 16:15:40 by bbeldame          #+#    #+#              #
-#    Updated: 2018/02/18 16:31:55 by bbeldame         ###   ########.fr        #
+#    Updated: 2018/02/18 16:53:57 by bbeldame         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -35,23 +35,23 @@ SRCS = $(addprefix $(SRCDIR),$(SRCS_NAME))
 all: $(NAME)
 
 obj:
-		mkdir -p $(OBJDIR)
+		@mkdir -p $(OBJDIR)
 
 $(OBJDIR)%.o:$(SRCDIR)%.c
-		gcc $(FLAGS) -I $(INCDIR) -I $(LIBFTDIR) -o $@ -c $<
+		@gcc $(FLAGS) -I $(INCDIR) -I $(LIBFTDIR) -o $@ -c $<
 
 $(NAME): obj $(OBJS)
-		gcc $(OBJS) $(LIBFT) -lm -o $(NAME)
+		@gcc $(OBJS) $(LIBFT) -lm -o $(NAME)
 			@echo "$(GREEN)---------corewar compiled---------$(NC)"
 
 norme:
-		norminette includes srcs
+		@norminette includes srcs
 
 clean:
-		rm -rf $(OBJDIR)
+		@rm -rf $(OBJDIR)
 
 fclean:	clean
-		rm -f $(NAME)
-		echo "$(GREEN)----corewar removed completely----$(NC)"
+		@rm -f $(NAME)
+		@echo "$(GREEN)----corewar removed completely----$(NC)"
 
 re: fclean all
