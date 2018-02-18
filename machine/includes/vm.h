@@ -6,7 +6,7 @@
 /*   By: bbeldame <bbeldame@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/18 16:28:40 by msakwins          #+#    #+#             */
-/*   Updated: 2018/02/18 21:22:01 by bbeldame         ###   ########.fr       */
+/*   Updated: 2018/02/18 21:48:13 by bbeldame         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@
 # define TOTAL_SIZE		(PROG_NAME_LENGTH + COMMENT_LENGTH + CHAMP_MAX_SIZE + 4)
 # define OFFSET_NAME	4
 # define OFFSET_COMMENT (PROG_NAME_LENGTH + 12)
+# define GOOD_CHARACTER "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789'+-*/=_.,"
 
 typedef struct		s_player
 {
