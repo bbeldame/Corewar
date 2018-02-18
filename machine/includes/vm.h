@@ -30,5 +30,6 @@ void	init_arena(t_env *env);
 void	init(t_env *env);
 void	parse_args(t_env *env, int argc, char **argv);
 void	ft_exit(int i, char *str);
+void	check_number(char *nb);
 
 #endif

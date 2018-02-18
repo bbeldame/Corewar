@@ -25,7 +25,8 @@ SRCS_NAME = main.c \
 			arena.c \
 			init.c \
 			parse_args.c \
-			exit.c
+			exit.c \
+			check.c
 
 OBJS = $(addprefix $(OBJDIR),$(SRCS_NAME:.c=.o))
 LIBFT = $(addprefix $(LIBFTDIR)/,$(LIBFTA))
