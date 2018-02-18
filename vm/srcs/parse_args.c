@@ -29,6 +29,10 @@ void		parse_args(t_env *env, int argc, char **argv)
 		else
 			env->nb_players += 1;
 		if (env->nb_players > MAX_PLAYERS)
-		ft_exit(1, 1);
+		{
+			ft_printf("nb = %d\n", env->nb_players);
+			ft_exit(1, 1);
+		}
+		i++;
 	}
 }
