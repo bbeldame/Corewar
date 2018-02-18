@@ -20,11 +20,16 @@ void		ft_exit(int i, int j)
 		ft_putstr("(Syntax)");
 		str_error_flags(j);
 	}
+	if (i == 2)
+	{
+		ft_putstr("Do you even read the rules? ");
+		str_error_flags(j);
+	}
 		exit(1);
 }
 
 void		str_error_flags(int j)
 {
 	if (j == 1)
-		ft_putendl("Wrong number");
+		ft_putendl("Wrong number of players");
 }

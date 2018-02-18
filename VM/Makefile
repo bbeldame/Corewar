@@ -22,7 +22,10 @@ INCDIR = ./includes
 SRCDIR = ./srcs/
 
 SRCS_NAME = main.c \
-			arena.c
+			arena.c \
+			init.c \
+			parse_args.c \
+			exit.c
 
 OBJS = $(addprefix $(OBJDIR),$(SRCS_NAME:.c=.o))
 LIBFT = $(addprefix $(LIBFTDIR)/,$(LIBFTA))
