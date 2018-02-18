@@ -26,7 +26,7 @@ typedef struct		s_player
 {
 	char			name[PROG_NAME_LENGTH + 1];
 	char			comment[COMMENT_LENGTH + 1];
-	int				nbr;
+	int				nb;
 	int				file_pos;
 	int				len;
 	int				live;

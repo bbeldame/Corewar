@@ -15,16 +15,26 @@
 void		add_player(t_env *env, char *nb, int argc, int *i)
 {
 	int		current;
+	int		max;
 
+	current = 1;
 	if (ft_strequ(nb, "0"))
 	{
 		if (env->nb_players == 0)
 			current = 1;
-
 	}
 	else
+	{
 		if ((*i + 3 > argc))
 			ft_exit(1, "Wrong value");
+		check_number(nb);
+		if ((max = ft_atoll(nb)) > 2147483644)
+			ft_exit(1, "Player number is too big");
+		current = max;
+		*i += 2;
+	}
+	env->player[env->nb_players].nb = current;
+	env->player[env->nb_players].file_pos = *i;
 }
 void		parse_args(t_env *env, int argc, char **argv)
 {
@@ -43,10 +53,16 @@ void		parse_args(t_env *env, int argc, char **argv)
 	while (i < argc)
 	{
 		if (ft_strequ(argv[i], "-n"))
+		{
 			add_player(env, argv[i + 1], argc, &i);
+			ft_printf("newplayer = %s\n", argv[i]);
+		}
 		else
+		{
+			ft_printf("newplayer = %s\n", argv[i]);
 			add_player(env, "0", argc, &i);
-		env->nb_players += 1;
+		}
+			env->nb_players += 1;
 		if (env->nb_players > MAX_PLAYERS)
 		{
 			ft_exit(2, "Maximum number of players is 4.");
