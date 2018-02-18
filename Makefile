@@ -6,7 +6,7 @@
 #    By: bbeldame <bbeldame@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/03/15 15:57:23 by bbeldame          #+#    #+#              #
-#    Updated: 2018/02/18 16:05:47 by bbeldame         ###   ########.fr        #
+#    Updated: 2018/02/18 16:52:48 by bbeldame         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,7 @@ NAME	=	makeall
 
 LIBFT_PATH	= ./libft
 VM_PATH	= ./VM
-ASM_PATH	= ./asm
+ASM_PATH	= ./Assembly
 
 all:	$(NAME)
 
@@ -34,5 +34,9 @@ fclean:	clean
 	@make -C $(VM_PATH) fclean
 
 re:		fclean all
+
+norme:
+	@make -C $(VM_PATH) norme
+	@make -C $(ASM_PATH) norme
 
 .PHONY:		all clean fclean re

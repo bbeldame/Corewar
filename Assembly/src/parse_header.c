@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_header.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: arosset <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: bbeldame <bbeldame@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/17 13:58:23 by arosset           #+#    #+#             */
-/*   Updated: 2018/02/17 13:58:25 by arosset          ###   ########.fr       */
+/*   Updated: 2018/02/18 16:47:12 by bbeldame         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,7 +84,7 @@ int 	set_name_comment(t_asm *param)
 		if (verif_name_comment(tab[0], verif))
 			add_name_comment(file->line, verif, param);
 		verif++;
-		ft_free_tab(tab);
+		free_tab(tab);
 		if (file->next)
 			file = file->next;
 		else

@@ -3,21 +3,21 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: arosset <marvin@42.fr>                     +#+  +:+       +#+         #
+#    By: bbeldame <bbeldame@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/06/23 14:08:14 by arosset           #+#    #+#              #
-#    Updated: 2017/10/25 16:25:31 by arosset          ###   ########.fr        #
+#    Updated: 2018/02/18 16:53:09 by bbeldame         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
-NAME			= 	asm
 
-CC				=	clang
+NAME			= 	../asm
+CC				=	gcc
 CFLAGS			=	-Wall -Wextra -Werror
 DEBUG 			= 	-g3
 
-LIB_PATH		= 	./libft/
-LIB				=	./libft/libft.a
-LIB_LINK		=	./libft/libft.a
+LIB_PATH		= 	../libft/
+LIB				=	../libft/libft.a
+LIB_LINK		=	../libft/libft.a
 
 INC_PATH		= 	./include
 SRC_PATH		=	./src
@@ -43,11 +43,9 @@ PURPLE			=	"\033[35m"
 SUCCESS			=	$(GREEN)SUCCESS$(RESET)
 OK				=	$(PURPLE)OK$(RESET)
 DELETE			=	$(RED)DELETE$(RESET)
-DELETE_LIB		=	$(RED)DELETE LIB$(RESET)
 TEST 			= 	$(YELLOW)DEBUT TEST$(RESET)
 
-
-all: $(LIB) $(NAME)
+all: $(NAME)
 
 $(NAME): $(OBJ)
 	$(CC) $(DEBUG) $(LIB_LINK) $(CFLAGS) $(OBJ)  -o $@
@@ -58,21 +56,16 @@ $(OBJ_PATH)/%.o: $(SRC_PATH)/%.c
 	$(CC) $(DEBUG) $(CFLAGS) -o $@ -c $<
 	@echo "Obj" [ $< ] $(OK)
 
-
-$(LIB):
-	@make -C $(LIB_PATH)
-
 clean:
 	@rm -rf $(OBJ) $(OBJ_PATH)
 	@echo $(DELETE) : $(OBJ) $(OBJ_PATH)
 	@make -C $(LIB_PATH) clean
-	@echo $(DELETE_LIB) : Obj Libft
-
-
 
 fclean: clean
-	@rm -rf $(NAME)
+	@rm -f $(NAME)
 	@echo $(DELETE) : $(NAME)
 
+norme:
+	@norminette src include
 
 re: fclean all

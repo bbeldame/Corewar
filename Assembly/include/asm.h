@@ -3,17 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   asm.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: arosset <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: bbeldame <bbeldame@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/26 15:00:46 by arosset           #+#    #+#             */
-/*   Updated: 2018/01/30 14:59:52 by arosset          ###   ########.fr       */
+/*   Updated: 2018/02/18 16:48:33 by bbeldame         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef ASM_H
 # define ASM_H
 
-# include "../libft/includes/libft.h"
+# include "../../libft/includes/libft.h"
+# include "../../libft/includes/ft_printf.h"
 # include "op.h"
 
 # include <sys/types.h>
