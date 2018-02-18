@@ -29,6 +29,7 @@ typedef struct		s_env
 void	init_arena(t_env *env);
 void	init(t_env *env);
 void	parse_args(t_env *env, int argc, char **argv);
-void	ft_exit(int i);
+void	ft_exit(int i, int j);
+void	str_error_flags(int j);
 
 #endif

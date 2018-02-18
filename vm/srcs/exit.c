@@ -12,9 +12,19 @@
 
 #include "../includes/vm.h"
 
-void		ft_exit(int i)
+void		ft_exit(int i, int j)
 {
+	ft_putstr("Error: ");
 	if (i == 1)
+	{
+		ft_putstr("(Syntax)");
+		str_error_flags(j);
+	}
 		exit(1);
+}
 
+void		str_error_flags(int j)
+{
+	if (j == 1)
+		ft_putendl("Wrong number");
 }

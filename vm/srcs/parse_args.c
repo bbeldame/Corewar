@@ -20,7 +20,7 @@ void		parse_args(t_env *env, int argc, char **argv)
 	env->nb_players = 0;
 	if (ft_strequ(argv[i], "-dump"))
 	{
-		env->dump = atoi(argv[i + 1]);
+		env->dump = atoll(argv[i + 1]);
 	}
 	while (i < argc)
 	{
@@ -29,6 +29,6 @@ void		parse_args(t_env *env, int argc, char **argv)
 		else
 			env->nb_players += 1;
 		if (env->nb_players > MAX_PLAYERS)
-		ft_exit(0);
+		ft_exit(1, 1);
 	}
 }

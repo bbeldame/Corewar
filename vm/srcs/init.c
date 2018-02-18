@@ -14,5 +14,6 @@
 
 void		init(t_env *env)
 {
+	env->dump = 0;
 	env->cycle_to_die = CYCLE_TO_DIE;
 }
