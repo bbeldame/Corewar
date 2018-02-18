@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   arena.c                                            :+:      :+:    :+:   */
+/*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: msakwins <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -12,11 +12,13 @@
 
 #include "../includes/vm.h"
 
-int		main(void)
+int		main(int argc, char **argv)
 {
 	t_env	*env;
 
 	env = malloc(sizeof(t_env));
+	init(env);
+	parse_args(env, argc, argv);
 	init_arena(env);
 	return (0);
 }

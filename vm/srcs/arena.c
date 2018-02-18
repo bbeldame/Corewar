@@ -15,6 +15,7 @@
 void	 init_arena(t_env *env)
 {
 	env->arena = ft_strnew(MEM_SIZE);
-	printf("arena = %s\n", env->arena);
+	ft_printf("arena = %s\n", env->arena);
+	ft_printf("cycles = %d\n", env->cycle_to_die);
 	ft_strdel(&env->arena);
 }

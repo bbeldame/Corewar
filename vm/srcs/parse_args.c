@@ -1,34 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   vm.h                                               :+:      :+:    :+:   */
+/*   parse_args.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: msakwins <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/02/18 16:28:40 by msakwins          #+#    #+#             */
-/*   Updated: 2018/02/18 16:54:24 by msakwins         ###   ########.fr       */
+/*   Created: 2018/02/18 16:07:14 by msakwins          #+#    #+#             */
+/*   Updated: 2018/02/18 16:54:20 by msakwins         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef VM_H
-# define VM_H
+#include "../includes/vm.h"
 
-# include "../../op.h"
-# include "limits.h"
-# include "../../libft/includes/libft.h"
-# include "../../libft/includes/ft_printf.h"
-
-typedef struct		s_env
+void		parse_args(t_env *env, int argc, char **argv)
 {
-	int			cycle_to_die;
-	int			nb_players;
-	int			dump;
-	char		*arena;
-}					t_env;
+	int		i;
 
-void	init_arena(t_env *env);
-void	init(t_env *env);
-void	parse_args(t_env *env, int argc, char **argv);
-void	ft_exit(int i);
-
-#endif
+	i = 1;
+	env->nb_players = 0;
+	if (ft_strequ(argv[i], "-dump"))
+	{
+		env->dump = atoi(argv[i + 1]);
+	}
+	while (i < argc)
+	{
+		if (ft_strequ(argv[i], "-n"))
+			env->nb_players += 1;
+		else
+			env->nb_players += 1;
+		if (env->nb_players > MAX_PLAYERS)
+		ft_exit(0);
+	}
+}
