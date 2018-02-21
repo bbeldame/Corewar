@@ -50,6 +50,7 @@ void				parse_args(t_env *env, int argc, char **argv);
 void				ft_exit(int i, char *str);
 void				parse_files(t_env *e, char **argv);
 void				check_number(char *nb);
+void				check_dup_number(t_env *env, int nb);
 void				parse_players(t_env *e);
 
 #endif

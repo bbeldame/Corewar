@@ -12,7 +12,7 @@
 
 #include "../includes/vm.h"
 
-void	 init_arena(t_env *env)
+void		init_arena(t_env *env)
 {
 	env->arena = ft_strnew(MEM_SIZE);
 	ft_printf("arena = %s\n", env->arena);
