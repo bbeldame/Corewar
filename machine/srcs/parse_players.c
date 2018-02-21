@@ -6,7 +6,7 @@
 /*   By: bbeldame <bbeldame@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/18 21:08:32 by bbeldame          #+#    #+#             */
-/*   Updated: 2018/02/18 21:50:17 by bbeldame         ###   ########.fr       */
+/*   Updated: 2018/02/21 20:18:33 by bbeldame         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,24 +33,38 @@ static void		verify_magic(t_env *e, int i)
 
 /*
 ** Parse comment or name in the player's .cor
-** We specify an OFFSET because the name start after the 4 bytes
+** Name starts after the 4 bytes
 ** while the comment start after NAME + 12 bytes
 */
 
-static void		parse_name_or_comment(char *cor, int offset,
-	char **dest, int max_size)
+static void		parse_name(int p_index, t_env *e)
 {
 	int		i;
 
 	i = 0;
-	while (i < max_size)
+	while (i < PROG_NAME_LENGTH)
 	{
-		if (!(ft_strchr(GOOD_CHARACTER, cor[i + offset])))
-			ft_exit(e, "Bad characters in comment or name");
-		*dest[i] = cor[i + offset];
+		if (!(ft_strchr(GOOD_CHARACTERS, e->player[p_index].string[i + OFFSET_NAME])))
+			ft_exit(e, "Bad characters in name");
+		e->player[p_index].name = e->player[p_index].string[i + OFFSET_NAME];
 		i++;
 	}
-	*dest[max_size] = '\0';
+	e->player[p_index].name[i] = '\0';
+}
+
+static void		parse_comment(int p_index, t_env *e)
+{
+	int		i;
+
+	i = 0;
+	while (i < COMMENT_LENGTH)
+	{
+		if (!(ft_strchr(GOOD_CHARACTERS, e->player[p_index].string[i + OFFSET_COMMENT])))
+			ft_exit(e, "Bad characters in comment");
+		e->player[p_index].comment = e->player[p_index].string[i + OFFSET_COMMENT];
+		i++;
+	}
+	e->player[p_index].name[i] = '\0';
 }
 
 void			parse_players(t_env *e)
@@ -61,10 +75,8 @@ void			parse_players(t_env *e)
 	while (i < nb_players)
 	{
 		verify_magic(e, i);
-		parse_name_or_comment(e, i, OFFSET_NAME, &(e->players[i].name),
-			PROG_NAME_LENGTH);
-		parse_name_or_comment(e, i, OFFSET_COMMENT, &(e->players[i].comment),
-			COMMENT_LENGTH);
+		parse_name(i, e);
+		parse_comment(i, e);
 		i++;
 	}
 }

@@ -6,14 +6,14 @@
 #    By: bbeldame <bbeldame@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/03/15 15:57:23 by bbeldame          #+#    #+#              #
-#    Updated: 2018/02/18 16:52:48 by bbeldame         ###   ########.fr        #
+#    Updated: 2018/02/21 21:16:07 by bbeldame         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME	=	makeall
 
 LIBFT_PATH	= ./libft
-VM_PATH	= ./VM
+VM_PATH	= ./machine
 ASM_PATH	= ./Assembly
 
 all:	$(NAME)
