@@ -6,7 +6,7 @@
 /*   By: bbeldame <bbeldame@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/18 16:28:40 by msakwins          #+#    #+#             */
-/*   Updated: 2018/02/21 20:06:15 by bbeldame         ###   ########.fr       */
+/*   Updated: 2018/02/21 22:19:03 by bbeldame         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,21 +18,13 @@
 # include "../../libft/includes/libft.h"
 # include "../../libft/includes/ft_printf.h"
 
-# define TOTAL_SIZE		(PROG_NAME_LENGTH + COMMENT_LENGTH + CHAMP_MAX_SIZE + 4)
-# define OFFSET_NAME	4
-# define OFFSET_COMMENT (PROG_NAME_LENGTH + 12)
-# define GOOD_CHARACTERS "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0\
-	123456789'+-*/=_.,"
-
 typedef struct		s_player
 {
-	char			name[PROG_NAME_LENGTH + 1];
-	char			comment[COMMENT_LENGTH + 1];
 	int				nb;
 	int				file_pos;
-	int				len;
 	int				live;
-	char			string[TOTAL_SIZE + 1];
+	char			*code;
+	t_header		*header;
 }					t_player;
 
 typedef struct		s_env

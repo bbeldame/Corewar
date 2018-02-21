@@ -6,7 +6,7 @@
 /*   By: bbeldame <bbeldame@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/18 16:07:14 by msakwins          #+#    #+#             */
-/*   Updated: 2018/02/18 21:08:23 by bbeldame         ###   ########.fr       */
+/*   Updated: 2018/02/21 22:38:15 by bbeldame         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,7 @@ int		main(int argc, char **argv)
 
 	init(&env);
 	parse_args(&env, argc, argv);
-//  parse_files(&env, argv); // Ready when parse_args parse file_pos
-//	parse_players(&env);
+	parse_files(&env, argv);
 	init_arena(&env);
 	return (0);
 }
