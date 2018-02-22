@@ -6,13 +6,13 @@
 #    By: bbeldame <bbeldame@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/02/18 16:15:40 by bbeldame          #+#    #+#              #
-#    Updated: 2018/02/21 22:04:29 by bbeldame         ###   ########.fr        #
+#    Updated: 2018/02/22 21:42:40 by bbeldame         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = ../corewar
 
-FLAGS = -Wall -Wextra -Werror
+FLAGS = -Wall -Wextra # -Werror to uncomment at the end
 
 LIBFTA = libft.a
 

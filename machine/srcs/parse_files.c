@@ -6,7 +6,7 @@
 /*   By: bbeldame <bbeldame@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/18 20:25:46 by bbeldame          #+#    #+#             */
-/*   Updated: 2018/02/21 22:38:41 by bbeldame         ###   ########.fr       */
+/*   Updated: 2018/02/22 21:44:14 by bbeldame         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ static void		parse_instructions(t_env *e, int fd, int curr_player)
 	unsigned int	size;
 
 	size = e->player[curr_player].header->prog_size;
-	if (!(e->player[curr_player].code = (char *)malloc(sizeof(size))))
+	if (!(e->player[curr_player].code = (char *)malloc(size)))
 		ft_exit(1, "Malloc for player code failed");
 	if (!read(fd, e->player[curr_player].code, size))
 		ft_exit(1, "Read player code failed");
