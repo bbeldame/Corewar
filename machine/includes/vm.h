@@ -23,6 +23,7 @@ typedef struct		s_player
 	int				nb;
 	int				file_pos;
 	int				live;
+	int				start_pos;
 	char			*code;
 	t_header		*header;
 }					t_player;
