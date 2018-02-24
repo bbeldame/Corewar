@@ -49,8 +49,22 @@
 #define MAX_CHECKS				10
 
 /*
-**
+** t_op
 */
+
+typedef struct 			s_op
+{
+	char				*name;
+	int					nb_param;
+	int					param[3];
+	int					op_code;
+	int					nb_cycles;
+	char				*description;
+	int					ocp;
+	int					label_size;
+}						t_op;
+
+extern t_op 			g_op_tab[];
 
 typedef char	t_arg_type;
 
