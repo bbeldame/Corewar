@@ -19,6 +19,7 @@ int		main(int argc, char **argv)
 	init(&env);
 	parse_args(&env, argc, argv);
 	parse_files(&env, argv);
+	printf("hello\n");
 	init_arena_and_processes(&env);
 	return (0);
 }

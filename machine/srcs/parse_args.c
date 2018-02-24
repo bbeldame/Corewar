@@ -71,4 +71,6 @@ void		parse_args(t_env *env, int argc, char **argv)
 			ft_exit(2, "Maximum number of players is 4.");
 		i++;
 	}
+	if (env->nb_players == 0)
+		ft_exit(2, "0 players found.");
 }
