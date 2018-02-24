@@ -6,7 +6,7 @@
 /*   By: bbeldame <bbeldame@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/18 16:07:14 by msakwins          #+#    #+#             */
-/*   Updated: 2018/02/24 19:49:41 by bbeldame         ###   ########.fr       */
+/*   Updated: 2018/02/24 22:36:14 by bbeldame         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,6 @@ int		main(int argc, char **argv)
 	init(&env);
 	parse_args(&env, argc, argv);
 	parse_files(&env, argv);
-	printf("hello\n");
 	init_arena_and_processes(&env);
 	return (0);
 }
