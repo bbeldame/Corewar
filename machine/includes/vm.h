@@ -6,7 +6,7 @@
 /*   By: bbeldame <bbeldame@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/18 16:28:40 by msakwins          #+#    #+#             */
-/*   Updated: 2018/02/21 22:19:03 by bbeldame         ###   ########.fr       */
+/*   Updated: 2018/02/24 19:03:45 by bbeldame         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,18 @@ typedef struct		s_player
 	t_header		*header;
 }					t_player;
 
+typedef struct		s_process
+{
+	struct t_process		*prev;
+	struct t_process		*next;
+	char					reg[REG_NUMBER][REG_SIZE];
+	int						id_champion;
+	unsigned int			lives;
+	unsigned int			pc;
+	unsigned char			opcode;
+	char					carry;
+}					t_process;
+
 typedef struct		s_env
 {
 	int				cycle_to_die;
@@ -35,7 +47,21 @@ typedef struct		s_env
 	int				dump;
 	char			*arena;
 	t_player		player[MAX_PLAYERS + 1];
+	t_process		*process;
 }					t_env;
+
+typedef struct		s_op
+{
+	void			(*ptr)();
+	char			name[PROG_NAME_LENGTH];
+	int				nb_params;
+	char			params_type[3];
+	int				id;
+	int				cycles;
+	char			description[50];
+	int				acb;
+	int				label_size;
+}					t_op;
 
 void				init_arena(t_env *env);
 void				init(t_env *env);
@@ -45,5 +71,34 @@ void				parse_files(t_env *e, char **argv);
 void				check_number(char *nb);
 void				check_dup_number(t_env *env, int nb);
 void				parse_players(t_env *e);
+
+static const t_op	g_op_tab[17] =
+{
+	{0, 0, 0, {0}, 0, 0, 0, 0, 0},
+	{&func_live, "live", 1, {T_DIR}, 1, 10, "alive", 0, 0},
+	{&func_ld, "ld", 2, {T_DIR | T_IND, T_REG}, 2, 5, "load", 1, 0},
+	{&func_st, "st", 2, {T_REG, T_IND | T_REG}, 3, 5, "store", 1, 0},
+	{&func_add, "add", 3, {T_REG, T_REG, T_REG}, 4, 10, "addition", 1, 0},
+	{&func_sub, "sub", 3, {T_REG, T_REG, T_REG}, 5, 10, "soustraction", 1, 0},
+	{&func_and, "and", 3,
+		{T_REG | T_DIR | T_IND, T_REG | T_IND | T_DIR, T_REG}, 6, 6,
+		"et (and  r1, r2, r3   r1&r2 -> r3", 1, 0},
+	{&func_or, "or", 3, {T_REG | T_IND | T_DIR, T_REG | T_IND | T_DIR, T_REG},
+		7, 6, "ou  (or   r1, r2, r3   r1 | r2 -> r3", 1, 0},
+	{&func_xor, "xor", 3,
+		{T_REG | T_IND | T_DIR, T_REG | T_IND | T_DIR, T_REG}, 8, 6,
+		"ou (xor  r1, r2, r3   r1^r2 -> r3", 1, 0},
+	{&func_zjmp, "zjmp", 1, {T_DIR}, 9, 20, "jump if zero", 0, 1},
+	{&func_ldi, "ldi", 3, {T_REG | T_DIR | T_IND, T_DIR | T_REG, T_REG}, 10, 25,
+		"load index", 1, 1},
+	{&func_sti, "sti", 3, {T_REG, T_REG | T_DIR | T_IND, T_DIR | T_REG}, 11, 25,
+		"store index", 1, 1},
+	{&func_fork, "fork", 1, {T_DIR}, 12, 800, "fork", 0, 1},
+	{&func_lld, "lld", 2, {T_DIR | T_IND, T_REG}, 13, 10, "long load", 1, 0},
+	{&func_lldi, "lldi", 3, {T_REG | T_DIR | T_IND, T_DIR | T_REG, T_REG},
+		14, 50, "long load index", 1, 1},
+	{&func_lfork, "lfork", 1, {T_DIR}, 15, 1000, "long fork", 0, 1},
+	{&func_aff, "aff", 1, {T_REG}, 16, 2, "aff", 1, 0}
+};
 
 #endif
