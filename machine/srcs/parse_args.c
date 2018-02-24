@@ -17,6 +17,7 @@ int			next_number(t_env *env)
 	int		next;
 
 	next = env->player[env->nb_players - 1].nb + 1;
+	printf("next = %d\n", next);
 	return (next);
 }
 
