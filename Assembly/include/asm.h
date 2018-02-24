@@ -29,6 +29,15 @@ typedef struct 			s_file_list
 	struct s_file_list	*next;
 }						t_file_list;
 
+typedef struct 			s_token
+{
+	char 				*label;
+	int 				num_l;
+	char 				*command;
+	char 				instruction[3];
+	struct s_token		*next;
+}						t_token;
+
 typedef struct			s_asm
 {
 	char				*name_prg;
@@ -37,15 +46,8 @@ typedef struct			s_asm
 	char 				*file_s;
 	t_file_list			*header;
 	t_file_list 		*body;
+	t_token 			*token;
 }						t_asm;
-
-typedef struct 			s_token
-{
-	char 				*label;
-	int 				num_l;
-	char 				*instruction;
-	struct s_token		*next;
-}						t_token;
 
 /*
 ** 		Fonction erreur
@@ -61,6 +63,13 @@ void 	exit_msg_error(int c_er, int n_line, t_asm *param);
 void 	ft_parser(t_asm *param);
 void 	ft_parse_body(t_asm *param);
 int 	set_name_comment(t_asm *param);
+
+/*
+**		Check des commandes du fichier .s
+*/
+
+int 	is_reg(char *param);
+int 	is_label(char *param);
 
 /*
 ** 		verif extension and name
@@ -104,5 +113,6 @@ void 	free_file_list(t_file_list **list);
 
 void 	ft_print_asm(t_asm *param);
 void 	ft_print_file_list(t_file_list *list);
+void 	print_tab(char **tab);
 
 #endif

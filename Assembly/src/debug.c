@@ -66,3 +66,17 @@ void 	ft_print_asm(t_asm *param)
 	debug_print_list(param);
 	ft_printf(" \033[31m=== END DEBUG === \033[00m\n");
 }
+
+void 	print_tab(char **tab)
+{
+	int i;
+
+	i = 0;
+	ft_printf("\n");
+	while (tab[i])
+	{
+		ft_printf("tab[%d] = %s\n", i, tab[i]);
+		i++;
+	}
+	ft_printf("\n --- \n");
+}

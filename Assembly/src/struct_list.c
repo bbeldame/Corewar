@@ -28,6 +28,7 @@ t_asm 	*init_t_asm(char *name)
 	new_asm->file_cor = set_name_cor(name);
 	new_asm->header = NULL;
 	new_asm->body = NULL;
+	new_asm->token = NULL;
 	return (new_asm);
 }
 
@@ -51,12 +52,7 @@ int 	size_list(t_file_list **list)
 }
 
 /*
-**		Delete premiers maillon t_list_file
-*/
-
-
-/*
-**		initialise struct t_file_list
+**		initialise et ajoute element struct t_file_list
 **		list comprenant : .name
 **						  .comment
 **						  instruction et label

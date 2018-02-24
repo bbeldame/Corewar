@@ -12,6 +12,20 @@
 
 #include "../include/asm.h"
 
+char 	*ft_clear_str(char *s)
+{
+	int 	i;
+
+	i = 0;
+	while (s[i])
+	{
+		if (s[i] == '\t')
+			s[i] = ' ';
+		i++;
+	}
+	return (s);
+}
+
 void 	set_file_list(t_asm *param, int fd)
 {
 	char 		*line;
@@ -27,6 +41,7 @@ void 	set_file_list(t_asm *param, int fd)
 	{
 		if (verif_line(line))
 		{
+			line = ft_clear_str(line);
 			if (size_list(&header_list) < 2)
 				ft_add_end_file_list(&header_list, line, num_l);
 			else
@@ -48,8 +63,7 @@ void 	ft_parser(t_asm *param)
 	set_file_list(param, fd);
 	set_name_comment(param);
 	free_file_list(&param->header);
-
 	ft_print_asm(param);
 	ft_printf("parse header OK\n");
-	//print_header(param);
+	ft_parse_body(param);
 }
