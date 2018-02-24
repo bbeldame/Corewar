@@ -14,6 +14,7 @@
 
 int			func_live(t_env *env)
 {
+//	process->live = 1;
 	env->nb_lives += 1;
 	return(1);
 }

@@ -56,6 +56,5 @@ void				init_arena_and_processes(t_env *env)
 	}
 	env->head->prev = tmp;
 	tmp->next = env->head;
-	printf("ca va etre moche : %X\n", env->arena);
 	func_aff();
 }
