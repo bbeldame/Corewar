@@ -6,7 +6,7 @@
 #    By: bbeldame <bbeldame@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/02/18 16:15:40 by bbeldame          #+#    #+#              #
-#    Updated: 2018/02/24 22:23:56 by bbeldame         ###   ########.fr        #
+#    Updated: 2018/02/24 22:25:19 by bbeldame         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -68,10 +68,10 @@ obj:
 		@mkdir -p $(OBJDIR)
 
 $(OBJDIR)%.o:%.c
-		gcc $(FLAGS) -I $(INCDIR) -I $(LIBFTDIR) -o $@ -c $<
+		@gcc $(FLAGS) -I $(INCDIR) -I $(LIBFTDIR) -o $@ -c $<
 
 $(NAME): obj $(OBJS)
-		gcc $(OBJS) $(LIBFT) -lm -o $(NAME)
+		@gcc $(OBJS) $(LIBFT) -lm -o $(NAME)
 			@echo "$(GREEN)---------corewar compiled---------$(NC)"
 
 norme:
