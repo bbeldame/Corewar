@@ -1,24 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   processes.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bbeldame <bbeldame@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/02/18 16:07:14 by msakwins          #+#    #+#             */
-/*   Updated: 2018/02/24 19:49:41 by bbeldame         ###   ########.fr       */
+/*   Created: 2018/02/24 21:04:55 by bbeldame          #+#    #+#             */
+/*   Updated: 2018/02/24 21:22:18 by bbeldame         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/vm.h"
 
-int		main(int argc, char **argv)
+t_process		*create_new_process(t_env *env, int i)
 {
-	t_env	env;
+	t_process	*process;
 
-	init(&env);
-	parse_args(&env, argc, argv);
-	parse_files(&env, argv);
-	init_arena_and_processes(&env);
-	return (0);
+	if (!(process = (t_process *)malloc(sizeof(t_process))))
+		ft_exit(1, "Malloc for process error");
+	process->id_champion = i;
+	process->reg[0] = env->player[i].nb;
+	process->carry = 0;
+	process->opcode = 0;
+	process->pc = 0;
+	process->prev = NULL;
+	process->next = NULL;
+	return (process);
 }

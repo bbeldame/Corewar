@@ -1,20 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parse_flags.c                                      :+:      :+:    :+:   */
+/*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bbeldame <bbeldame@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/02/18 19:53:02 by bbeldame          #+#    #+#             */
-/*   Updated: 2018/02/18 20:18:23 by bbeldame         ###   ########.fr       */
+/*   Created: 2018/02/24 21:19:30 by bbeldame          #+#    #+#             */
+/*   Updated: 2018/02/24 21:22:35 by bbeldame         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/vm.h"
 
-void		parse_files(t_env *env)
+void		init_reg(t_process *process)
 {
-	if (fichier pas de droit) {
-		ft_exit(1, "No rights");
-	}
+	int i;
+
+	i = 0;
+	while (i < 16)
+		process->reg[i++] = 0;
 }

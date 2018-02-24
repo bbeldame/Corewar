@@ -3,28 +3,29 @@
 /*                                                        :::      ::::::::   */
 /*   arena.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: msakwins <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: bbeldame <bbeldame@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/18 16:07:14 by msakwins          #+#    #+#             */
-/*   Updated: 2018/02/18 16:54:20 by msakwins         ###   ########.fr       */
+/*   Updated: 2018/02/24 21:22:54 by bbeldame         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/vm.h"
 
-void		init_arena(t_env *env)
+void		init_arena_and_processes(t_env *env)
 {
 	int			i;
-	static int	j;
 
-	i = 0;
-	j = 0;
-	env->arena = ft_strnew(MEM_SIZE);
-	while (i < env->nb_players)
+	ft_bzero(env->arena, sizeof(unsigned char) * MEM_SIZE);
+	i = env->nb_players - 1;
+	printf("i is %d\n", i);
+	while (i >= 0)
 	{
-		env->player[i].start_pos = (MEM_SIZE / env->nb_players) * i;
 		env->player[i].live = 0;
-		j = (MEM_SIZE / env->nb_players) * i;
-		i++;
+		ft_memcpy(&(env->arena[i * MEM_SIZE / env->nb_players]),
+			env->player[i].code, env->player[i].header->prog_size);
+		ft_strdel(&(env->player[i].code));
+		i--;
 	}
+	printf("ca va etre moche : %X\n", env->arena);
 }

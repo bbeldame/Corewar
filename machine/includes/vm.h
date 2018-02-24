@@ -6,7 +6,7 @@
 /*   By: bbeldame <bbeldame@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/18 16:28:40 by msakwins          #+#    #+#             */
-/*   Updated: 2018/02/24 19:03:45 by bbeldame         ###   ########.fr       */
+/*   Updated: 2018/02/24 21:21:44 by bbeldame         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ typedef struct		s_process
 {
 	struct t_process		*prev;
 	struct t_process		*next;
-	char					reg[REG_NUMBER][REG_SIZE];
+	int						reg[REG_NUMBER];
 	int						id_champion;
 	unsigned int			lives;
 	unsigned int			pc;
@@ -45,7 +45,7 @@ typedef struct		s_env
 	int				cycle_to_die;
 	int				nb_players;
 	int				dump;
-	char			*arena;
+	unsigned char	arena[MEM_SIZE];
 	t_player		player[MAX_PLAYERS + 1];
 	t_process		*process;
 }					t_env;
@@ -63,7 +63,7 @@ typedef struct		s_op
 	int				label_size;
 }					t_op;
 
-void				init_arena(t_env *env);
+void				init_arena_and_processes(t_env *env);
 void				init(t_env *env);
 void				parse_args(t_env *env, int argc, char **argv);
 void				ft_exit(int i, char *str);
@@ -71,6 +71,8 @@ void				parse_files(t_env *e, char **argv);
 void				check_number(char *nb);
 void				check_dup_number(t_env *env, int nb);
 void				parse_players(t_env *e);
+void				init_reg(t_process *process);
+t_process			*create_new_process(t_env *env, int i);
 int					func_add();
 int					func_aff();
 int					func_and();
@@ -87,6 +89,7 @@ int					func_sti();
 int					func_sub();
 int					func_xor();
 int					func_zjmp();
+
 /*
 static const t_op	g_op_tab[17] =
 {
@@ -117,4 +120,5 @@ static const t_op	g_op_tab[17] =
 	{&func_aff, "aff", 1, {T_REG}, 16, 2, "aff", 1, 0}
 };
 */
+
 #endif
