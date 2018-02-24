@@ -42,7 +42,9 @@ typedef struct		s_process
 
 typedef struct		s_env
 {
+	int				cycle;
 	int				cycle_to_die;
+	int				nb_lives;
 	int				nb_players;
 	int				dump;
 	unsigned char	arena[MEM_SIZE];
