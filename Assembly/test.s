@@ -1,10 +1,10 @@
 .name "zorkinette"
 .comment "tes"
 
-l2:sti r1, %:live, %1
+l2:sti r2, %:live, %1
 
 
-live:
-	live %1 #jde
+live2:
+	livre %1 #jde
 	#dekefj
  zjmp %:live

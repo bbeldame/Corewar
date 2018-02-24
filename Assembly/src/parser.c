@@ -65,5 +65,7 @@ void 	ft_parser(t_asm *param)
 	free_file_list(&param->header);
 	ft_print_asm(param);
 	ft_printf("parse header OK\n");
-	ft_parse_body(param);
+	if (!ft_parse_body(param))
+		ft_printf("parse KO\n");
+	ft_printf("parse body OK\n");
 }

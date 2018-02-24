@@ -72,11 +72,21 @@ void 	print_tab(char **tab)
 	int i;
 
 	i = 0;
-	ft_printf("\n");
+	ft_printf("\n Print tab \n");
 	while (tab[i])
 	{
 		ft_printf("tab[%d] = %s\n", i, tab[i]);
 		i++;
 	}
 	ft_printf("\n --- \n");
+}
+
+void 	print_label(t_asm *param)
+{
+	ft_printf("\nPrint Label\n");
+	while (param->labels)
+	{
+		ft_printf("label = %s\n", param->labels->content);
+		param->labels = param->labels->next;
+	}
 }

@@ -46,3 +46,12 @@ int 	verif_line(char *line)
 		return (0);
 	return (1);
 }
+
+int		is_white_space(char c)
+{
+	if (c == ' ' || c == '\t' || c == '\n' || c == '\v' || c == '\f' ||
+			c == '\r')
+		return (1);
+	else
+		return (0);
+}

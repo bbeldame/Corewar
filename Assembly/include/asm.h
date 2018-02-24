@@ -21,6 +21,12 @@
 # include <sys/stat.h>
 # include <fcntl.h>
 
+typedef struct			s_label
+{
+	char				*label;
+	int					addr;
+}						t_label;
+
 
 typedef struct 			s_file_list
 {
@@ -47,6 +53,7 @@ typedef struct			s_asm
 	t_file_list			*header;
 	t_file_list 		*body;
 	t_token 			*token;
+	t_list 				*labels;
 }						t_asm;
 
 /*
@@ -61,8 +68,10 @@ void 	exit_msg_error(int c_er, int n_line, t_asm *param);
 */
 
 void 	ft_parser(t_asm *param);
-void 	ft_parse_body(t_asm *param);
+int 	ft_parse_body(t_asm *param);
 int 	set_name_comment(t_asm *param);
+int 	check_body(t_asm *param);
+int 	parse_params(char *line, t_asm *param, int idx);
 
 /*
 **		Check des commandes du fichier .s
@@ -70,6 +79,8 @@ int 	set_name_comment(t_asm *param);
 
 int 	is_reg(char *param);
 int 	is_label(char *param);
+int 	is_dir(t_list *labels, char *param);
+int 	is_ind(t_list *labels,  char *param);
 
 /*
 ** 		verif extension and name
@@ -86,11 +97,14 @@ t_asm 	*init_t_asm(char *name);
 void  	ft_add_end_file_list(t_file_list **list, char *line, int num_l);
 int 	size_list(t_file_list **list);
 
+void		ft_lstaddtail(t_list **alst, t_list *new);
+
 /*
 ** 		Utilitaire
 */
 
 void 	print_header(t_asm *param);
+int		is_white_space(char c);
 
 /*
 ** 		Utilitaire
@@ -114,5 +128,6 @@ void 	free_file_list(t_file_list **list);
 void 	ft_print_asm(t_asm *param);
 void 	ft_print_file_list(t_file_list *list);
 void 	print_tab(char **tab);
+void 	print_label(t_asm *param);
 
 #endif

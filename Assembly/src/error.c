@@ -59,6 +59,8 @@ char 	*set_msg_error(int c_er)
 		return ("");
 	else if (c_er == 21)
 		return ("bad body");
+	else if (c_er == 22)
+		return ("Unknow instruction");
 	else
 		return ("Unknow error");
 }

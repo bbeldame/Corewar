@@ -32,7 +32,7 @@ int 	is_reg(char *param)
 	{
 		if (ft_str_is_int(param + 1))
 		{
-			if (ft_atoi(param + 1) > 0 && ft_atoi(param + 1) < 100)
+			if (ft_atoi(param + 1) > 0 && ft_atoi(param + 1) < 17)
 				return (1);
 		}
 	}
@@ -49,4 +49,36 @@ int 	is_label(char *param)
 	if (param[i] == LABEL_CHAR)
 		return (i + 1);
 	return (0);
+}
+
+int 	is_dir(t_list *labels, char *param)
+{
+	if (param[0] == DIRECT_CHAR)
+		return (is_ind(labels, param + 1));
+	return (0);
+}
+
+int 	is_ind(t_list *labels,  char *param)
+{
+	int 	i;
+	t_list 	*elem;
+
+	i = 0;
+	if (param[i] == '\0')
+		return (0);
+	if (param[i] == LABEL_CHAR)
+	{
+		elem = labels;
+		while (elem)
+		{
+			if (!ft_strncmp(param + 1, elem->content, ft_strlen(elem->content) - 1))
+				return (1);
+			elem = elem->next;
+		}
+		return (0);
+	}
+	while (param[i])
+		if (!ft_isdigit(param[i++]))
+			return (0);
+	return (1);
 }

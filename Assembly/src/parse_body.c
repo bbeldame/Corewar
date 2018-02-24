@@ -12,26 +12,53 @@
 
 #include "../include/asm.h"
 
-void 	ft_parse_body(t_asm *param)
+t_list 	*init_label(char *label)
 {
-	char 	**tab;
-	char 	*label;
-	int 	i;
+	t_list	*new;
+
+	if (label == NULL)
+		return (NULL);
+	if ((new = (t_list*)malloc(sizeof(t_list))) == NULL)
+		exit_msg_error(10, 0, NULL);
+	new->content = label;
+	new->next = NULL;
+	return (new);
+}
+
+int 	save_label(t_asm *param, char *label)
+{
+	t_list	*new;
+
+	if ((new = init_label(label)) == NULL)
+		return (0);
+	ft_lstaddtail(&param->labels, new);
+	return (1);
+}
+
+int 	get_label(t_asm *param)
+{
+	t_file_list 	*files;
+	int 			i;
 
 	i = 0;
-	label = NULL;
-	tab = NULL;
-	while (param->body)
+	files = param->body;
+	while (files)
 	{
-		if ((i = is_label(param->body->line)))
+		if ((i = is_label(files->line)))
 		{
-			label = ft_strsub(param->body->line, 0, i);
-			ft_printf("label = %s\n", label);
+			if (!save_label(param, ft_strsub(files->line, 0, i - 1)))
+				return (0);
 		}
-		tab = ft_strsplit(param->body->line + i, ' ');
-		
-		print_tab(tab);
-		free_tab(tab);
-		param->body = param->body->next;
+		files = files->next;
 	}
+	return (1);
+}
+
+int 	ft_parse_body(t_asm *param)
+{
+	if (!get_label(param))
+		return (0);
+	if (!check_body(param))
+		return (0);
+	return (1);
 }

@@ -23,7 +23,8 @@ INC_PATH		= 	./include
 SRC_PATH		=	./src
 SRC_NAME 		=	main.c free_asm.c error.c parser.c ft_utility.c debug.c \
 					struct_list.c set_name_extension.c parse_body.c \
-					print_header.c parse_header.c check_param.c op.c
+					print_header.c parse_header.c check_param.c op.c \
+					check_body.c parse_params.c
 OBJ_PATH		=	./obj
 
 OBJ_NAME		=	$(SRC_NAME:.c=.o)
