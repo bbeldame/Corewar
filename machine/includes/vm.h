@@ -6,7 +6,7 @@
 /*   By: bbeldame <bbeldame@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/18 16:28:40 by msakwins          #+#    #+#             */
-/*   Updated: 2018/02/24 21:34:13 by bbeldame         ###   ########.fr       */
+/*   Updated: 2018/02/24 22:08:33 by bbeldame         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ typedef struct		s_env
 
 typedef struct		s_op
 {
-	void			(*ptr)();
+	int				(*ptr)();
 	char			name[PROG_NAME_LENGTH];
 	int				nb_params;
 	char			params_type[3];
@@ -91,10 +91,9 @@ int					func_sub();
 int					func_xor();
 int					func_zjmp();
 
-/*
 static const t_op	g_op_tab[17] =
 {
-	{0, 0, 0, {0}, 0, 0, 0, 0, 0},
+	{0, {0}, 0, {0}, 0, 0, {0}, 0, 0},
 	{&func_live, "live", 1, {T_DIR}, 1, 10, "alive", 0, 0},
 	{&func_ld, "ld", 2, {T_DIR | T_IND, T_REG}, 2, 5, "load", 1, 0},
 	{&func_st, "st", 2, {T_REG, T_IND | T_REG}, 3, 5, "store", 1, 0},
@@ -120,6 +119,5 @@ static const t_op	g_op_tab[17] =
 	{&func_lfork, "lfork", 1, {T_DIR}, 15, 1000, "long fork", 0, 1},
 	{&func_aff, "aff", 1, {T_REG}, 16, 2, "aff", 1, 0}
 };
-*/
 
 #endif

@@ -6,7 +6,7 @@
 #    By: bbeldame <bbeldame@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/02/18 16:15:40 by bbeldame          #+#    #+#              #
-#    Updated: 2018/02/24 22:05:18 by bbeldame         ###   ########.fr        #
+#    Updated: 2018/02/24 22:23:56 by bbeldame         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,7 +20,8 @@ LIBFTDIR = ../libft
 OBJDIR = ./obj/
 INCDIR = ./includes
 SRCDIR = ./srcs/
-FCDIR = ./funcs/
+FCDIR = $(SRCDIR)funcs/
+VPATH = $(SRCDIR):$(FCDIR)
 
 SRCS_NAME =	main.c \
 			arena.c \
@@ -31,7 +32,7 @@ SRCS_NAME =	main.c \
 			parse_files.c \
 			utils.c
 
-FUNC_NAME = func_add.c \
+FUNCS_NAME = func_add.c \
 			func_aff.c \
 			func_and.c \
 			func_fork.c \
@@ -48,26 +49,29 @@ FUNC_NAME = func_add.c \
 			func_xor.c \
 			func_zjmp.c
 
-
 OBJS = $(addprefix $(OBJDIR),$(SRCS_NAME:.c=.o))
+OBJS += $(addprefix $(OBJDIR),$(FUNCS_NAME:.c=.o))
 LIBFT = $(addprefix $(LIBFTDIR)/,$(LIBFTA))
+
+FUNCS = $(addprefix $(FCDIR),$(FUNCS_NAME))
 
 GREEN = \033[0;32m
 RED = \033[0;31m
 NC = \033[0m
 
 SRCS = $(addprefix $(SRCDIR),$(SRCS_NAME))
+SRCS += $(FUNCS)
 
 all: $(NAME)
 
 obj:
 		@mkdir -p $(OBJDIR)
 
-$(OBJDIR)%.o:$(SRCDIR)%.c
-		@gcc $(FLAGS) -I $(INCDIR) -I $(LIBFTDIR) -o $@ -c $<
+$(OBJDIR)%.o:%.c
+		gcc $(FLAGS) -I $(INCDIR) -I $(LIBFTDIR) -o $@ -c $<
 
 $(NAME): obj $(OBJS)
-		@gcc $(OBJS) $(LIBFT) -lm -o $(NAME)
+		gcc $(OBJS) $(LIBFT) -lm -o $(NAME)
 			@echo "$(GREEN)---------corewar compiled---------$(NC)"
 
 norme:
@@ -79,5 +83,8 @@ clean:
 fclean:	clean
 		@rm -f $(NAME)
 		@echo "$(GREEN)----corewar removed completely----$(NC)"
+
+test:
+	echo $(SRCS)
 
 re: fclean all

@@ -6,7 +6,7 @@
 /*   By: bbeldame <bbeldame@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/18 16:07:14 by msakwins          #+#    #+#             */
-/*   Updated: 2018/02/24 21:53:02 by bbeldame         ###   ########.fr       */
+/*   Updated: 2018/02/24 22:09:05 by bbeldame         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,4 +57,5 @@ void				init_arena_and_processes(t_env *env)
 	env->head->prev = tmp;
 	tmp->next = env->head;
 	printf("ca va etre moche : %X\n", env->arena);
+	func_aff();
 }
