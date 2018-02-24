@@ -6,7 +6,7 @@
 #    By: bbeldame <bbeldame@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/02/18 16:15:40 by bbeldame          #+#    #+#              #
-#    Updated: 2018/02/24 21:21:17 by bbeldame         ###   ########.fr        #
+#    Updated: 2018/02/24 22:05:18 by bbeldame         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -29,8 +29,7 @@ SRCS_NAME =	main.c \
 			exit.c \
 			check.c \
 			parse_files.c \
-			utils.c \
-			processes.c
+			utils.c
 
 FUNC_NAME = func_add.c \
 			func_aff.c \
