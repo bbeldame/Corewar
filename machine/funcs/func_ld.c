@@ -12,3 +12,7 @@
 
 #include "../includes/vm.h"
 
+int		func_ld()
+{
+	return(1);
+}

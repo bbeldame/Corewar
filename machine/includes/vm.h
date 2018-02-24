@@ -71,7 +71,23 @@ void				parse_files(t_env *e, char **argv);
 void				check_number(char *nb);
 void				check_dup_number(t_env *env, int nb);
 void				parse_players(t_env *e);
-
+int					func_add();
+int					func_aff();
+int					func_and();
+int					func_fork();
+int					func_ld();
+int					func_ldi();
+int					func_lfork();
+int					func_live(t_env *env);
+int					func_lld();
+int					func_lldi();
+int					func_or();
+int					func_st();
+int					func_sti();
+int					func_sub();
+int					func_xor();
+int					func_zjmp();
+/*
 static const t_op	g_op_tab[17] =
 {
 	{0, 0, 0, {0}, 0, 0, 0, 0, 0},
@@ -100,5 +116,5 @@ static const t_op	g_op_tab[17] =
 	{&func_lfork, "lfork", 1, {T_DIR}, 15, 1000, "long fork", 0, 1},
 	{&func_aff, "aff", 1, {T_REG}, 16, 2, "aff", 1, 0}
 };
-
+*/
 #endif

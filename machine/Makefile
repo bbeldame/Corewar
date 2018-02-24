@@ -20,14 +20,33 @@ LIBFTDIR = ../libft
 OBJDIR = ./obj/
 INCDIR = ./includes
 SRCDIR = ./srcs/
+FCDIR = ./funcs/
 
-SRCS_NAME = main.c \
+SRCS_NAME =	main.c \
 			arena.c \
 			init.c \
 			parse_args.c \
 			exit.c \
 			check.c \
 			parse_files.c
+
+FUNC_NAME = func_add.c \
+			func_aff.c \
+			func_and.c \
+			func_fork.c \
+			func_ld.c \
+			func_ldi.c \
+			func_lfork.c \
+			func_live.c \
+			func_lld.c \
+			func_lldi.c \
+			func_or.c \
+			func_st.c \
+			func_sti.c \
+			func_sub.c \
+			func_xor.c \
+			func_zjmp.c
+
 
 OBJS = $(addprefix $(OBJDIR),$(SRCS_NAME:.c=.o))
 LIBFT = $(addprefix $(LIBFTDIR)/,$(LIBFTA))
