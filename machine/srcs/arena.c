@@ -21,6 +21,10 @@ static t_process	*create_new_process(t_env *env, int i)
 	process->id_champion = i;
 	init_reg(process);
 	process->reg[0] = env->player[i].nb;
+
+	//totest
+	process->reg[3] = 'c';
+
 	process->carry = 0;
 	process->opcode = 0;
 	process->pc = 0;

@@ -12,6 +12,16 @@
 
 #include "../includes/vm.h"
 
+int		get_reg(t_env *env, t_process *current, int i)
+{
+	int reg_i;
+
+	reg_i = LBYTE(env->arena[M(current->pc + i)]);
+	if (reg_i > 0 && reg_i <= REG_NUMBER)
+		return (current->reg[reg_i - 1]);
+	return (0);
+}
+
 unsigned int	get_data_dir(t_env *e, int idx, int label_size)
 {
 	unsigned int res;

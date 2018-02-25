@@ -12,8 +12,16 @@
 
 #include "../includes/vm.h"
 
-int		func_aff()
+int		func_aff(t_env *env, t_process *current)
 {
+	int		reg;
+	int		i;
+
+	i = 0;
+	current->buffer = malloc(sizeof(char) * 10);
+	reg = get_reg(env, current, 2) % 256;
+	current->buffer[i] = reg;
+	printf("im buffer %s\n", current->buffer);
 	printf("BONOUR\n");
 	return(1);
 }

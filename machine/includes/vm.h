@@ -54,6 +54,7 @@ typedef struct		s_process
 	int						reg[REG_NUMBER];
 	int						id_champion;
 	unsigned int			live;
+	char					*buffer;
 	unsigned int			pc;
 	unsigned char			opcode;
 	char					carry;
@@ -101,6 +102,7 @@ void				load_all_opcode(t_env *env);
 void				get_opcode(t_env *env, t_process *current);
 unsigned int		get_data_dir(t_env *e, int idx, int label_size);
 t_ocp				get_ocp(t_env *env, t_process *current);
+int					get_reg(t_env *e, t_process *current, int i);
 int					func_add();
 int					func_aff();
 int					func_and();
