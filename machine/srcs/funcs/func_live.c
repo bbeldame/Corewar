@@ -12,9 +12,15 @@
 
 #include "../includes/vm.h"
 
-int			func_live(t_env *env)
+int			func_live(t_env *env, t_process *curr)
 {
-//	process->live = 1;
-	env->nb_lives += 1;
+	if (!curr->wait)
+	{
+		env->player->live = 1;
+		curr->live = 1;
+		env->nb_lives += 1;
+		curr->wait = g_op[1].cycles;
+		ft_printf("wait = %d\n", curr->wait);
+	}
 	return(1);
 }

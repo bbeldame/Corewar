@@ -34,10 +34,11 @@ typedef struct		s_process
 	struct s_process		*next;
 	int						reg[REG_NUMBER];
 	int						id_champion;
-	unsigned int			lives;
+	unsigned int			live;
 	unsigned int			pc;
 	unsigned char			opcode;
 	char					carry;
+	int						wait;
 }					t_process;
 
 typedef struct		s_env
@@ -81,7 +82,7 @@ int					func_fork();
 int					func_ld();
 int					func_ldi();
 int					func_lfork();
-int					func_live(t_env *env);
+int					func_live(t_env *env, t_process *curr);
 int					func_lld();
 int					func_lldi();
 int					func_or();
@@ -91,7 +92,7 @@ int					func_sub();
 int					func_xor();
 int					func_zjmp();
 
-static const t_op	g_op_tab[17] =
+static const t_op	g_op[17] =
 {
 	{0, {0}, 0, {0}, 0, 0, {0}, 0, 0},
 	{&func_live, "live", 1, {T_DIR}, 1, 10, "alive", 0, 0},

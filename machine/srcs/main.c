@@ -20,5 +20,6 @@ int		main(int argc, char **argv)
 	parse_args(&env, argc, argv);
 	parse_files(&env, argv);
 	init_arena_and_processes(&env);
+	ft_printf("%s\n", g_op[1].description);
 	return (0);
 }
