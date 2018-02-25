@@ -6,7 +6,7 @@
 /*   By: bbeldame <bbeldame@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/18 16:07:14 by msakwins          #+#    #+#             */
-/*   Updated: 2018/02/24 22:36:12 by bbeldame         ###   ########.fr       */
+/*   Updated: 2018/02/25 20:13:34 by bbeldame         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ static t_process	*create_new_process(t_env *env, int i)
 	process->carry = 0;
 	process->opcode = 0;
 	process->pc = 0;
+	process->wait = 0;
 	process->prev = NULL;
 	process->next = NULL;
 	return (process);
@@ -41,6 +42,7 @@ void				init_arena_and_processes(t_env *env)
 		if (i == env->nb_players - 1)
 		{
 			env->head = create_new_process(env, i);
+			env->head->prev = NULL;
 			tmp = env->head;
 		}
 		else
@@ -54,6 +56,4 @@ void				init_arena_and_processes(t_env *env)
 		ft_strdel(&(env->player[i].code));
 		i--;
 	}
-	env->head->prev = tmp;
-	tmp->next = env->head;
 }

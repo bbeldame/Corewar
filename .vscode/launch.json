@@ -1,0 +1,22 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Launch",
+            "type": "lldb",
+            "request": "launch",
+            "program": "${workspaceRoot}/corewar",
+            "args": [
+                "-n",
+                "255",
+                "/Users/bbeldame/resCore/champs/niokiki.cor"
+            ],
+            "cwd": "${workspaceRoot}",
+            "stopOnEntry": false,
+            "terminal": "console",
+            "sourceLanguages": [
+                "c"
+            ]
+        }
+    ]
+}

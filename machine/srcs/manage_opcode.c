@@ -1,32 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   manage_opcode.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bbeldame <bbeldame@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/02/18 16:07:14 by msakwins          #+#    #+#             */
-/*   Updated: 2018/02/25 21:35:27 by bbeldame         ###   ########.fr       */
+/*   Created: 2018/02/25 19:32:29 by bbeldame          #+#    #+#             */
+/*   Updated: 2018/02/25 19:58:24 by bbeldame         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/vm.h"
 
-static void		anounce_the_winner(t_env *env)
+void		get_opcode(t_env *env, t_process *current)
 {
-	ft_printf("Contestant 1, \"%s\", has won !\n",
-		env->player[env->winner].header->prog_name);
+	if (env->arena[current->pc] >= 1 && env->arena[current->pc] <= 16)
+	{
+		current->opcode = env->arena[current->pc];
+		current->wait = g_op[env->arena[current->pc]].cycles;
+	}
+	else
+	{
+		current->opcode = 0;
+		current->wait = 0;
+	}
 }
 
-int				main(int argc, char **argv)
+void		load_all_opcode(t_env *env)
 {
-	t_env	env;
+	t_process		*tmp;
 
-	init(&env);
-	parse_args(&env, argc, argv);
-	parse_files(&env, argv);
-	init_arena_and_processes(&env);
-	launch_lifecycle(&env);
-	anounce_the_winner(&env);
-	return (0);
+	tmp = env->head;
+	while (tmp)
+	{
+		if (tmp->opcode == 0)
+			get_opcode(env, tmp);
+		tmp = tmp->next;
+	}
 }

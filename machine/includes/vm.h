@@ -6,7 +6,7 @@
 /*   By: bbeldame <bbeldame@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/18 16:28:40 by msakwins          #+#    #+#             */
-/*   Updated: 2018/02/24 22:08:33 by bbeldame         ###   ########.fr       */
+/*   Updated: 2018/02/25 21:07:01 by bbeldame         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,9 @@
 # include "limits.h"
 # include "../../libft/includes/libft.h"
 # include "../../libft/includes/ft_printf.h"
+
+# define LBYTE(x)	(x & 0xFF)
+# define M(x)	(x % MEM_SIZE)
 
 typedef struct		s_player
 {
@@ -48,6 +51,8 @@ typedef struct		s_env
 	int				nb_lives;
 	int				nb_players;
 	int				dump;
+	int				winner;
+	int				nb_checks;
 	unsigned char	arena[MEM_SIZE];
 	t_player		player[MAX_PLAYERS + 1];
 	t_process		*head;
@@ -55,7 +60,7 @@ typedef struct		s_env
 
 typedef struct		s_op
 {
-	int				(*ptr)();
+	int				(*func)();
 	char			name[PROG_NAME_LENGTH];
 	int				nb_params;
 	char			params_type[3];
@@ -75,6 +80,10 @@ void				check_number(char *nb);
 void				check_dup_number(t_env *env, int nb);
 void				parse_players(t_env *e);
 void				init_reg(t_process *process);
+void				launch_lifecycle(t_env *env);
+void				load_all_opcode(t_env *env);
+void				get_opcode(t_env *env, t_process *current);
+unsigned int		get_data_dir(t_env *e, int idx, int label_size);
 int					func_add();
 int					func_aff();
 int					func_and();

@@ -1,32 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   get_data.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bbeldame <bbeldame@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/02/18 16:07:14 by msakwins          #+#    #+#             */
-/*   Updated: 2018/02/25 21:35:27 by bbeldame         ###   ########.fr       */
+/*   Created: 2018/02/25 20:55:34 by bbeldame          #+#    #+#             */
+/*   Updated: 2018/02/25 21:07:02 by bbeldame         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/vm.h"
 
-static void		anounce_the_winner(t_env *env)
+unsigned int	get_data_dir(t_env *e, int idx, int label_size)
 {
-	ft_printf("Contestant 1, \"%s\", has won !\n",
-		env->player[env->winner].header->prog_name);
-}
+	unsigned int res;
 
-int				main(int argc, char **argv)
-{
-	t_env	env;
-
-	init(&env);
-	parse_args(&env, argc, argv);
-	parse_files(&env, argv);
-	init_arena_and_processes(&env);
-	launch_lifecycle(&env);
-	anounce_the_winner(&env);
-	return (0);
+	if (label_size == 1)
+	{
+		res = (LBYTE(e->arena[M(idx)] << 8 | LBYTE(M(idx + 1))));
+	}
+	else
+	{
+		res = (LBYTE(e->arena[M(idx)]) << 24) |
+		(LBYTE(e->arena[M(idx + 1)]) << 16) |
+			(LBYTE(e->arena[M(idx + 2)]) << 8) |
+				LBYTE(e->arena[M(idx + 3)]);
+	}
+	return (res);
 }

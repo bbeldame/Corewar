@@ -6,13 +6,13 @@
 #    By: bbeldame <bbeldame@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/02/18 16:15:40 by bbeldame          #+#    #+#              #
-#    Updated: 2018/02/24 22:25:19 by bbeldame         ###   ########.fr        #
+#    Updated: 2018/02/25 21:06:43 by bbeldame         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = ../corewar
 
-FLAGS = -Wall -Wextra # -Werror to uncomment at the end
+FLAGS = -g -Wall -Wextra # -Werror to uncomment at the end
 
 LIBFTA = libft.a
 
@@ -30,7 +30,10 @@ SRCS_NAME =	main.c \
 			exit.c \
 			check.c \
 			parse_files.c \
-			utils.c
+			utils.c \
+			lifecycle.c \
+			manage_opcode.c \
+			get_data.c
 
 FUNCS_NAME = func_add.c \
 			func_aff.c \
