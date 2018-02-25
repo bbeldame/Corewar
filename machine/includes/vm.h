@@ -6,7 +6,7 @@
 /*   By: bbeldame <bbeldame@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/18 16:28:40 by msakwins          #+#    #+#             */
-/*   Updated: 2018/02/25 23:21:04 by bbeldame         ###   ########.fr       */
+/*   Updated: 2018/02/25 23:57:21 by bbeldame         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,10 +25,6 @@
 # define ZJMP 0x09
 # define FORK 0x0C
 # define LFORK 0x0F
-
-# define OCP_REG 1
-# define OCP_DIR 2
-# define OCP_IND 3
 
 typedef struct		s_ocp
 {
@@ -103,6 +99,7 @@ void				get_opcode(t_env *env, t_process *current);
 unsigned int		get_data_dir(t_env *e, int idx, int label_size);
 t_ocp				get_ocp(t_env *env, t_process *current);
 int					get_reg(t_env *e, t_process *current, int i);
+unsigned int		get_size_param(char param_type, int dir);
 int					func_add();
 int					func_aff();
 int					func_and();
