@@ -20,8 +20,9 @@ int		func_aff(t_env *env, t_process *current)
 	i = 0;
 	current->buffer = malloc(sizeof(char) * 10);
 	reg = get_reg(env, current, 2) % 256;
-	current->buffer[i] = reg;
-	printf("im buffer %s\n", current->buffer);
-	printf("BONOUR\n");
-	return(1);
+	if (reg != '\0')
+		current->buffer[i] = reg;
+	else
+		printf("im buffer %s\n", current->buffer);
+	return(3);
 }
