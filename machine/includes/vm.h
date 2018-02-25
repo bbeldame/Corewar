@@ -6,7 +6,7 @@
 /*   By: bbeldame <bbeldame@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/18 16:28:40 by msakwins          #+#    #+#             */
-/*   Updated: 2018/02/25 21:07:01 by bbeldame         ###   ########.fr       */
+/*   Updated: 2018/02/25 23:21:04 by bbeldame         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,22 @@
 
 # define LBYTE(x)	(x & 0xFF)
 # define M(x)	(x % MEM_SIZE)
+
+# define LIVE 0x01
+# define ZJMP 0x09
+# define FORK 0x0C
+# define LFORK 0x0F
+
+# define OCP_REG 1
+# define OCP_DIR 2
+# define OCP_IND 3
+
+typedef struct		s_ocp
+{
+	char			one;
+	char			two;
+	char			three;
+}					t_ocp;
 
 typedef struct		s_player
 {
@@ -84,6 +100,7 @@ void				launch_lifecycle(t_env *env);
 void				load_all_opcode(t_env *env);
 void				get_opcode(t_env *env, t_process *current);
 unsigned int		get_data_dir(t_env *e, int idx, int label_size);
+t_ocp				get_ocp(t_env *env, t_process *current);
 int					func_add();
 int					func_aff();
 int					func_and();
