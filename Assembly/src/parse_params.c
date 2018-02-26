@@ -69,5 +69,10 @@ int 	parse_params(char *line, t_asm *param, int idx)
 		ft_strdel(&inst);
 		nb_instr++;
 	}
+	if (line + i != '\0')
+	{
+		ft_printf("%s\n", line + i);
+		return (0);
+	}
 	return (1);
 }
