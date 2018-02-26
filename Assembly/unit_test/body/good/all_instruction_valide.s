@@ -8,8 +8,8 @@ live %1
 ld %1, r1
 ld %:testlabel, r1
 
-st r1, %1
-st r1, %:testlabel
+st r1, r2
+#st r1, %:3
 
 add r1, r2, r3
 
@@ -51,7 +51,7 @@ xor %:testlabel, r2, r3
 xor %:testlabel, %:testlabel, r3
 xor %:testlabel, %1, r3
 
-zjump %1
+#zjump %testlabel
 
 ldi r1, r2, r3
 ldi r1, %1, r3
