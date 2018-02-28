@@ -53,7 +53,7 @@ xor %:testlabel, %1, r3
 
 wall:
 		live%1
-		#zjump %:wall
+		zjmp %:wall
 
 ldi r1, r2, r3
 ldi r1, %1, r3

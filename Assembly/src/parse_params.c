@@ -46,6 +46,8 @@ int 	verif_end_line_param(char *str, int i)
 {
 	while (is_white_space(str[i]))
 		i++;
+	if (str[i] == COMMENT_CHAR)
+		return (1);
 	if (str[i] != '\0')
 		return (0);
 	return (1);

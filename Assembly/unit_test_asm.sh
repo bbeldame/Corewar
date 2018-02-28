@@ -25,8 +25,6 @@ echo "\033[32m=== OK : \033[00m"
 ./asm unit_test/header/good_header.s
 
 echo "\n\033[33m=== TEST BODY: \033[00m"
-echo "\033[32m=== All instruction OK : \033[00m"
-./asm unit_test/body/good/all_instruction_valide.s
 
 echo "\n\033[33mlive \033[00m"
 echo "\033[31m=== erreur: \033[00m"
@@ -195,3 +193,21 @@ echo "\033[31m=== erreur: \033[00m"
 
 echo "\033[32m=== OK : \033[00m"
 ./asm unit_test/body/aff/g_aff_1.s
+
+
+echo "\033[32m=== All instruction OK : \033[00m"
+./asm unit_test/body/good/all_instruction_valide.s
+
+echo "\n\033[33m=== TEST champion : \033[00m"
+echo "\033[32m=== Ressource corewar : \033[00m"
+
+echo "\033[35m 42.s \033[00m"
+./asm unit_test/champs_ope/42.s
+echo "\033[35m Backward.s \033[00m"
+./asm unit_test/champs_ope/Backward.s
+echo "\033[35m barriere.s \033[00m"
+./asm unit_test/champs_ope/barriere.s
+echo "\033[35m Car.s \033[00m"
+./asm unit_test/champs_ope/Car.s
+echo "\033[35m Torpille.s \033[00m"
+./asm unit_test/champs_ope/Torpille.s

@@ -1,0 +1,179 @@
+make: Nothing to be done for `all'.
+[33m=== TEST Divers: [00m
+[31m=== erreur: [00m
+Error : invalide extension
+Error : open failure
+[32m=== OK : [00m
+parse body OK
+
+[33m=== TEST HEADER: [00m
+[31m=== erreur: [00m
+Error : Unknow champ comment
+===========
+Error : Unknow champ name
+===========
+Error : Unknow champ name
+===========
+Error : Unknow champ name
+===========
+Error : Unknow champ comment
+[32m=== OK : [00m
+parse body OK
+
+[33m=== TEST BODY: [00m
+
+[33mlive [00m
+[31m=== erreur: [00m
+Error : Unknow instruction at L4
+Error : Unknow instruction at L4
+[32m=== OK : [00m
+parse body OK
+
+[33mld [00m
+[31m=== erreur: [00m
+Error : Unknow instruction at L6
+Error : Unknow instruction at L6
+Error : Unknow instruction at L6
+Error : Unknow instruction at L6
+Error : Unknow instruction at L6
+[32m=== OK : [00m
+parse body OK
+parse body OK
+
+[33mst [00m
+[31m=== erreur: [00m
+Error : Unknow instruction at L6
+Error : Unknow instruction at L6
+Error : Unknow instruction at L6
+Error : Unknow instruction at L6
+Error : Unknow instruction at L6
+[32m=== OK : [00m
+parse body OK
+parse body OK
+
+[33madd [00m
+[31m=== erreur: [00m
+Error : Unknow instruction at L4
+Error : Unknow instruction at L4
+Error : Unknow instruction at L4
+Error : Unknow instruction at L4
+Error : Unknow instruction at L4
+[32m=== OK : [00m
+parse body OK
+
+[33msub [00m
+[31m=== erreur: [00m
+Error : Unknow instruction at L4
+Error : Unknow instruction at L4
+Error : Unknow instruction at L4
+Error : Unknow instruction at L4
+Error : Unknow instruction at L4
+[32m=== OK : [00m
+parse body OK
+
+[33mand [00m
+[31m=== erreur: [00m
+Error : Unknow instruction at L6
+Error : Unknow instruction at L6
+[32m=== OK : [00m
+parse body OK
+
+[33mor [00m
+[31m=== erreur: [00m
+Error : Unknow instruction at L6
+Error : Unknow instruction at L6
+[32m=== OK : [00m
+parse body OK
+
+[33mxor [00m
+[31m=== erreur: [00m
+Error : Unknow instruction at L6
+Error : Unknow instruction at L6
+[32m=== OK : [00m
+parse body OK
+
+[33mzjump [00m
+[31m=== erreur: [00m
+Error : Unknow instruction at L6
+Error : Unknow instruction at L6
+Error : Unknow instruction at L6
+parse body OK
+[32m=== OK : [00m
+parse body OK
+
+[33mldi [00m
+[31m=== erreur: [00m
+Error : Unknow instruction at L6
+Error : Unknow instruction at L6
+Error : Unknow instruction at L6
+Error : Unknow instruction at L6
+[32m=== OK : [00m
+parse body OK
+
+[33msti [00m
+[31m=== erreur: [00m
+Error : Unknow instruction at L6
+Error : Unknow instruction at L6
+Error : Unknow instruction at L6
+Error : Unknow instruction at L6
+[32m=== OK : [00m
+parse body OK
+
+[33mfork [00m
+[31m=== erreur: [00m
+Error : Unknow instruction at L6
+Error : Unknow instruction at L6
+Error : Unknow instruction at L6
+Error : Unknow instruction at L6
+[32m=== OK : [00m
+parse body OK
+
+[33mlld [00m
+[31m=== erreur: [00m
+Error : Unknow instruction at L6
+Error : Unknow instruction at L6
+Error : Unknow instruction at L6
+Error : Unknow instruction at L6
+[32m=== OK : [00m
+parse body OK
+
+[33mlldi [00m
+[31m=== erreur: [00m
+Error : Unknow instruction at L6
+Error : Unknow instruction at L6
+Error : Unknow instruction at L6
+Error : Unknow instruction at L6
+[32m=== OK : [00m
+parse body OK
+
+[33mlfork [00m
+[31m=== erreur: [00m
+Error : Unknow instruction at L6
+Error : Unknow instruction at L6
+Error : Unknow instruction at L6
+Error : Unknow instruction at L6
+[32m=== OK : [00m
+parse body OK
+
+[33maff [00m
+[31m=== erreur: [00m
+Error : Unknow instruction at L4
+Error : Unknow instruction at L4
+Error : Unknow instruction at L4
+[32m=== OK : [00m
+parse body OK
+[32m=== All instruction OK : [00m
+parse body OK
+
+[33m=== TEST champion : [00m
+[32m=== Ressource corewar : [00m
+[35m 42.s [00m
+parse body OK
+[35m Backward.s [00m
+parse body OK
+[35m barriere.s [00m
+parse body OK
+[35m Car.s [00m
+parse body OK
+[35m Torpille.s [00m
+Error : Unknow instruction at L10

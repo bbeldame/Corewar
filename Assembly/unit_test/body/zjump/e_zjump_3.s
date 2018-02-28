@@ -3,4 +3,4 @@
 
 testlabel: live %1
 
-zjump r1
+zjmp r1

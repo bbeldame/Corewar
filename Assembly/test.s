@@ -1,7 +1,6 @@
-.name "zorkinette"
-.comment "tes"
+.name "test"
+.comment "t"
 
 test:
 
-test2:
-add r1, r2, r3
+zjmp %:test

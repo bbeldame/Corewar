@@ -66,6 +66,8 @@ int 	is_ind(t_list *labels,  char *param)
 	i = 0;
 	if (param[i] == '\0')
 		return (0);
+	if (param[i] == '-')
+		i++;
 	if (param[i] == LABEL_CHAR)
 	{
 		elem = labels;
