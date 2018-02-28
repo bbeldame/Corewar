@@ -70,7 +70,7 @@ char 	*set_msg_error(int c_er)
 /*
 **			c_er : 1x => no num line
 **				   2x => num line
-**	L77 ft_print_asm() => fonction pour le debug peut provoquer des segfault
+**	L81 ft_print_asm() => fonction pour le debug peut provoquer des segfault
 */
 
 void 	exit_msg_error(int c_er, int n_line, t_asm *param)
