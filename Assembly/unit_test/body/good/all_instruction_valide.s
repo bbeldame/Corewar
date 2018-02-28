@@ -51,7 +51,9 @@ xor %:testlabel, r2, r3
 xor %:testlabel, %:testlabel, r3
 xor %:testlabel, %1, r3
 
-#zjump %testlabel
+wall:
+		live%1
+		#zjump %:wall
 
 ldi r1, r2, r3
 ldi r1, %1, r3

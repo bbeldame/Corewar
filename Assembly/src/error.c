@@ -75,8 +75,8 @@ void 	exit_msg_error(int c_er, int n_line, t_asm *param)
 {
 	char 	*msg;
 
-	if (c_er != 11)
-		ft_print_asm(param);
+	// if (c_er != 11)
+	// 	ft_print_asm(param);
 	if (c_er >= 30 && c_er < 40)
 		msg_header(c_er, param);
 	if (param)

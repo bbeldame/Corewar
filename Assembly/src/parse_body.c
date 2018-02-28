@@ -59,10 +59,10 @@ int 	ft_parse_body(t_asm *param)
 	int 	ret;
 
 	ret = 0;
-	ft_printf("create list label\n");
+	//ft_printf("create list label\n");
 	if (!get_label(param))
 		return (0);
-	ft_printf("parse body\n");
+	//ft_printf("parse body\n");
 	if (!check_body(param))
 		return (0);
 	return (1);

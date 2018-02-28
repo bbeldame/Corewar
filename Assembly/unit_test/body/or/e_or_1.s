@@ -1,5 +1,6 @@
 .name "zork"
 .comment "I'M ALIIIIVE"
 
-live %2
-st r1, 6, 6
+testlabel: live %1
+
+or r1, r2, %1
