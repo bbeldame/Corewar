@@ -1,4 +1,4 @@
-.name "test"
+.name "zork"
 .comment "t"
 
 test:

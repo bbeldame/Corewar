@@ -23,6 +23,7 @@ int		main(int ac, char **av)
 		ft_check_ext(av[1]);
 		param = *init_t_asm(av[1]);
 		ft_parser(&param);
+		finalize_asm(&param);
 	}
 	else
 		ft_print_usage();

@@ -55,6 +55,8 @@ char 	*set_msg_error(int c_er)
 		return ("Unknow champ name");
 	else if (c_er == 14)
 		return ("Unknow champ comment");
+	else if (c_er == 15)
+		return ("create failure");
 	else if (c_er == 20)
 		return ("");
 	else if (c_er == 21)

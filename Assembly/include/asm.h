@@ -50,6 +50,7 @@ typedef struct			s_asm
 	char 				*comment_prg;
 	char 				*file_cor;
 	char 				*file_s;
+	int 				fd;
 	t_file_list			*header;
 	t_file_list 		*body;
 	t_token 			*token;
@@ -62,6 +63,12 @@ typedef struct			s_asm
 
 void 	ft_error(char *s);
 void 	exit_msg_error(int c_er, int n_line, t_asm *param);
+
+/*
+**		Finalisation asm
+*/
+
+void 	finalize_asm(t_asm *param);
 
 /*
 **		Parser
