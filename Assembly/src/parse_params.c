@@ -42,6 +42,15 @@ int 	validate_param(t_list *labels, char *ins, int p_type)
 	return (1);
 }
 
+int 	verif_end_line_param(char *str, int i)
+{
+	while (is_white_space(str[i]))
+		i++;
+	if (str[i] != '\0')
+		return (0);
+	return (1);
+}
+
 int 	parse_params(char *line, t_asm *param, int idx)
 {
 	int 	nb_instr;
@@ -52,11 +61,7 @@ int 	parse_params(char *line, t_asm *param, int idx)
 	nb_instr = 0;
 	while (nb_instr < g_op_tab[idx].nb_param)
 	{
-		while (is_white_space(line[i]))
-			i++;
-		if (line[i] == SEPARATOR_CHAR)
-			i++;
-		while (is_white_space(line[i]))
+		while (is_white_space(line[i]) || line[i] == SEPARATOR_CHAR)
 			i++;
 		if ((inst = ft_strsub(line, i, get_param_end(line + i))) == NULL)
 			return (0);
@@ -69,10 +74,7 @@ int 	parse_params(char *line, t_asm *param, int idx)
 		ft_strdel(&inst);
 		nb_instr++;
 	}
-	if (line + i != '\0')
-	{
-		ft_printf("%s\n", line + i);
+	if (!verif_end_line_param(line, i))
 		return (0);
-	}
 	return (1);
 }
