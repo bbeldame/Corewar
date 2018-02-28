@@ -69,6 +69,8 @@ void 	exit_msg_error(int c_er, int n_line, t_asm *param);
 */
 
 void 	finalize_asm(t_asm *param);
+void 	print_header(t_asm *param);
+void 	print_magic(int fd);
 
 /*
 **		Parser
