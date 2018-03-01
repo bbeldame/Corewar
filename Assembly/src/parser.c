@@ -12,6 +12,10 @@
 
 #include "../include/asm.h"
 
+/*
+**		transforme tout les \t en espace
+*/
+
 char 	*ft_clear_str(char *s)
 {
 	int 	i;
@@ -25,6 +29,13 @@ char 	*ft_clear_str(char *s)
 	}
 	return (s);
 }
+
+/*
+**		lis le fichier correspondant au fd
+** 		saute toutes les lignes commencant par "#"
+** 		enregistre les deux premierieres lignes dans t_file_list header
+** 		le reste dans t_file_list body
+*/
 
 void 	set_file_list(t_asm *param, int fd)
 {
@@ -54,6 +65,14 @@ void 	set_file_list(t_asm *param, int fd)
 	param->header = header_list;
 	param->body = body_list;
 }
+
+/*
+**		Fonction controlant le parsing de tout le fichier
+** 		ouvre le fd correspondant					ft_open_file
+** 		recupere les deux list header et body 		set_file_list
+** 		analyse le header 							set_name_comment
+** 		analyse le body 							ft_parse_body
+*/
 
 void 	ft_parser(t_asm *param)
 {

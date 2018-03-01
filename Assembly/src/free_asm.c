@@ -12,6 +12,10 @@
 
 #include "../include/asm.h"
 
+/*
+**		free tout les elements des t_file_list
+*/
+
 void 	free_file_list(t_file_list **list)
 {
 	t_file_list *cp_list;

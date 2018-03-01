@@ -12,6 +12,10 @@
 
 #include "../include/asm.h"
 
+/*
+**		Initialise un nouveau maillon pour t_list labels
+*/
+
 t_list 	*init_label(char *label)
 {
 	t_list	*new;
@@ -25,6 +29,13 @@ t_list 	*init_label(char *label)
 	return (new);
 }
 
+/*
+**		Initialise avec init_label et ajoute avec ft_lstaddtail
+** 		un nouveau maillon a t_list labels
+**		renvoi 1 en cas de reussite
+** 		sinon renvoi 0
+*/
+
 int 	save_label(t_asm *param, char *label)
 {
 	t_list	*new;
@@ -34,6 +45,13 @@ int 	save_label(t_asm *param, char *label)
 	ft_lstaddtail(&param->labels, new);
 	return (1);
 }
+
+/*
+**		parcours la t_file_list body, isole et enregistre chaque label
+** 		dans une t_list label
+**		renvoi 1 en cas de reussite
+** 		sinon renvoi 0
+*/
 
 int 	get_label(t_asm *param)
 {
@@ -53,6 +71,13 @@ int 	get_label(t_asm *param)
 	}
 	return (1);
 }
+
+/*
+**		parse le corps du programme en asm
+** 		cree en premiers lieu une t_list des labels avec get_label
+** 		et verifie la validite des instructions avec check_body
+** 		renvoi 1 en cas de reussite
+*/
 
 int 	ft_parse_body(t_asm *param)
 {

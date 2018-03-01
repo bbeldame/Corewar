@@ -12,6 +12,10 @@
 
 #include "../include/asm.h"
 
+/*
+**		retourne la taille de l'instruction donne
+*/
+
 int 	get_size_inst(char *line)
 {
 	int i;
@@ -21,6 +25,12 @@ int 	get_size_inst(char *line)
 		i++;
 	return (i);
 }
+
+/*
+**		Identifie l'instruction de la ligne avec idx (max 15) et
+**		envoi ses parametres pour verification a parse_params
+** 		renvoi 0 pour idx == 16 ou si parse_params == 0
+*/
 
 int 	check_inst(char *line, t_asm *param)
 {
@@ -46,6 +56,12 @@ int 	check_inst(char *line, t_asm *param)
 		return (0);
 	return (1);
 }
+
+/*
+**		separe les labels des instructions
+**		envoi les instructions a check_inst
+** 		coupe l'execution du programme si check_inst renvoi 0
+*/
 
 int 	check_body(t_asm *param)
 {

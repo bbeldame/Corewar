@@ -12,6 +12,12 @@
 
 #include "../include/asm.h"
 
+/*
+**		parcour la chaine donne
+**		renvoi 1 si la tout les elements sont des chiffres
+** 		sinon renvoi 0
+*/
+
 int 	ft_str_is_int(char *str)
 {
 	int i;
@@ -26,6 +32,12 @@ int 	ft_str_is_int(char *str)
 	return (1);
 }
 
+/*
+**		parcour la chaine donne
+** 		renvoi 1 si la chaine est un registre conprit entre r1 et r16
+** 		sinon renvoi 0
+*/
+
 int 	is_reg(char *param)
 {
 	if (param[0] == 'r')
@@ -39,6 +51,12 @@ int 	is_reg(char *param)
 	return (0);
 }
 
+/*
+**		parcour la chaine donne
+** 		renvoi 1 si la chaine est un label se terminant par ":"
+** 		sinon renvoi 0
+*/
+
 int 	is_label(char *param)
 {
 	int 	i;
@@ -51,12 +69,25 @@ int 	is_label(char *param)
 	return (0);
 }
 
+/*
+**		parcour la chaine donne
+** 		envoi la chaine a is_ind si elle commence par "%"
+** 		sinon renvoi 0
+*/
+
 int 	is_dir(t_list *labels, char *param)
 {
 	if (param[0] == DIRECT_CHAR)
 		return (is_ind(labels, param + 1));
 	return (0);
 }
+
+/*
+**		parcour la chaine donne
+**		compare le label eventuel a la t_list labels
+** 		renvoi 1 si la chaine est un indirect
+** 		sinon renvoi 0
+*/
 
 int 	is_ind(t_list *labels,  char *param)
 {

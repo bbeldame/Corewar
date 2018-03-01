@@ -12,6 +12,11 @@
 
 #include "../include/asm.h"
 
+/*
+**		trouve la fin d'un parametre de l'instruction en cour
+** 		renvoi l'index (i)
+*/
+
 int 	get_param_end(char *line)
 {
 	int i;
@@ -22,6 +27,14 @@ int 	get_param_end(char *line)
 		i++;
 	return (i);
 }
+
+/*
+**		compare p_type qui est l'instruction potentiellement attendu
+** 		avec T_REG T_DIR OU T_IND
+** 		effectue une verification en fonction du type
+** 		et renvoi 1 en cas de reussite
+** 		sinon renvoi 0
+*/
 
 int 	validate_param(t_list *labels, char *ins, int p_type)
 {
@@ -42,6 +55,12 @@ int 	validate_param(t_list *labels, char *ins, int p_type)
 	return (1);
 }
 
+/*
+**		parcours la chaine str jusqu'au premiers caractere non blanc
+** 		renvoi 1 si c'est un "#" ou '\0'
+** 		sinon renvoi 0
+*/
+
 int 	verif_end_line_param(char *str, int i)
 {
 	while (is_white_space(str[i]))
@@ -52,6 +71,13 @@ int 	verif_end_line_param(char *str, int i)
 		return (0);
 	return (1);
 }
+
+/*
+**		separe chaque paramtre de l'instruction correspond a idx
+** 		effectue une verification avec validate_param
+** 		si erreur renvoi 0
+** 		a la fin verifie la non presence de parametres suplementaires
+*/
 
 int 	parse_params(char *line, t_asm *param, int idx)
 {

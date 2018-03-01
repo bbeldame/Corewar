@@ -17,6 +17,11 @@ void 	ft_print_usage()
 	ft_printf("Usage: ./asm <source_file.s>\n");
 }
 
+/*
+**		ouvre le fichier passe en parametre
+** 		quitte le programme avec exit_msg_error si fd == -1
+*/
+
 int 	ft_open_file(char *s)
 {
 	int 	fd;
@@ -26,6 +31,11 @@ int 	ft_open_file(char *s)
 		exit_msg_error(11, 0, NULL);
 	return (fd);
 }
+
+/*
+**		renvoi l'adresse du premiers caractere qui n'est pas un espace
+**		de la chaine passe en parametre
+*/
 
 char 	*ft_skip_space(char *s)
 {
@@ -37,6 +47,11 @@ char 	*ft_skip_space(char *s)
 	return (&s[i]);
 }
 
+/*
+**		renvoi 1 si la chaine passe en parametre ne commence pas par "#"
+**		sinon renvoi 0
+*/
+
 int 	verif_line(char *line)
 {
 	char *tmp;
@@ -46,6 +61,11 @@ int 	verif_line(char *line)
 		return (0);
 	return (1);
 }
+
+/*
+**		renvoi 1 si le caractere est un "espace blanc"
+** 		sinon renvoi 0
+*/
 
 int		is_white_space(char c)
 {
