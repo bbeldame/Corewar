@@ -6,11 +6,19 @@
 /*   By: bbeldame <bbeldame@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/25 20:55:34 by bbeldame          #+#    #+#             */
-/*   Updated: 2018/02/26 00:15:48 by bbeldame         ###   ########.fr       */
+/*   Updated: 2018/03/02 01:02:18 by bbeldame         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/vm.h"
+
+unsigned int	get_value(t_env *e, int idx)
+{
+	return (LBYTE(e->arena[M(idx)]) << 24) |
+		(LBYTE(e->arena[M(idx + 1)]) << 16) |
+			(LBYTE(e->arena[M(idx + 2)]) << 8) |
+				LBYTE(e->arena[M(idx + 3)]);
+}
 
 int		get_reg(t_env *env, t_process *current, int i)
 {
@@ -26,31 +34,19 @@ unsigned int	get_data_dir(t_env *e, int idx, int label_size)
 {
 	unsigned int res;
 
-	if (label_size == 1)
-	{
+	if (label_size == 2)
 		res = (LBYTE(e->arena[M(idx)] << 8 | LBYTE(M(idx + 1))));
-	}
 	else
-	{
-		res = (LBYTE(e->arena[M(idx)]) << 24) |
-		(LBYTE(e->arena[M(idx + 1)]) << 16) |
-			(LBYTE(e->arena[M(idx + 2)]) << 8) |
-				LBYTE(e->arena[M(idx + 3)]);
-	}
+		res = get_value(e, idx);
 	return (res);
 }
 
-/*unsigned int	get_data_ind(t_env *e, int idx)
+unsigned int	get_data_ind(t_env *e, int idx, int restr)
 {
-	unsigned int res;
-	short		ind;
+	unsigned int	jumper;
 
-	ind = (short)(proc->mem[sze % MEM_SIZE] << 8 |
-	proc->mem[(sze + 1) % MEM_SIZE])
-	% IDX_MOD;
-	ret = (proc->mem[(champ->pc + ind) % MEM_SIZE] << 24
-	| proc->mem[(champ->pc + ind + 1) % MEM_SIZE] << 16
-	| proc->mem[(champ->pc + ind + 2) % MEM_SIZE] << 8
-	| proc->mem[(champ->pc + ind + 3) % MEM_SIZE]);
-	return (ret);
-}*/
+	jumper = e->arena[M(idx + 2)] << 8 |
+		e->arena[M(idx + 3)];
+	jumper = restr ? jumper % IDX_MOD : jumper;
+	return (get_value(e, idx + jumper));
+}

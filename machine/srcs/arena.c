@@ -6,7 +6,7 @@
 /*   By: bbeldame <bbeldame@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/18 16:07:14 by msakwins          #+#    #+#             */
-/*   Updated: 2018/02/25 20:13:34 by bbeldame         ###   ########.fr       */
+/*   Updated: 2018/03/02 01:01:26 by bbeldame         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,10 +21,6 @@ static t_process	*create_new_process(t_env *env, int i)
 	process->id_champion = i;
 	init_reg(process);
 	process->reg[0] = env->player[i].nb;
-
-	//totest
-	process->reg[3] = 'c';
-
 	process->carry = 0;
 	process->opcode = 0;
 	process->pc = 0;

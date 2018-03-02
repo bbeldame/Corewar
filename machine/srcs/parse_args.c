@@ -6,7 +6,7 @@
 /*   By: bbeldame <bbeldame@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/18 16:07:14 by msakwins          #+#    #+#             */
-/*   Updated: 2018/02/18 20:19:18 by bbeldame         ###   ########.fr       */
+/*   Updated: 2018/03/02 01:04:51 by bbeldame         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,6 @@ void		add_player(t_env *env, char *nb, int argc, int *i)
 void		parse_args(t_env *env, int argc, char **argv)
 {
 	int		i;
-	int		dump_value;
 
 	i = 1;
 	env->nb_players = 0;
@@ -58,7 +57,8 @@ void		parse_args(t_env *env, int argc, char **argv)
 		if (i + 3 > argc)
 			ft_exit(2, "No players found");
 		check_number(argv[i + 1]);
-		dump_value = atoll(argv[i + 1]);
+		env->dump = atoll(argv[i + 1]);
+		i += 2;
 	}
 	while (i < argc)
 	{

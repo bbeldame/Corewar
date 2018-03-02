@@ -6,7 +6,7 @@
 /*   By: bbeldame <bbeldame@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/25 18:43:15 by bbeldame          #+#    #+#             */
-/*   Updated: 2018/02/25 23:27:29 by bbeldame         ###   ########.fr       */
+/*   Updated: 2018/03/02 01:02:01 by bbeldame         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,8 +69,11 @@ void		launch_lifecycle(t_env *env)
 	}*/
 
 	int i = 0;
-	while (i < 31)
+	while (i < 300)
 	{
+		if (i == env->dump) {
+			print_dump(env);
+		}
 		exec_cycle(env);
 		i++;
 	}
