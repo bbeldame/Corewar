@@ -6,7 +6,7 @@
 /*   By: bbeldame <bbeldame@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/22 15:23:05 by msakwins          #+#    #+#             */
-/*   Updated: 2018/03/02 01:36:25 by bbeldame         ###   ########.fr       */
+/*   Updated: 2018/03/03 19:22:01 by bbeldame         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,8 @@
 ** Some error checking, then we save the value at the index, set carry to 0
 ** or 1 depending on the value being 0 or not, and return the size taken.
 */
-static int both_lds(t_env *env, t_process *current, t_ocp ocp, int restr)
+
+static int		both_lds(t_env *env, t_process *current, t_ocp ocp, int restr)
 {
 	int				size;
 	unsigned int	value;
@@ -42,12 +43,12 @@ static int both_lds(t_env *env, t_process *current, t_ocp ocp, int restr)
 	return (2 + size + 1);
 }
 
-int		func_ld(t_env *env, t_process *current, t_ocp ocp)
+int				func_ld(t_env *env, t_process *current, t_ocp ocp)
 {
-	return both_lds(env, current, ocp, 1);
+	return (both_lds(env, current, ocp, 1));
 }
 
-int		func_lld(t_env *env, t_process *current, t_ocp ocp)
+int				func_lld(t_env *env, t_process *current, t_ocp ocp)
 {
-	return both_lds(env, current, ocp, 0);
+	return (both_lds(env, current, ocp, 0));
 }

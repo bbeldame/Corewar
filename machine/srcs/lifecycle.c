@@ -6,7 +6,7 @@
 /*   By: bbeldame <bbeldame@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/25 18:43:15 by bbeldame          #+#    #+#             */
-/*   Updated: 2018/03/02 01:02:01 by bbeldame         ###   ########.fr       */
+/*   Updated: 2018/03/03 20:15:53 by bbeldame         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,11 @@ static void increment_pc(t_env *env, t_process *current, int size)
 {
 	current->pc = M(current->pc + size);
 	get_opcode(env, current);
-	printf("Bonjour, j'increment de %d\n", size);
+
+	int i = 0;
+	while (i < 20)
+		printf("%d, ", current->reg[i++]);
+	printf("\n");
 }
 
 static void	exec_instruction(t_env *env, t_process *current)

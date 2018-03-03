@@ -3,16 +3,28 @@
 /*                                                        :::      ::::::::   */
 /*   func_sub.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: msakwins <msakwins@student.42.fr>          +#+  +:+       +#+        */
+/*   By: bbeldame <bbeldame@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/22 15:23:05 by msakwins          #+#    #+#             */
-/*   Updated: 2018/02/22 20:18:51 by msakwins         ###   ########.fr       */
+/*   Updated: 2018/03/03 19:54:43 by bbeldame         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/vm.h"
 
-int		func_sub()
+int		func_sub(t_env *env, t_process *current)
 {
-	return(1);
+	int		reg1_idx;
+	int		reg2_idx;
+	int		reg3_idx;
+
+	reg1_idx = env->arena[M(current->pc + 2)];
+	reg2_idx = env->arena[M(current->pc + 2 + 1)];
+	reg3_idx = env->arena[M(current->pc + 2 + 2)];
+	if (!verify_reg(reg1_idx, reg2_idx, reg3_idx))
+		return (2 + 1 + 1 + 1);
+	current->reg[reg3_idx - 1] = current->reg[reg1_idx - 1] -
+		current->reg[reg2_idx - 1];
+	current->carry = current->reg[reg3_idx - 1] ? 0 : 1;
+	return (2 + 1 + 1 + 1);
 }

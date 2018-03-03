@@ -6,11 +6,22 @@
 /*   By: bbeldame <bbeldame@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/24 21:19:30 by bbeldame          #+#    #+#             */
-/*   Updated: 2018/02/25 23:57:01 by bbeldame         ###   ########.fr       */
+/*   Updated: 2018/03/03 19:42:09 by bbeldame         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/vm.h"
+
+int					verify_reg(int r1, int r2, int r3)
+{
+	if (r1 < 0 || r1 >= REG_NUMBER)
+		return (0);
+	if (r2 < 0 || r2 >= REG_NUMBER)
+		return (0);
+	if (r3 < 0 || r3 >= REG_NUMBER)
+		return (0);
+	return (1);
+}
 
 unsigned int		get_size_param(char param_type, int dir)
 {
@@ -27,7 +38,7 @@ t_ocp				get_ocp(t_env *env, t_process *current)
 {
 	unsigned char	byte_ocp;
 	t_ocp			ocp;
-	
+
 	ocp.one = 0;
 	ocp.two = 0;
 	ocp.three = 0;
@@ -40,7 +51,7 @@ t_ocp				get_ocp(t_env *env, t_process *current)
 		ocp.two = (byte_ocp >> 4) & 0x03;
 		ocp.three = (byte_ocp >> 2) & 0x03;
 	}
-	return ocp;
+	return (ocp);
 }
 
 void				init_reg(t_process *process)

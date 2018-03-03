@@ -6,7 +6,7 @@
 /*   By: bbeldame <bbeldame@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/18 16:28:40 by msakwins          #+#    #+#             */
-/*   Updated: 2018/03/02 01:35:01 by bbeldame         ###   ########.fr       */
+/*   Updated: 2018/03/03 19:49:19 by bbeldame         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,8 +102,10 @@ int					get_reg(t_env *e, t_process *current, int i);
 unsigned int		get_size_param(char param_type, int dir);
 unsigned int		get_data_ind(t_env *e, int idx, int restr);
 unsigned int		get_value(t_env *e, int idx);
+unsigned int		get_jumper(t_env *e, int idx, int restr);
+int					verify_reg(int r1, int r2, int r3);
 void				print_dump(t_env *e);
-int					func_add();
+int					func_add(t_env *env, t_process *current);
 int					func_aff();
 int					func_and();
 int					func_fork();
@@ -114,9 +116,9 @@ int					func_live(t_env *env, t_process *curr);
 int					func_lld(t_env *env, t_process *current, t_ocp ocp);
 int					func_lldi();
 int					func_or();
-int					func_st();
+int					func_st(t_env *env, t_process *current, t_ocp ocp);
 int					func_sti();
-int					func_sub();
+int					func_sub(t_env *env, t_process *current);
 int					func_xor();
 int					func_zjmp();
 
