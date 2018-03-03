@@ -28,5 +28,6 @@ int				main(int argc, char **argv)
 	init_arena_and_processes(&env);
 	launch_lifecycle(&env);
 	anounce_the_winner(&env);
+	//visu(&env);
 	return (0);
 }

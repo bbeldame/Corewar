@@ -75,6 +75,10 @@ void		launch_lifecycle(t_env *env)
 	int i = 0;
 	while (i < 300)
 	{
+		env->visu = 1;
+		env->nb_lives++;
+		if (env->visu)
+			visu(env);
 		if (i == env->dump) {
 			print_dump(env);
 		}

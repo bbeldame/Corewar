@@ -1,26 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   func_zjmp.c                                        :+:      :+:    :+:   */
+/*   visu.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: msakwins <msakwins@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/02/22 15:23:05 by msakwins          #+#    #+#             */
-/*   Updated: 2018/02/22 20:18:51 by msakwins         ###   ########.fr       */
+/*   Created: 2018/02/18 17:20:54 by msakwins          #+#    #+#             */
+/*   Updated: 2018/02/18 20:18:51 by msakwins         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/vm.h"
 
-int		func_zjmp(t_env *e, t_process *current)
+void	close_visu(t_env *e)
 {
-	int	index;
+	refresh();
+	wrefresh(d->window);
+	delwin(d->window);
+	endwin();
+}
+
+int		visu(t_env *env)
+{
+//	int		max_y;
+//	int		max_x;
 	
-	if (current->carry)
-	{
-		index = get_data_dir(e, current->pc + 1, 2);
-		index = (index % IDX_MOD);
-		return(index);
-	}
-	return(1 + 2);
+	visu->win = initscr();
+	curs_set(FALSE);
+//	getmaxyx(stdscr, max_y, max_x);
+	box(win, 0, 0);
+	wrefresh(win);
+	mvwprintw(win, LINES - 3, 5, "Total lives: %d", env->nb_lives);
+	refresh();
+	wrefresh(visu->win);
+	return(0);
 }

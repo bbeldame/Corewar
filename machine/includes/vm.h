@@ -15,6 +15,7 @@
 
 # include "op.h"
 # include "limits.h"
+# include "ncurses.h"
 # include "../../libft/includes/libft.h"
 # include "../../libft/includes/ft_printf.h"
 
@@ -59,6 +60,7 @@ typedef struct		s_process
 
 typedef struct		s_env
 {
+	int				visu;
 	int				cycle;
 	int				cycle_to_die;
 	int				nb_lives;
@@ -83,6 +85,11 @@ typedef struct		s_op
 	int				acb;
 	int				label_size;
 }					t_op;
+
+typedef struct		s_visu
+{
+	WINDOW			*win;
+}					t_visu
 
 void				init_arena_and_processes(t_env *env);
 void				init(t_env *env);
@@ -121,6 +128,7 @@ int					func_sti();
 int					func_sub(t_env *env, t_process *current);
 int					func_xor();
 int					func_zjmp();
+int					visu();
 
 static const t_op	g_op[17] =
 {

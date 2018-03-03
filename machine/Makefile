@@ -34,7 +34,8 @@ SRCS_NAME =	main.c \
 			lifecycle.c \
 			manage_opcode.c \
 			get_data.c \
-			dump.c
+			dump.c \
+			visu.c
 
 FUNCS_NAME = func_add.c \
 			func_aff.c \
@@ -74,8 +75,8 @@ $(OBJDIR)%.o:%.c
 		@gcc $(FLAGS) -I $(INCDIR) -I $(LIBFTDIR) -o $@ -c $<
 
 $(NAME): obj $(OBJS)
-		@gcc $(OBJS) $(LIBFT) -lm -o $(NAME)
-			@echo "$(GREEN)---------corewar compiled---------$(NC)"
+		@gcc $(OBJS) $(LIBFT) -lm -o $(NAME) -lncurses
+		@echo "$(GREEN)---------corewar compiled---------$(NC)"
 
 norme:
 		@norminette includes srcs
