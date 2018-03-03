@@ -6,7 +6,7 @@
 /*   By: bbeldame <bbeldame@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/18 16:28:40 by msakwins          #+#    #+#             */
-/*   Updated: 2018/03/03 19:49:19 by bbeldame         ###   ########.fr       */
+/*   Updated: 2018/03/03 23:18:03 by bbeldame         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,7 +89,7 @@ typedef struct		s_op
 typedef struct		s_visu
 {
 	WINDOW			*win;
-}					t_visu
+}					t_visu;
 
 void				init_arena_and_processes(t_env *env);
 void				init(t_env *env);
@@ -105,16 +105,18 @@ void				load_all_opcode(t_env *env);
 void				get_opcode(t_env *env, t_process *current);
 unsigned int		get_data_dir(t_env *e, int idx, int label_size);
 t_ocp				get_ocp(t_env *env, t_process *current);
-int					get_reg(t_env *e, t_process *current, int i);
+int					get_reg(t_env *e, t_process *current, int idx);
 unsigned int		get_size_param(char param_type, int dir);
 unsigned int		get_data_ind(t_env *e, int idx, int restr);
 unsigned int		get_value(t_env *e, int idx);
 unsigned int		get_jumper(t_env *e, int idx, int restr);
 int					verify_reg(int r1, int r2, int r3);
+unsigned int		get_data_all_types(t_env *env, t_process *current,
+	int idx, char param_type);
 void				print_dump(t_env *e);
 int					func_add(t_env *env, t_process *current);
 int					func_aff();
-int					func_and();
+int					func_and(t_env *env, t_process *current, t_ocp ocp);
 int					func_fork();
 int					func_ld(t_env *env, t_process *current, t_ocp ocp);
 int					func_ldi();
@@ -122,11 +124,11 @@ int					func_lfork();
 int					func_live(t_env *env, t_process *curr);
 int					func_lld(t_env *env, t_process *current, t_ocp ocp);
 int					func_lldi();
-int					func_or();
+int					func_or(t_env *env, t_process *current, t_ocp ocp);
 int					func_st(t_env *env, t_process *current, t_ocp ocp);
 int					func_sti();
 int					func_sub(t_env *env, t_process *current);
-int					func_xor();
+int					func_xor(t_env *env, t_process *current, t_ocp ocp);
 int					func_zjmp();
 int					visu();
 

@@ -6,7 +6,7 @@
 /*   By: bbeldame <bbeldame@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/24 21:19:30 by bbeldame          #+#    #+#             */
-/*   Updated: 2018/03/03 20:19:35 by bbeldame         ###   ########.fr       */
+/*   Updated: 2018/03/03 20:42:06 by bbeldame         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,4 +61,19 @@ void				init_reg(t_process *process)
 	i = 0;
 	while (i < 16)
 		process->reg[i++] = 0;
+}
+
+unsigned int		get_data_all_types(t_env *env, t_process *current,
+	int idx, char param_type)
+{
+	unsigned int	res;
+
+	res = 0;
+	if (param_type == REG_CODE && verify_reg(env->arena[idx], 0, 0))
+		res = get_reg(env, current, idx);
+	else if (param_type == DIR_CODE)
+		res = get_data_dir(env, idx, 4);
+	else if (param_type == IND_CODE)
+		res = get_data_ind(env, idx, 1);
+	return (res);
 }

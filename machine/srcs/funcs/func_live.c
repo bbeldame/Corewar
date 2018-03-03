@@ -6,7 +6,7 @@
 /*   By: bbeldame <bbeldame@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/22 15:23:05 by msakwins          #+#    #+#             */
-/*   Updated: 2018/02/25 23:06:44 by bbeldame         ###   ########.fr       */
+/*   Updated: 2018/03/03 23:00:50 by bbeldame         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,5 +23,5 @@ int			func_live(t_env *env, t_process *current)
 	env->nb_lives += 1;
 	current->wait = g_op[1].cycles;
 	ft_printf("wait = %d\n", current->wait);
-	return (1);
+	return (1 + 4);
 }

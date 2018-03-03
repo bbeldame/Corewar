@@ -6,7 +6,7 @@
 /*   By: bbeldame <bbeldame@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/25 20:55:34 by bbeldame          #+#    #+#             */
-/*   Updated: 2018/03/03 19:10:03 by bbeldame         ###   ########.fr       */
+/*   Updated: 2018/03/03 22:57:39 by bbeldame         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,11 +20,11 @@ unsigned int	get_value(t_env *e, int idx)
 				LBYTE(e->arena[M(idx + 3)]);
 }
 
-int				get_reg(t_env *env, t_process *current, int i)
+int				get_reg(t_env *env, t_process *current, int idx)
 {
 	int reg_i;
 
-	reg_i = LBYTE(env->arena[M(current->pc + i)]);
+	reg_i = LBYTE(env->arena[M(idx)]);
 	if (reg_i > 0 && reg_i <= REG_NUMBER)
 		return (current->reg[reg_i - 1]);
 	return (0);
