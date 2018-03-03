@@ -17,7 +17,6 @@ int			next_number(t_env *env)
 	int		next;
 
 	next = env->player[env->nb_players - 1].nb + 1;
-	printf("next = %d\n", next);
 	return (next);
 }
 
@@ -72,5 +71,5 @@ void		parse_args(t_env *env, int argc, char **argv)
 		i++;
 	}
 	if (env->nb_players == 0)
-		ft_exit(2, "0 players found.");
+		ft_exit(4, "");
 }
