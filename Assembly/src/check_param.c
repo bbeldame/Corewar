@@ -44,7 +44,7 @@ int		is_reg(char *param)
 	{
 		if (ft_str_is_int(param + 1))
 		{
-			if (ft_atoi(param + 1) > 0 && ft_atoi(param + 1) < 17)
+			if (ft_atoi(param + 1) >= 1 && ft_atoi(param + 1) <= REG_NUMBER)
 				return (1);
 		}
 	}
