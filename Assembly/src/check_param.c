@@ -6,7 +6,7 @@
 /*   By: arosset <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/24 15:20:49 by arosset           #+#    #+#             */
-/*   Updated: 2018/02/24 15:20:51 by arosset          ###   ########.fr       */
+/*   Updated: 2018/03/04 15:54:50 by arosset          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,14 +18,14 @@
 ** 		sinon renvoi 0
 */
 
-int 	ft_str_is_int(char *str)
+int		ft_str_is_int(char *str)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (str[i])
 	{
-		if (str[i] < 48 && str[i] > 57 )
+		if (str[i] < 48 && str[i] > 57)
 			return (0);
 		i++;
 	}
@@ -38,7 +38,7 @@ int 	ft_str_is_int(char *str)
 ** 		sinon renvoi 0
 */
 
-int 	is_reg(char *param)
+int		is_reg(char *param)
 {
 	if (param[0] == 'r')
 	{
@@ -57,9 +57,9 @@ int 	is_reg(char *param)
 ** 		sinon renvoi 0
 */
 
-int 	is_label(char *param)
+int		is_label(char *param)
 {
-	int 	i;
+	int	i;
 
 	i = 0;
 	while (ft_strchr(LABEL_CHARS, param[i]))
@@ -75,7 +75,7 @@ int 	is_label(char *param)
 ** 		sinon renvoi 0
 */
 
-int 	is_dir(t_list *labels, char *param)
+int		is_dir(t_list *labels, char *param)
 {
 	if (param[0] == DIRECT_CHAR)
 		return (is_ind(labels, param + 1));
@@ -89,10 +89,10 @@ int 	is_dir(t_list *labels, char *param)
 ** 		sinon renvoi 0
 */
 
-int 	is_ind(t_list *labels,  char *param)
+int		is_ind(t_list *labels, char *param)
 {
-	int 	i;
-	t_list 	*elem;
+	int		i;
+	t_list	*elem;
 
 	i = 0;
 	if (param[i] == '\0')
@@ -104,7 +104,8 @@ int 	is_ind(t_list *labels,  char *param)
 		elem = labels;
 		while (elem)
 		{
-			if (!ft_strncmp(param + 1, elem->content, ft_strlen(elem->content) - 1))
+			if (!ft_strncmp(param + 1, elem->content,
+						ft_strlen(elem->content) - 1))
 				return (1);
 			elem = elem->next;
 		}

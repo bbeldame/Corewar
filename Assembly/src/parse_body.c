@@ -6,7 +6,7 @@
 /*   By: arosset <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/12 14:45:09 by arosset           #+#    #+#             */
-/*   Updated: 2018/02/12 14:45:11 by arosset          ###   ########.fr       */
+/*   Updated: 2018/03/04 15:59:41 by arosset          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 **		Initialise un nouveau maillon pour t_list labels
 */
 
-t_list 	*init_label(char *label)
+t_list	*init_label(char *label)
 {
 	t_list	*new;
 
@@ -36,7 +36,7 @@ t_list 	*init_label(char *label)
 ** 		sinon renvoi 0
 */
 
-int 	save_label(t_asm *param, char *label)
+int		save_label(t_asm *param, char *label)
 {
 	t_list	*new;
 
@@ -53,10 +53,10 @@ int 	save_label(t_asm *param, char *label)
 ** 		sinon renvoi 0
 */
 
-int 	get_label(t_asm *param)
+int		get_label(t_asm *param)
 {
-	t_file_list 	*files;
-	int 			i;
+	t_file_list	*files;
+	int			i;
 
 	i = 0;
 	files = param->body;
@@ -79,9 +79,9 @@ int 	get_label(t_asm *param)
 ** 		renvoi 1 en cas de reussite
 */
 
-int 	ft_parse_body(t_asm *param)
+int		ft_parse_body(t_asm *param)
 {
-	int 	ret;
+	int	ret;
 
 	ret = 0;
 	//ft_printf("create list label\n");

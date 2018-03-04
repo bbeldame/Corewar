@@ -6,7 +6,7 @@
 /*   By: bbeldame <bbeldame@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/17 13:58:23 by arosset           #+#    #+#             */
-/*   Updated: 2018/02/18 16:47:12 by bbeldame         ###   ########.fr       */
+/*   Updated: 2018/03/04 16:01:13 by arosset          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 ** 		a param->comment_prg si verif == 1
 */
 
-int 	add_name_comment(char *line, char verif, t_asm *param)
+int		add_name_comment(char *line, char verif, t_asm *param)
 {
 	int i;
 	int j;
@@ -59,7 +59,8 @@ int		verif_name_comment(char *line, int verif)
 		else
 			return (0);
 	}
-	else if (ft_strncmp(line, COMMENT_CMD_STRING, ft_strlen(COMMENT_CMD_STRING)) == 0)
+	else if (ft_strncmp(line, COMMENT_CMD_STRING,
+				ft_strlen(COMMENT_CMD_STRING)) == 0)
 	{
 		if (verif == 1)
 			return (1);
@@ -75,7 +76,7 @@ int		verif_name_comment(char *line, int verif)
 ** 		comment_prg (max 2048)
 */
 
-void 	verif_len_header(t_asm *param)
+void	verif_len_header(t_asm *param)
 {
 	if (ft_strlen(param->name_prg) > PROG_NAME_LENGTH)
 		exit_msg_error(30, 0, param);
@@ -87,7 +88,7 @@ void 	verif_len_header(t_asm *param)
 **		Verifie la presence d'un nom et d'un commentaire au programme
 */
 
-void 	verif_exist_header(t_asm *param)
+void	verif_exist_header(t_asm *param)
 {
 	if (!param->name_prg || ft_strlen(param->name_prg) < 1)
 		exit_msg_error(13, 0, param);
@@ -103,11 +104,11 @@ void 	verif_exist_header(t_asm *param)
 **		effectue les verifications a la fin
 */
 
-int 	set_name_comment(t_asm *param)
+int		set_name_comment(t_asm *param)
 {
-	int 		verif;
+	int			verif;
 	t_file_list	*file;
-	char 		**tab;
+	char		**tab;
 
 	file = param->header;
 	verif = 0;
@@ -121,7 +122,7 @@ int 	set_name_comment(t_asm *param)
 		if (file->next)
 			file = file->next;
 		else
-			break;
+			break ;
 	}
 	verif_exist_header(param);
 	verif_len_header(param);

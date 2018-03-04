@@ -6,7 +6,7 @@
 /*   By: arosset <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/11 15:31:13 by arosset           #+#    #+#             */
-/*   Updated: 2018/02/11 15:31:14 by arosset          ###   ########.fr       */
+/*   Updated: 2018/03/04 16:04:59 by arosset          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ char	*set_name_cor(char *name)
 **		verif extension du fichier demande
 */
 
-int 	ft_check_ext(char *str)
+int		ft_check_ext(char *str)
 {
 	if ((str[ft_strlen(str) - 1] == 's') && (str[ft_strlen(str) - 2] == '.'))
 		return (1);

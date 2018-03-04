@@ -6,13 +6,13 @@
 /*   By: arosset <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/27 14:19:02 by arosset           #+#    #+#             */
-/*   Updated: 2018/01/27 14:19:04 by arosset          ###   ########.fr       */
+/*   Updated: 2018/03/04 15:57:44 by arosset          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/asm.h"
 
-void 	ft_print_usage()
+void	ft_print_usage(void)
 {
 	ft_printf("Usage: ./asm <source_file.s>\n");
 }
@@ -22,9 +22,9 @@ void 	ft_print_usage()
 ** 		quitte le programme avec exit_msg_error si fd == -1
 */
 
-int 	ft_open_file(char *s)
+int		ft_open_file(char *s)
 {
-	int 	fd;
+	int	fd;
 
 	fd = open(s, O_RDONLY);
 	if (fd == -1)
@@ -37,9 +37,9 @@ int 	ft_open_file(char *s)
 **		de la chaine passe en parametre
 */
 
-char 	*ft_skip_space(char *s)
+char	*ft_skip_space(char *s)
 {
-	int 	i;
+	int	i;
 
 	i = 0;
 	while (s[i] && (s[i] == ' ' || s[i] == '\t'))
@@ -52,9 +52,9 @@ char 	*ft_skip_space(char *s)
 **		sinon renvoi 0
 */
 
-int 	verif_line(char *line)
+int		verif_line(char *line)
 {
-	char *tmp;
+	char	*tmp;
 
 	tmp = ft_skip_space(line);
 	if (tmp[0] == '#' || tmp[0] == '\0')

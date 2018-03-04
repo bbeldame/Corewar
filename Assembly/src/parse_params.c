@@ -6,7 +6,7 @@
 /*   By: arosset <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/24 18:17:18 by arosset           #+#    #+#             */
-/*   Updated: 2018/02/24 18:17:20 by arosset          ###   ########.fr       */
+/*   Updated: 2018/03/04 16:02:12 by arosset          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 ** 		renvoi l'index (i)
 */
 
-int 	get_param_end(char *line)
+int		get_param_end(char *line)
 {
 	int i;
 
@@ -36,13 +36,13 @@ int 	get_param_end(char *line)
 ** 		sinon renvoi 0
 */
 
-int 	validate_param(t_list *labels, char *ins, int p_type)
+int		validate_param(t_list *labels, char *ins, int p_type)
 {
 	int	flag;
 
 	flag = 0;
 	if (p_type & T_REG)
-		if(is_reg(ins))
+		if (is_reg(ins))
 			flag = 1;
 	if (p_type & T_DIR)
 		if (is_dir(labels, ins))
@@ -61,7 +61,7 @@ int 	validate_param(t_list *labels, char *ins, int p_type)
 ** 		sinon renvoi 0
 */
 
-int 	verif_end_line_param(char *str, int i)
+int		verif_end_line_param(char *str, int i)
 {
 	while (is_white_space(str[i]))
 		i++;
@@ -79,11 +79,11 @@ int 	verif_end_line_param(char *str, int i)
 ** 		a la fin verifie la non presence de parametres suplementaires
 */
 
-int 	parse_params(char *line, t_asm *param, int idx)
+int		parse_params(char *line, t_asm *param, int idx)
 {
-	int 	nb_instr;
-	int 	i;
-	char 	*inst;
+	int		nb_instr;
+	int		i;
+	char	*inst;
 
 	i = 0;
 	nb_instr = 0;

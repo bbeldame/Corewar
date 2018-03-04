@@ -6,7 +6,7 @@
 /*   By: arosset <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/24 17:37:13 by arosset           #+#    #+#             */
-/*   Updated: 2018/02/24 17:37:14 by arosset          ###   ########.fr       */
+/*   Updated: 2018/03/04 15:52:57 by arosset          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 **		retourne la taille de l'instruction donne
 */
 
-int 	get_size_inst(char *line)
+int		get_size_inst(char *line)
 {
 	int i;
 
@@ -32,11 +32,11 @@ int 	get_size_inst(char *line)
 ** 		renvoi 0 pour idx == 16 ou si parse_params == 0
 */
 
-int 	check_inst(char *line, t_asm *param)
+int		check_inst(char *line, t_asm *param)
 {
-	int 	idx;
-	int 	i;
-	int 	size;
+	int		idx;
+	int		i;
+	int		size;
 
 	idx = 0;
 	i = 0;
@@ -63,10 +63,10 @@ int 	check_inst(char *line, t_asm *param)
 ** 		coupe l'execution du programme si check_inst renvoi 0
 */
 
-int 	check_body(t_asm *param)
+int		check_body(t_asm *param)
 {
 	t_file_list *files;
-	int 		i;
+	int			i;
 
 	files = param->body;
 	while (files)

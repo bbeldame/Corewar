@@ -6,7 +6,7 @@
 /*   By: arosset <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/11 16:59:21 by arosset           #+#    #+#             */
-/*   Updated: 2018/02/11 16:59:23 by arosset          ###   ########.fr       */
+/*   Updated: 2018/03/04 15:56:25 by arosset          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 **		free tout les elements des t_file_list
 */
 
-void 	free_file_list(t_file_list **list)
+void	free_file_list(t_file_list **list)
 {
 	t_file_list *cp_list;
 

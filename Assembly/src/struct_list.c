@@ -6,13 +6,13 @@
 /*   By: arosset <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/11 15:30:06 by arosset           #+#    #+#             */
-/*   Updated: 2018/02/11 15:30:08 by arosset          ###   ########.fr       */
+/*   Updated: 2018/03/04 16:05:57 by arosset          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/asm.h"
 
-void		ft_lstaddtail(t_list **alst, t_list *new)
+void	ft_lstaddtail(t_list **alst, t_list *new)
 {
 	t_list	*tmp;
 
@@ -32,9 +32,9 @@ void		ft_lstaddtail(t_list **alst, t_list *new)
 **		initialise struct t_asm
 */
 
-t_asm 	*init_t_asm(char *name)
+t_asm	*init_t_asm(char *name)
 {
-	t_asm 	*new_asm;
+	t_asm	*new_asm;
 
 	if (!(new_asm = malloc(sizeof(t_asm))))
 		exit_msg_error(10, 0, NULL);
@@ -53,9 +53,9 @@ t_asm 	*init_t_asm(char *name)
 **		Compte le nombre d'element t_file_list
 */
 
-int 	size_list(t_file_list **list)
+int		size_list(t_file_list **list)
 {
-	int 		size;
+	int			size;
 	t_file_list	*tmp;
 
 	size = 0;
@@ -75,7 +75,7 @@ int 	size_list(t_file_list **list)
 **						  instruction et label
 */
 
-void  	ft_add_end_file_list(t_file_list **list, char *line, int num_l)
+void	ft_add_end_file_list(t_file_list **list, char *line, int num_l)
 {
 	t_file_list *new;
 	t_file_list *tmp;

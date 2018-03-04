@@ -6,7 +6,7 @@
 /*   By: arosset <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/26 14:49:26 by arosset           #+#    #+#             */
-/*   Updated: 2018/01/30 15:00:02 by arosset          ###   ########.fr       */
+/*   Updated: 2018/03/04 15:58:15 by arosset          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 int		main(int ac, char **av)
 {
-	int 	i;
-	t_asm 	param;
+	int		i;
+	t_asm	param;
 
 	i = 1;
 	if (ac == 2)

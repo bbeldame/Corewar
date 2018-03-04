@@ -6,7 +6,7 @@
 /*   By: arosset <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/26 15:16:24 by arosset           #+#    #+#             */
-/*   Updated: 2018/01/26 15:16:25 by arosset          ###   ########.fr       */
+/*   Updated: 2018/03/04 16:03:36 by arosset          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,9 @@
 **		transforme tout les \t en espace
 */
 
-char 	*ft_clear_str(char *s)
+char	*ft_clear_str(char *s)
 {
-	int 	i;
+	int	i;
 
 	i = 0;
 	while (s[i])
@@ -37,10 +37,10 @@ char 	*ft_clear_str(char *s)
 ** 		le reste dans t_file_list body
 */
 
-void 	set_file_list(t_asm *param, int fd)
+void	set_file_list(t_asm *param, int fd)
 {
-	char 		*line;
-	int 		num_l;
+	char		*line;
+	int			num_l;
 	t_file_list *header_list;
 	t_file_list *body_list;
 
@@ -58,7 +58,6 @@ void 	set_file_list(t_asm *param, int fd)
 			else
 				ft_add_end_file_list(&body_list, line, num_l);
 		}
-
 		num_l++;
 		ft_strdel(&line);
 	}
@@ -74,15 +73,14 @@ void 	set_file_list(t_asm *param, int fd)
 ** 		analyse le body 							ft_parse_body
 */
 
-void 	ft_parser(t_asm *param)
+void	ft_parser(t_asm *param)
 {
-	int 	fd;
+	int	fd;
 
 	fd = ft_open_file(param->file_s);
 	set_file_list(param, fd);
 	set_name_comment(param);
 	free_file_list(&param->header);
-	//ft_print_asm(param);
 	if (!ft_parse_body(param))
 		ft_printf("parse KO\n");
 	ft_printf("parse body OK\n");

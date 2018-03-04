@@ -6,13 +6,13 @@
 /*   By: arosset <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/11 15:42:16 by arosset           #+#    #+#             */
-/*   Updated: 2018/02/11 15:42:18 by arosset          ###   ########.fr       */
+/*   Updated: 2018/03/04 16:08:30 by arosset          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/asm.h"
 
-void 	ft_print_file_list(t_file_list *list)
+void	ft_print_file_list(t_file_list *list)
 {
 	while (list)
 	{
@@ -21,7 +21,7 @@ void 	ft_print_file_list(t_file_list *list)
 	}
 }
 
-void 	debug_print_list(t_asm *param)
+void	debug_print_list(t_asm *param)
 {
 	if (param->header != NULL)
 	{
@@ -29,7 +29,8 @@ void 	debug_print_list(t_asm *param)
 		ft_print_file_list(param->header);
 	}
 	else
-		ft_printf("\n\033[33m== List Header ==\033[32m\nparam->header NULL\n\n");
+		ft_printf("\n\033[33m== List Header ==\033[32m\nparam->header NULL\
+				\n\n");
 	if (param->body != NULL)
 	{
 		ft_printf("\n\033[33m== List Body ==\033[32m\n");
@@ -44,7 +45,7 @@ void 	debug_print_list(t_asm *param)
 **		ft_print_asm(&param);
 */
 
-void 	ft_print_asm(t_asm *param)
+void	ft_print_asm(t_asm *param)
 {
 	ft_printf(" \033[31m=== START DEBUG === \033[32m\n");
 	if (param->name_prg != NULL)
@@ -67,7 +68,7 @@ void 	ft_print_asm(t_asm *param)
 	ft_printf(" \033[31m=== END DEBUG === \033[00m\n");
 }
 
-void 	print_tab(char **tab)
+void	print_tab(char **tab)
 {
 	int i;
 
@@ -81,7 +82,7 @@ void 	print_tab(char **tab)
 	ft_printf("\n --- \n");
 }
 
-void 	print_label(t_asm *param)
+void	print_label(t_asm *param)
 {
 	ft_printf("\nPrint Label\n");
 	while (param->labels)

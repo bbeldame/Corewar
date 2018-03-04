@@ -6,15 +6,15 @@
 /*   By: arosset <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/16 10:34:47 by arosset           #+#    #+#             */
-/*   Updated: 2018/02/16 10:34:48 by arosset          ###   ########.fr       */
+/*   Updated: 2018/03/04 16:04:23 by arosset          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/asm.h"
 
-void 	print_header(t_asm *param)
+void	print_header(t_asm *param)
 {
-	int 	len;
+	int	len;
 
 	len = ft_strlen(param->name_prg);
 	write(param->fd, param->name_prg, ft_strlen(param->name_prg));
@@ -27,11 +27,11 @@ void 	print_header(t_asm *param)
 		write(param->fd, "\0", 1);
 }
 
-void 	print_magic(int fd)
+void	print_magic(int fd)
 {
-	int 	magic[4];
-	int 	mag;
-	int 	i;
+	int		magic[4];
+	int		mag;
+	int		i;
 
 	i = -1;
 	mag = COREWAR_EXEC_MAGIC;

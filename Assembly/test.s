@@ -1,6 +1,6 @@
-.name "zork" #efhe"
-.comment "jfhe" #jfej
+.name "zork"
+.comment "jfhe"
 
-test:#jfejf
-#kefkfe
-zjmp %:test#kfekf
+test:
+
+live %1

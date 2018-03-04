@@ -6,19 +6,19 @@
 /*   By: arosset <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/26 15:08:57 by arosset           #+#    #+#             */
-/*   Updated: 2018/01/26 15:08:58 by arosset          ###   ########.fr       */
+/*   Updated: 2018/03/04 15:56:02 by arosset          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/asm.h"
 
-void 	ft_error(char *s)
+void	ft_error(char *s)
 {
 	ft_printf("Error: %s\n", s);
 	exit(EXIT_FAILURE);
 }
 
-void 	delete_asm(t_asm *param)
+void	delete_asm(t_asm *param)
 {
 	if (param->name_prg)
 		ft_strdel(&param->name_prg);
@@ -33,7 +33,7 @@ void 	delete_asm(t_asm *param)
 	// free(param);
 }
 
-void 	msg_header(int c_er, t_asm *param)
+void	msg_header(int c_er, t_asm *param)
 {
 	if (c_er == 30)
 		ft_printf("Error : Champion name too long (%d) max %d\n",
@@ -43,7 +43,7 @@ void 	msg_header(int c_er, t_asm *param)
 			ft_strlen(param->comment_prg), COMMENT_LENGTH);
 }
 
-char 	*set_msg_error(int c_er)
+char	*set_msg_error(int c_er)
 {
 	if (c_er == 10)
 		return ("Malloc");
@@ -75,9 +75,9 @@ char 	*set_msg_error(int c_er)
 **	L81 ft_print_asm() => fonction pour le debug peut provoquer des segfault
 */
 
-void 	exit_msg_error(int c_er, int n_line, t_asm *param)
+void	exit_msg_error(int c_er, int n_line, t_asm *param)
 {
-	char 	*msg;
+	char	*msg;
 
 	// if (c_er != 11)
 	// 	ft_print_asm(param);
@@ -90,7 +90,7 @@ void 	exit_msg_error(int c_er, int n_line, t_asm *param)
 		ft_printf("Error : %s at L%d\n", msg, n_line);
 	else if (c_er >= 10 && c_er < 20)
 		ft_printf("Error : %s\n", msg);
-	else if (c_er >=30 && c_er < 40)
+	else if (c_er >= 30 && c_er < 40)
 		exit(EXIT_FAILURE);
 	else
 		ft_printf("Error : Unknow c_er\n");
