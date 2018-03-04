@@ -68,6 +68,7 @@ int		check_body(t_asm *param)
 	t_file_list *files;
 	int			i;
 
+	i = 0;
 	files = param->body;
 	while (files)
 	{

@@ -93,19 +93,20 @@ int		is_ind(t_list *labels, char *param)
 {
 	int		i;
 	t_list	*elem;
+	t_label *tmp;
 
 	i = 0;
-	if (param[i] == '\0')
-		return (0);
 	if (param[i] == '-')
 		i++;
+	if (param[i] == '\0')
+		return (0);
 	if (param[i] == LABEL_CHAR)
 	{
 		elem = labels;
 		while (elem)
 		{
-			if (!ft_strncmp(param + 1, elem->content,
-						ft_strlen(elem->content) - 1))
+			tmp = elem->content;
+			if (!ft_strncmp(param + 1, tmp->label, ft_strlen(tmp->label) - 1))
 				return (1);
 			elem = elem->next;
 		}

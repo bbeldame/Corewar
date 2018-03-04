@@ -21,6 +21,16 @@
 # include <sys/stat.h>
 # include <fcntl.h>
 
+/*
+**	4 bytes : magic number
+**	128 bytes : NAME
+**	4 bytes = 0
+**	4 bytes : prog_size
+**	2048 bytes : comment
+**	4 bytes = 0
+**	prog_size bytes : prog
+*/
+
 typedef struct			s_label
 {
 	char				*label;
@@ -34,14 +44,16 @@ typedef struct			s_file_list
 	struct s_file_list	*next;
 }						t_file_list;
 
-typedef struct			s_token
+typedef struct			s_inst
 {
-	char				*label;
-	int					num_l;
-	char				*command;
-	char				instruction[3];
-	struct s_token		*next;
-}						t_token;
+	char				*ins;
+	int					i_instr;
+	int					nb_instr;
+	int					ocp;
+	int					param[3];
+	int					ins_octet;
+	int					octet;
+}						t_inst;
 
 typedef struct			s_asm
 {
@@ -52,8 +64,8 @@ typedef struct			s_asm
 	int					fd;
 	t_file_list			*header;
 	t_file_list			*body;
-	t_token				*token;
 	t_list				*labels;
+	int 				prog_size;
 }						t_asm;
 
 /*

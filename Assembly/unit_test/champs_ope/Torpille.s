@@ -7,7 +7,7 @@ debut:
 	fork	%:debut2
 	st	r1, :ld1+1
 ld1:	live	%0
-	fork	%:t2
+	fork	%:debut
 	# process qui dit live pour T1
 	st	r1, :live1+1
 	ld	%-10, r2

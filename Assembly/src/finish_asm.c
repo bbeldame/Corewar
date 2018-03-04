@@ -21,4 +21,13 @@ void 	finalize_asm(t_asm *param)
 	ft_printf("header PRINT\n");
 	// print_body(param);
 	// complete_file(param);
+
+	// int test;
+    //
+	// test = open("test.t", O_CREAT | O_RDWR | O_TRUNC, 0755);
+	// write (test, "t >< test\n", 10);
+	// lseek(test, 3, SEEK_SET);
+	// write(test, "5", 1);
+	// lseek(test, 2, SEEK_CUR);
+	// write(test, "3", 1);
 }

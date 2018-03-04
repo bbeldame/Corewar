@@ -19,12 +19,17 @@
 t_list	*init_label(char *label)
 {
 	t_list	*new;
+	t_label *tmp;
 
 	if (label == NULL)
 		return (NULL);
 	if ((new = (t_list*)malloc(sizeof(t_list))) == NULL)
 		exit_msg_error(10, 0, NULL);
-	new->content = label;
+	if ((tmp = (t_label*)malloc(sizeof(t_label))) == NULL)
+		exit_msg_error(10, 0, NULL);
+	tmp->label = label;
+	tmp->addr = -1;
+	new->content = tmp;
 	new->next = NULL;
 	return (new);
 }

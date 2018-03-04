@@ -12,6 +12,13 @@
 
 #include "../include/asm.h"
 
+/*
+** 	ecrit :
+**		-name_prg (complete de '\0' si necessaire)
+** 		-8 * '\0'
+** 		-comment_prg (complete de '\0' si necessaire)
+*/
+
 void	print_header(t_asm *param)
 {
 	int	len;
@@ -26,6 +33,10 @@ void	print_header(t_asm *param)
 	while (++len <= COMMENT_LENGTH)
 		write(param->fd, "\0", 1);
 }
+
+/*
+**		ecrit le COREWAR_EXEC_MAGIC : 0xea83f3
+*/
 
 void	print_magic(int fd)
 {
