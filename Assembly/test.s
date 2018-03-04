@@ -1,9 +1,9 @@
 .name "zork"
-.comment "jfhe"
+.comment "f"
 
 #
 #
 test: #
 #
 #
-fork %:t2
+live %1
