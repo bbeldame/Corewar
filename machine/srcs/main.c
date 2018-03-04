@@ -11,13 +11,13 @@
 /* ************************************************************************** */
 
 #include "../includes/vm.h"
-
+/*
 static void		anounce_the_winner(t_env *env)
 {
 	ft_printf("Contestant 1, \"%s\", has won !\n",
 		env->player[env->winner].header->prog_name);
 }
-
+*/
 int				main(int argc, char **argv)
 {
 	t_env	env;
@@ -27,7 +27,7 @@ int				main(int argc, char **argv)
 	parse_files(&env, argv);
 	init_arena_and_processes(&env);
 	launch_lifecycle(&env);
-	anounce_the_winner(&env);
+//	anounce_the_winner(&env);
 	//visu(&env);
 	return (0);
 }

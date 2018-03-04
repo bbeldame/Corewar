@@ -86,11 +86,6 @@ typedef struct		s_op
 	int				label_size;
 }					t_op;
 
-typedef struct		s_visu
-{
-	WINDOW			*win;
-}					t_visu;
-
 void				init_arena_and_processes(t_env *env);
 void				init(t_env *env);
 void				parse_args(t_env *env, int argc, char **argv);
@@ -130,7 +125,8 @@ int					func_sti();
 int					func_sub(t_env *env, t_process *current);
 int					func_xor(t_env *env, t_process *current, t_ocp ocp);
 int					func_zjmp();
-int					visu();
+int					visu(t_env *env, int i);
+void				init_curses(t_env *env);
 
 static const t_op	g_op[17] =
 {

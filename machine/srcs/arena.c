@@ -23,7 +23,7 @@ static t_process	*create_new_process(t_env *env, int i)
 	process->reg[0] = env->player[i].nb;
 	process->carry = 0;
 	process->opcode = 0;
-	process->pc = 0;
+	process->pc = i * MEM_SIZE / env->nb_players;
 	process->wait = 0;
 	process->prev = NULL;
 	process->next = NULL;

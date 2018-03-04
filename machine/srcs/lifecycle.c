@@ -20,7 +20,6 @@ static void increment_pc(t_env *env, t_process *current, int size)
 	int i = 0;
 	while (i < REG_NUMBER)
 	{
-		printf("(%d = %d) ", i + 1, current->reg[i]);
 		i++;
 	}
 	printf("\n");
@@ -76,17 +75,16 @@ void		launch_lifecycle(t_env *env)
 	}*/
 
 	int i = 0;
-	while (i < 300)
+	env->visu = 1;
+	while (i < 100)
 	{
-		env->visu = 1;
-		env->nb_lives++;
-		if (env->visu)
-			visu(env);
+		if (env->visu == 1)
+			visu(env, i);
 		if (i == env->dump) {
 			print_dump(env);
 		}
 		exec_cycle(env);
 		i++;
 	}
-
+	endwin();
 }
