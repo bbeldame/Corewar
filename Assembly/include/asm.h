@@ -115,6 +115,7 @@ void		ft_lstaddtail(t_list **alst, t_list *new);
 
 void 	print_header(t_asm *param);
 int		is_white_space(char c);
+int 	verif_end_line_param(char *str, int i);
 
 /*
 ** 		Utilitaire

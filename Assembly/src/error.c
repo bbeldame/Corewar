@@ -46,21 +46,23 @@ void 	msg_header(int c_er, t_asm *param)
 char 	*set_msg_error(int c_er)
 {
 	if (c_er == 10)
-		return ("malloc error");
+		return ("Malloc");
 	else if (c_er == 11)
-		return ("open failure");
+		return ("Open failure");
 	else if (c_er == 12)
-		return ("invalide extension");
+		return ("Invalide extension");
 	else if (c_er == 13)
 		return ("Unknow champ name");
 	else if (c_er == 14)
 		return ("Unknow champ comment");
 	else if (c_er == 15)
-		return ("create failure");
+		return ("Create failure");
+	else if (c_er == 16)
+		return ("Syntax header");
 	else if (c_er == 20)
 		return ("");
 	else if (c_er == 21)
-		return ("bad body");
+		return ("Bad body");
 	else if (c_er == 22)
 		return ("Unknow instruction");
 	else

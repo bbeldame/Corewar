@@ -74,7 +74,7 @@ int 	check_body(t_asm *param)
 		i = is_label(files->line);
 		while (is_white_space(files->line[i]))
 			i++;
-		if (files->line[i] != '\0')
+		if (files->line[i] != '\0' && files->line[i] != COMMENT_CHAR)
 		{
 			if (!check_inst(files->line + i, param))
 				exit_msg_error(22, files->num_l, param);

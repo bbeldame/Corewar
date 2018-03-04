@@ -39,6 +39,8 @@ int 	add_name_comment(char *line, char verif, t_asm *param)
 		param->name_prg = ft_strsub(line, i, j);
 	if (verif == 1)
 		param->comment_prg = ft_strsub(line, i, j);
+	if (!verif_end_line_param(line, i + j + 1))
+		exit_msg_error(16, 0, param);
 	return (1);
 }
 
