@@ -6,7 +6,7 @@
 /*   By: bbeldame <bbeldame@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/25 20:55:34 by bbeldame          #+#    #+#             */
-/*   Updated: 2018/03/03 22:57:39 by bbeldame         ###   ########.fr       */
+/*   Updated: 2018/03/04 23:52:32 by bbeldame         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,9 @@
 unsigned int	get_value(t_env *e, int idx)
 {
 	return (LBYTE(e->arena[M(idx)]) << 24) |
-		(LBYTE(e->arena[M(idx + 1)]) << 16) |
-			(LBYTE(e->arena[M(idx + 2)]) << 8) |
-				LBYTE(e->arena[M(idx + 3)]);
+	(LBYTE(e->arena[M(idx + 1)]) << 16) |
+	(LBYTE(e->arena[M(idx + 2)]) << 8) |
+	LBYTE(e->arena[M(idx + 3)]);
 }
 
 int				get_reg(t_env *env, t_process *current, int idx)
@@ -34,7 +34,7 @@ unsigned int	get_jumper(t_env *e, int idx, int restr)
 {
 	unsigned int	jumper;
 
-	jumper = (LBYTE(e->arena[M(idx + 2)] << 8) |
+	jumper = (LBYTE(e->arena[M(idx + 2)]) << 8 |
 		LBYTE(e->arena[M(idx + 3)]));
 	jumper = restr ? jumper % IDX_MOD : jumper;
 	return (jumper);
@@ -45,16 +45,22 @@ unsigned int	get_data_dir(t_env *e, int idx, int label_size)
 	unsigned int res;
 
 	if (label_size == 2)
-		res = (LBYTE(e->arena[M(idx)] << 8 | LBYTE(M(idx + 1))));
+	{
+		res = (LBYTE(e->arena[M(idx)]) << 8 | LBYTE(e->arena[M(idx + 1)]));
+		return (res);
+	}
 	else
+	{
 		res = get_value(e, idx);
+		return (int)res;
+	}
 	return (res);
 }
 
 unsigned int	get_data_ind(t_env *e, int idx, int restr)
 {
-	unsigned int	jumper;
+	short int	jumper;
 
-	jumper = get_jumper(e, idx, restr);
+	jumper = (short int)get_jumper(e, idx, restr);
 	return (get_value(e, idx + jumper));
 }

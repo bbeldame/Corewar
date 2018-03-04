@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   func_zjmp.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: msakwins <msakwins@student.42.fr>          +#+  +:+       +#+        */
+/*   By: bbeldame <bbeldame@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/22 15:23:05 by msakwins          #+#    #+#             */
-/*   Updated: 2018/02/22 20:18:51 by msakwins         ###   ########.fr       */
+/*   Updated: 2018/03/04 22:59:27 by bbeldame         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,13 @@
 
 int		func_zjmp(t_env *e, t_process *current)
 {
-	int	index;
-	
+	short int	index;
+
 	if (current->carry)
 	{
-		index = get_data_dir(e, current->pc + 1, 2);
+		index = (short int)get_data_dir(e, current->pc + 1, 2);
 		index = (index % IDX_MOD);
-		return(index);
+		return (index);
 	}
-	return(1 + 2);
+	return (1 + 2);
 }

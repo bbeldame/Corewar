@@ -6,7 +6,7 @@
 /*   By: bbeldame <bbeldame@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/18 17:20:54 by msakwins          #+#    #+#             */
-/*   Updated: 2018/03/03 23:18:41 by bbeldame         ###   ########.fr       */
+/*   Updated: 2018/03/05 00:31:57 by bbeldame         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,7 +85,7 @@ int		visu(t_env *env, int i)
     mvprintw (LINES - 5, 5, " Lives: %d ", env->nb_lives);
 	mvprintw (LINES - 3, 5, " Cycles: %d ", i);
     refresh();
-	sleep(1);
+	// sleep(1);
     endwin();
 	return(0);
 }

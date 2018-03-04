@@ -1,6 +1,7 @@
 {
     "version": "0.2.0",
     "configurations": [
+
         {
             "name": "Launch",
             "type": "lldb",
@@ -8,8 +9,8 @@
             "program": "${workspaceRoot}/corewar",
             "args": [
                 "-n",
-                "255",
-                "/Users/bbeldame/resCore/champs/niokiki.cor"
+                "1337",
+                "/Users/bbeldame/resCore/t.cor"
             ],
             "cwd": "${workspaceRoot}",
             "stopOnEntry": false,

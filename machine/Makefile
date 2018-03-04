@@ -6,7 +6,7 @@
 #    By: bbeldame <bbeldame@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/02/18 16:15:40 by bbeldame          #+#    #+#              #
-#    Updated: 2018/03/02 01:01:16 by bbeldame         ###   ########.fr        #
+#    Updated: 2018/03/04 23:19:29 by bbeldame         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -35,17 +35,16 @@ SRCS_NAME =	main.c \
 			manage_opcode.c \
 			get_data.c \
 			dump.c \
-			visu.c
+			visu.c \
+			get_data_utils.c
 
 FUNCS_NAME = func_add.c \
 			func_aff.c \
 			func_and.c \
-			func_fork.c \
+			func_fork_lfork.c \
 			func_ld_lld.c \
-			func_ldi.c \
-			func_lfork.c \
+			func_ldi_lldi.c \
 			func_live.c \
-			func_lldi.c \
 			func_or.c \
 			func_st.c \
 			func_sti.c \

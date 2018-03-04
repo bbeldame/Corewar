@@ -6,7 +6,7 @@
 /*   By: bbeldame <bbeldame@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/18 16:28:40 by msakwins          #+#    #+#             */
-/*   Updated: 2018/03/03 23:18:03 by bbeldame         ###   ########.fr       */
+/*   Updated: 2018/03/05 00:30:30 by bbeldame         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,8 @@
 # define ZJMP 0x09
 # define FORK 0x0C
 # define LFORK 0x0F
+
+# define MAX_BUFFER 2048
 
 typedef struct		s_ocp
 {
@@ -51,7 +53,8 @@ typedef struct		s_process
 	int						reg[REG_NUMBER];
 	int						id_champion;
 	unsigned int			live;
-	char					*buffer;
+	char					buffer[MAX_BUFFER];
+	unsigned short			idx_buffer;
 	unsigned int			pc;
 	unsigned char			opcode;
 	char					carry;
@@ -106,25 +109,29 @@ unsigned int		get_data_ind(t_env *e, int idx, int restr);
 unsigned int		get_value(t_env *e, int idx);
 unsigned int		get_jumper(t_env *e, int idx, int restr);
 int					verify_reg(int r1, int r2, int r3);
-unsigned int		get_data_all_types(t_env *env, t_process *current,
+unsigned int		get_data_all_types_dir_four(t_env *env, t_process *current,
 	int idx, char param_type);
+unsigned int		get_data_all_types_dir_two(t_env *env, t_process *current,
+	int idx, char param_type);
+unsigned int		get_data_all_types_dir_two_no_restrict(t_env *env,
+	t_process *current, int idx, char param_type);
 void				print_dump(t_env *e);
 int					func_add(t_env *env, t_process *current);
-int					func_aff();
+int					func_aff(t_env *env, t_process *current);
 int					func_and(t_env *env, t_process *current, t_ocp ocp);
-int					func_fork();
+int					func_fork(t_env *env, t_process *current);
 int					func_ld(t_env *env, t_process *current, t_ocp ocp);
-int					func_ldi();
-int					func_lfork();
+int					func_ldi(t_env *env, t_process *current, t_ocp ocp);
+int					func_lfork(t_env *env, t_process *current);
 int					func_live(t_env *env, t_process *curr);
 int					func_lld(t_env *env, t_process *current, t_ocp ocp);
-int					func_lldi();
+int					func_lldi(t_env *env, t_process *current, t_ocp ocp);
 int					func_or(t_env *env, t_process *current, t_ocp ocp);
 int					func_st(t_env *env, t_process *current, t_ocp ocp);
-int					func_sti();
+int					func_sti(t_env *env, t_process *current, t_ocp ocp);
 int					func_sub(t_env *env, t_process *current);
 int					func_xor(t_env *env, t_process *current, t_ocp ocp);
-int					func_zjmp();
+int					func_zjmp(t_env *e, t_process *current);
 int					visu(t_env *env, int i);
 void				init_curses(t_env *env);
 

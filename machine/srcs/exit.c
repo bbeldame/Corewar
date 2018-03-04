@@ -6,7 +6,7 @@
 /*   By: bbeldame <bbeldame@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/18 16:07:14 by msakwins          #+#    #+#             */
-/*   Updated: 2018/02/18 20:18:51 by bbeldame         ###   ########.fr       */
+/*   Updated: 2018/03/04 23:53:29 by bbeldame         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,8 @@ void		ft_exit(int i, char *str)
 	if (i == 4)
 	{
 		ft_putstr_fd("Rules: \n", 2);
-		ft_putstr_fd("1: usage: ./corewar [-dump nb] [[-n nb] champ1.cor]\n", 2);
+		ft_putstr_fd("1: usage: ./corewar [-dump nb] [[-n nb] champ1.cor]\n",
+			2);
 		ft_putstr_fd("2: option '-dump nb' dump the memory on the standard", 2);
 		ft_putstr_fd("output after nb cycles and exit the corewar\n", 2);
 		ft_putstr_fd("3: option '-n nb' set a number for the next player\n", 2);

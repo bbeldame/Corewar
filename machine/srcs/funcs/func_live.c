@@ -6,7 +6,7 @@
 /*   By: bbeldame <bbeldame@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/22 15:23:05 by msakwins          #+#    #+#             */
-/*   Updated: 2018/03/03 23:00:50 by bbeldame         ###   ########.fr       */
+/*   Updated: 2018/03/05 00:30:11 by bbeldame         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,24 @@
 
 int			func_live(t_env *env, t_process *current)
 {
-	unsigned int id;
+	unsigned int	id;
+	int				i;
 
-	id = get_data_dir(env, M(current->pc + 1), g_op[1].label_size);
+	id = get_data_dir(env, M(current->pc + 1), 4);
 	env->player[0].live = 1;
-	current->live = 1;
+	current->live++;
 	env->nb_lives += 1;
-	current->wait = g_op[1].cycles;
+	i = 0;
+	while (i < env->nb_players)
+	{
+		if (env->player[i].nb == (int)id)
+		{
+			env->player[i].live++;
+			env->winner = i;
+			ft_printf("Un processus dit que le joueur %d(%s) est en vie\n",
+				env->player[i].nb, env->player[i].header->prog_name);
+		}
+		i++;
+	}
 	return (1 + 4);
 }
