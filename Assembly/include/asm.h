@@ -65,6 +65,7 @@ typedef struct			s_asm
 	t_file_list			*header;
 	t_file_list			*body;
 	t_list				*labels;
+	char 				*f_content;
 	int 				prog_size;
 }						t_asm;
 
@@ -82,7 +83,7 @@ void					exit_msg_error(int c_er, int n_line, t_asm *param);
 void					finalize_asm(t_asm *param);
 void					print_header(t_asm *param);
 void					print_magic(int fd);
-void					print_body(t_asm *param);
+void 	print_body(t_asm *param, char *f_content, int i);
 
 /*
 **		Parser

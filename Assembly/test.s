@@ -1,9 +1,8 @@
 .name "zork"
 .comment "f"
 
-#
-#
-test: #
+testbis:
+test:
 st r1, -9
-#
-live %1
+    live %1
+fork %:tesft

@@ -12,6 +12,21 @@
 
 #include "../include/asm.h"
 
+char 	*set_file_print(t_asm *param)
+{
+	t_file_list		*file;
+	char 			*ret;
+
+	file = param->body;
+	while (file)
+	{
+		ret = ft_strjoin(ret, file->line);
+		ret = ft_strjoin(ret, "\n");
+		file = file->next;
+	}
+	return (ret);
+}
+
 void 	finalize_asm(t_asm *param)
 {
 	if ((param->fd = open(param->file_cor, O_CREAT | O_RDWR | O_TRUNC, 0755)) == -1)
@@ -19,7 +34,7 @@ void 	finalize_asm(t_asm *param)
 	print_magic(param->fd);
 	print_header(param);
 	ft_printf("header PRINT\n");
-	//print_body(param);
+	param->f_content = set_file_print(param);
+	print_body(param, param->f_content, 0);
 	//complete_file(param);
-
 }
