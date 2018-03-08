@@ -32,6 +32,7 @@ void	print_header(t_asm *param)
 	write(param->fd, param->comment_prg, ft_strlen(param->comment_prg));
 	while (++len <= COMMENT_LENGTH)
 		write(param->fd, "\0", 1);
+	write(param->fd, "\0\0\0\0", 4);
 }
 
 /*

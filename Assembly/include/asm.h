@@ -37,6 +37,13 @@ typedef struct			s_label
 	int					addr;
 }						t_label;
 
+typedef struct			s_labdir
+{
+	char				*label;
+	int					instr_addr;
+	int					addr;
+}						t_labdir;
+
 typedef struct			s_file_list
 {
 	char				*line;
@@ -65,7 +72,9 @@ typedef struct			s_asm
 	t_file_list			*header;
 	t_file_list			*body;
 	t_list				*labels;
+	t_list 				*labdirs;
 	char 				*f_content;
+	int 				idx;
 	int 				prog_size;
 }						t_asm;
 
@@ -84,6 +93,10 @@ void					finalize_asm(t_asm *param);
 void					print_header(t_asm *param);
 void					print_magic(int fd);
 void 	print_body(t_asm *param, char *f_content, int i);
+int		get_ocp_return(t_inst *ins, int oc);
+int 	get_reg(t_inst *ins);
+int 	get_ind(t_asm *param, t_inst *ins, int oc);
+int		get_param_end(char *line);
 
 /*
 **		Parser
@@ -132,6 +145,8 @@ void					ft_print_usage(void);
 int						ft_open_file(char *s);
 char					*ft_skip_space(char *s);
 int						verif_line(char *line);
+int		get_size_inst(char *line);
+long	ft_atoi_oflow(char *str);
 
 /*
 ** 		Free
