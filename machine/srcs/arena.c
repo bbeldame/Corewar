@@ -6,7 +6,7 @@
 /*   By: bbeldame <bbeldame@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/18 16:07:14 by msakwins          #+#    #+#             */
-/*   Updated: 2018/03/09 21:54:08 by bbeldame         ###   ########.fr       */
+/*   Updated: 2018/03/09 23:27:47 by bbeldame         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,4 +58,5 @@ void				init_arena_and_processes(t_env *env)
 		i--;
 	}
 	tmp->next = env->head;
+	env->head->prev = tmp;
 }

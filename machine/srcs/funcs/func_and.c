@@ -6,18 +6,22 @@
 /*   By: bbeldame <bbeldame@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/22 15:23:05 by msakwins          #+#    #+#             */
-/*   Updated: 2018/03/04 20:10:36 by bbeldame         ###   ########.fr       */
+/*   Updated: 2018/03/10 00:13:35 by bbeldame         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/vm.h"
 
+/*
+** Include verification of size, if bad size, then bad ocp, then return
+*/
+
 int		func_and(t_env *env, t_process *current, t_ocp ocp)
 {
 	int				size1;
 	int				size2;
-	unsigned int	value1;
-	unsigned int	value2;
+	int				value1;
+	int				value2;
 
 	size1 = get_size_param(ocp.one, 4);
 	size2 = get_size_param(ocp.two, 4);

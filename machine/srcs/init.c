@@ -6,7 +6,7 @@
 /*   By: bbeldame <bbeldame@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/18 16:07:14 by msakwins          #+#    #+#             */
-/*   Updated: 2018/03/09 22:25:00 by bbeldame         ###   ########.fr       */
+/*   Updated: 2018/03/09 23:18:51 by bbeldame         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,4 +21,5 @@ void		init(t_env *env)
 	env->winner = 0;
 	env->nb_processes = 0;
 	env->nb_checks = 0;
+	env->head = NULL;
 }
