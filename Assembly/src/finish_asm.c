@@ -12,20 +12,67 @@
 
 #include "../include/asm.h"
 
-char 	*set_file_print(t_asm *param)
+void 	print_label_addr(t_asm *param, t_labdir *labdir)
 {
-	t_file_list		*file;
-	char 			*ret;
+	t_list 	*tmp;
+	t_label	*label;
+	int 	val;
 
-	file = param->body;
-	while (file)
+	tmp = param->labels;
+	while (tmp)
 	{
-		ret = ft_strjoin(ret, file->line);
-		ret = ft_strjoin(ret, "\n");
-		file = file->next;
+		label = tmp->content;
+		if (!ft_strcmp(labdir->label, label->label))
+		{
+			val = label->addr - labdir->instr_addr;
+			ft_putchar_fd(val >> 8, param->fd);
+			ft_putchar_fd(val, param->fd);
+			if (lseek(param->fd, -(labdir->addr + 1), SEEK_CUR) == -1)
+				return ;
+			return ;
+		}
+		tmp = tmp->next;
 	}
-	ret = ft_strjoin(ret, "\0");
-	return (ret);
+}
+
+void 	complete_file(t_asm *param)
+{
+	t_list 		*tmp;
+	t_labdir	*content;
+
+	ft_printf("complete size = %d\n", param->prog_size);
+	if (lseek(param->fd, PROG_NAME_LENGTH + 8, SEEK_SET) == -1)
+		return ;
+	ft_putchar_fd((unsigned)param->prog_size >> 24, param->fd);
+	ft_putchar_fd(param->prog_size >> 16, param->fd);
+	ft_putchar_fd(param->prog_size >> 8, param->fd);
+	ft_putchar_fd(param->prog_size, param->fd);
+	if (lseek(param->fd, COMMENT_LENGTH + 4, SEEK_CUR) == -1)
+		return ;
+	tmp = param->labdirs;
+	while (tmp)
+	{
+		content = tmp->content;
+		if (lseek(param->fd, content->addr - 1, SEEK_CUR) == -1)
+			return ;
+		print_label_addr(param, content);
+		tmp = tmp->next;
+	}
+}
+
+void 	print_label_debug(t_asm *param)
+{
+	t_list 	*tmp;
+	t_labdir *content;
+
+	tmp = param->labdirs;
+	while (tmp)
+	{
+		content = tmp->content;
+		ft_printf("label = >%s< addr = >%d< instr_addr >%d<\n", content->label, content->addr, content->instr_addr);
+		tmp = tmp->next;
+	}
+
 }
 
 void 	finalize_asm(t_asm *param)
@@ -35,7 +82,7 @@ void 	finalize_asm(t_asm *param)
 	print_magic(param->fd);
 	print_header(param);
 	ft_printf("header PRINT\n");
-	param->f_content = set_file_print(param);
 	print_body(param);
-	//complete_file(param);
+	print_label_debug(param);
+	complete_file(param);
 }

@@ -80,7 +80,6 @@ int 	print_params(t_asm *param, char *line, t_inst *ins)
 		free(ins->ins);
 		ins->nb_instr++;
 	}
-	param->idx = i;
 	print_param(param, ins);
 	return (1);
 }
@@ -161,4 +160,5 @@ void 	print_body(t_asm *param)
 		files = files->next;
 	}
 	param->prog_size = ins.octet;
+	ft_printf("prog size = %d\n", param->prog_size);
 }

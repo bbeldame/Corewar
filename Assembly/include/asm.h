@@ -73,8 +73,6 @@ typedef struct			s_asm
 	t_file_list			*body;
 	t_list				*labels;
 	t_list 				*labdirs;
-	char 				*f_content;
-	int 				idx;
 	int 				prog_size;
 }						t_asm;
 
