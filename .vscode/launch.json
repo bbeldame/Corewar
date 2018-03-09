@@ -10,6 +10,7 @@
             "args": [
                 "-n",
                 "1337",
+                "/Users/bbeldame/resCore/t.cor",
                 "/Users/bbeldame/resCore/t.cor"
             ],
             "cwd": "${workspaceRoot}",

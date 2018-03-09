@@ -6,7 +6,7 @@
 /*   By: bbeldame <bbeldame@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/18 16:07:14 by msakwins          #+#    #+#             */
-/*   Updated: 2018/03/02 01:01:26 by bbeldame         ###   ########.fr       */
+/*   Updated: 2018/03/09 21:54:08 by bbeldame         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ static t_process	*create_new_process(t_env *env, int i)
 	process->wait = 0;
 	process->prev = NULL;
 	process->next = NULL;
+	env->nb_processes++;
 	return (process);
 }
 
@@ -56,4 +57,5 @@ void				init_arena_and_processes(t_env *env)
 		ft_strdel(&(env->player[i].code));
 		i--;
 	}
+	tmp->next = env->head;
 }

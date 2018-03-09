@@ -6,7 +6,7 @@
 /*   By: bbeldame <bbeldame@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/25 18:43:15 by bbeldame          #+#    #+#             */
-/*   Updated: 2018/03/04 23:53:58 by bbeldame         ###   ########.fr       */
+/*   Updated: 2018/03/09 22:42:02 by bbeldame         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,13 +16,6 @@ static void increment_pc(t_env *env, t_process *current, int size)
 {
 	current->pc = M(current->pc + size);
 	get_opcode(env, current);
-
-	int i = 0;
-	while (i < REG_NUMBER)
-	{
-		i++;
-	}
-	printf("\n");
 }
 
 static void	exec_instruction(t_env *env, t_process *current)
@@ -37,10 +30,12 @@ static void	exec_instruction(t_env *env, t_process *current)
 
 static void exec_cycle(t_env *env)
 {
-	t_process *tmp;
+	t_process	*tmp;
+	int			i;
 
 	tmp = env->head;
-	while (tmp)
+	i = 0;
+	while (i < env->nb_processes)
 	{
 		if (tmp->opcode)
 		{
@@ -49,7 +44,10 @@ static void exec_cycle(t_env *env)
 			else
 				tmp->wait--;
 		}
+		else
+			increment_pc(env, tmp, 1);
 		tmp = tmp->next;
+		i++;
 	}
 }
 
@@ -65,25 +63,16 @@ void		launch_lifecycle(t_env *env)
 	env->nb_checks = 0;
 	load_all_opcode(env);
 	cycle_to_die = env->cycle_to_die;
-	/*while (check)
+	while (check)
 	{
+		if (env->cycle == env->dump)
+			print_dump(env);
+		if (env->visu)
+			visu(env, env->cycle);
 		exec_cycle(env);
-		// check = check_cycles(env, &cycle_to_die);
+		check = check_cycles(env, &cycle_to_die);
 		cycle_to_die--;
 		env->cycle++;
-		check = 0; // testing
-	}*/
-
-	int i = 0;
-	while (i < 100)
-	{
-		if (env->visu == 1)
-			visu(env, i);
-		if (i == env->dump) {
-			print_dump(env);
-		}
-		exec_cycle(env);
-		i++;
 	}
 	endwin();
 }

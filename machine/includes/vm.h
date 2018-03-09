@@ -6,7 +6,7 @@
 /*   By: bbeldame <bbeldame@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/18 16:28:40 by msakwins          #+#    #+#             */
-/*   Updated: 2018/03/05 00:30:30 by bbeldame         ###   ########.fr       */
+/*   Updated: 2018/03/09 21:53:29 by bbeldame         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,6 +71,7 @@ typedef struct		s_env
 	int				dump;
 	int				winner;
 	int				nb_checks;
+	int				nb_processes;
 	unsigned char	arena[MEM_SIZE];
 	t_player		player[MAX_PLAYERS + 1];
 	t_process		*head;
@@ -116,6 +117,7 @@ unsigned int		get_data_all_types_dir_two(t_env *env, t_process *current,
 	int idx, char param_type);
 unsigned int		get_data_all_types_dir_two_no_restrict(t_env *env,
 	t_process *current, int idx, char param_type);
+int					check_cycles(t_env *env, int *cycle_to_die);
 void				print_dump(t_env *e);
 int					func_add(t_env *env, t_process *current);
 int					func_aff(t_env *env, t_process *current);
@@ -139,30 +141,30 @@ void				init_curses(t_env *env);
 static const t_op	g_op[17] =
 {
 	{0, {0}, 0, {0}, 0, 0, {0}, 0, 0},
-	{&func_live, "live", 1, {T_DIR}, 1, 10, "alive", 0, 0},
-	{&func_ld, "ld", 2, {T_DIR | T_IND, T_REG}, 2, 5, "load", 1, 0},
-	{&func_st, "st", 2, {T_REG, T_IND | T_REG}, 3, 5, "store", 1, 0},
-	{&func_add, "add", 3, {T_REG, T_REG, T_REG}, 4, 10, "addition", 1, 0},
-	{&func_sub, "sub", 3, {T_REG, T_REG, T_REG}, 5, 10, "soustraction", 1, 0},
+	{&func_live, "live", 1, {T_DIR}, 1, 9, "alive", 0, 0},
+	{&func_ld, "ld", 2, {T_DIR | T_IND, T_REG}, 2, 4, "load", 1, 0},
+	{&func_st, "st", 2, {T_REG, T_IND | T_REG}, 3, 4, "store", 1, 0},
+	{&func_add, "add", 3, {T_REG, T_REG, T_REG}, 4, 9, "addition", 1, 0},
+	{&func_sub, "sub", 3, {T_REG, T_REG, T_REG}, 5, 9, "soustraction", 1, 0},
 	{&func_and, "and", 3,
-		{T_REG | T_DIR | T_IND, T_REG | T_IND | T_DIR, T_REG}, 6, 6,
+		{T_REG | T_DIR | T_IND, T_REG | T_IND | T_DIR, T_REG}, 6, 5,
 		"et (and  r1, r2, r3   r1&r2 -> r3", 1, 0},
 	{&func_or, "or", 3, {T_REG | T_IND | T_DIR, T_REG | T_IND | T_DIR, T_REG},
-		7, 6, "ou  (or   r1, r2, r3   r1 | r2 -> r3", 1, 0},
+		7, 5, "ou  (or   r1, r2, r3   r1 | r2 -> r3", 1, 0},
 	{&func_xor, "xor", 3,
-		{T_REG | T_IND | T_DIR, T_REG | T_IND | T_DIR, T_REG}, 8, 6,
+		{T_REG | T_IND | T_DIR, T_REG | T_IND | T_DIR, T_REG}, 8, 5,
 		"ou (xor  r1, r2, r3   r1^r2 -> r3", 1, 0},
-	{&func_zjmp, "zjmp", 1, {T_DIR}, 9, 20, "jump if zero", 0, 1},
-	{&func_ldi, "ldi", 3, {T_REG | T_DIR | T_IND, T_DIR | T_REG, T_REG}, 10, 25,
+	{&func_zjmp, "zjmp", 1, {T_DIR}, 9, 19, "jump if zero", 0, 1},
+	{&func_ldi, "ldi", 3, {T_REG | T_DIR | T_IND, T_DIR | T_REG, T_REG}, 10, 24,
 		"load index", 1, 1},
-	{&func_sti, "sti", 3, {T_REG, T_REG | T_DIR | T_IND, T_DIR | T_REG}, 11, 25,
+	{&func_sti, "sti", 3, {T_REG, T_REG | T_DIR | T_IND, T_DIR | T_REG}, 11, 24,
 		"store index", 1, 1},
-	{&func_fork, "fork", 1, {T_DIR}, 12, 800, "fork", 0, 1},
-	{&func_lld, "lld", 2, {T_DIR | T_IND, T_REG}, 13, 10, "long load", 1, 0},
+	{&func_fork, "fork", 1, {T_DIR}, 12, 799, "fork", 0, 1},
+	{&func_lld, "lld", 2, {T_DIR | T_IND, T_REG}, 13, 9, "long load", 1, 0},
 	{&func_lldi, "lldi", 3, {T_REG | T_DIR | T_IND, T_DIR | T_REG, T_REG},
-		14, 50, "long load index", 1, 1},
-	{&func_lfork, "lfork", 1, {T_DIR}, 15, 1000, "long fork", 0, 1},
-	{&func_aff, "aff", 1, {T_REG}, 16, 2, "aff", 1, 0}
+		14, 49, "long load index", 1, 1},
+	{&func_lfork, "lfork", 1, {T_DIR}, 15, 999, "long fork", 0, 1},
+	{&func_aff, "aff", 1, {T_REG}, 16, 1, "aff", 1, 0}
 };
 
 #endif

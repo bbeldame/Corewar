@@ -6,7 +6,7 @@
 /*   By: bbeldame <bbeldame@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/04 23:06:18 by bbeldame          #+#    #+#             */
-/*   Updated: 2018/03/04 23:51:54 by bbeldame         ###   ########.fr       */
+/*   Updated: 2018/03/09 21:55:09 by bbeldame         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,7 @@ static int			both_forks(t_env *env, t_process *current, int restr)
 
 	value = (short int)get_data_dir(env, current->pc + 2, 2);
 	forked = clone_process(current);
+	env->nb_processes++;
 	if (restr)
 		forked->pc = M(current->pc + value % IDX_MOD);
 	else

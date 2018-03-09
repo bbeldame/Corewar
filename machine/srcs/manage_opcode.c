@@ -6,7 +6,7 @@
 /*   By: bbeldame <bbeldame@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/25 19:32:29 by bbeldame          #+#    #+#             */
-/*   Updated: 2018/03/03 20:06:21 by bbeldame         ###   ########.fr       */
+/*   Updated: 2018/03/09 22:38:09 by bbeldame         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 
 void		get_opcode(t_env *env, t_process *current)
 {
-	if (env->arena[current->pc] >= 1 && env->arena[current->pc] <= 16)
+	if (env->arena[M(current->pc)] >= 1 && env->arena[M(current->pc)] <= 16)
 	{
-		current->opcode = env->arena[current->pc];
+		current->opcode = env->arena[M(current->pc)];
 		current->wait = g_op[env->arena[current->pc]].cycles;
 	}
 	else
@@ -29,12 +29,15 @@ void		get_opcode(t_env *env, t_process *current)
 void		load_all_opcode(t_env *env)
 {
 	t_process		*tmp;
+	int				i;
 
 	tmp = env->head;
-	while (tmp)
+	i = 0;
+	while (i < env->nb_processes)
 	{
 		if (tmp->opcode == 0)
 			get_opcode(env, tmp);
 		tmp = tmp->next;
+		i++;
 	}
 }

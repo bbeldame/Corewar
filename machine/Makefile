@@ -6,7 +6,7 @@
 #    By: bbeldame <bbeldame@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/02/18 16:15:40 by bbeldame          #+#    #+#              #
-#    Updated: 2018/03/04 23:19:29 by bbeldame         ###   ########.fr        #
+#    Updated: 2018/03/09 21:16:26 by bbeldame         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -36,7 +36,8 @@ SRCS_NAME =	main.c \
 			get_data.c \
 			dump.c \
 			visu.c \
-			get_data_utils.c
+			get_data_utils.c \
+			new_cycle.c
 
 FUNCS_NAME = func_add.c \
 			func_aff.c \
