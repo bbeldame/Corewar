@@ -6,7 +6,7 @@
 /*   By: bbeldame <bbeldame@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/22 15:23:05 by msakwins          #+#    #+#             */
-/*   Updated: 2018/03/04 23:36:35 by bbeldame         ###   ########.fr       */
+/*   Updated: 2018/03/09 22:57:50 by bbeldame         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,8 @@ static int		st_ind(t_env *env, t_process *current, unsigned int value)
 	short int		second_arg;
 	int				i;
 
-	second_arg = (short int)get_jumper(env, current->pc + 1, 1);
-	second_arg = (short int)get_data_dir(env, current->pc + 3, 2);
+	second_arg = (short int)get_jumper(env, M(current->pc + 1), 1);
+	second_arg = (short int)get_data_dir(env, M(current->pc + 3), 2);
 	i = 0;
 	while (i < REG_SIZE)
 	{

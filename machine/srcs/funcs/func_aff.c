@@ -6,7 +6,7 @@
 /*   By: bbeldame <bbeldame@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/22 15:23:05 by msakwins          #+#    #+#             */
-/*   Updated: 2018/03/04 23:52:03 by bbeldame         ###   ########.fr       */
+/*   Updated: 2018/03/09 22:57:31 by bbeldame         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ int		func_aff(t_env *env, t_process *current)
 	int		i;
 
 	i = 0;
-	reg = get_reg(env, current, current->pc + 2) % 256;
+	reg = get_reg(env, current, M(current->pc + 2)) % 256;
 	if (current->idx_buffer >= MAX_BUFFER)
 	{
 		ft_printf("%s\n", current->buffer);

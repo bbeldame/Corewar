@@ -6,7 +6,7 @@
 /*   By: bbeldame <bbeldame@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/22 15:23:05 by msakwins          #+#    #+#             */
-/*   Updated: 2018/03/04 22:59:27 by bbeldame         ###   ########.fr       */
+/*   Updated: 2018/03/09 22:58:21 by bbeldame         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ int		func_zjmp(t_env *e, t_process *current)
 
 	if (current->carry)
 	{
-		index = (short int)get_data_dir(e, current->pc + 1, 2);
+		index = (short int)get_data_dir(e, M(current->pc + 1), 2);
 		index = (index % IDX_MOD);
 		return (index);
 	}
