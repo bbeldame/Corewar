@@ -93,7 +93,6 @@ typedef struct		s_op
 void				init_arena_and_processes(t_env *env);
 void				init(t_env *env);
 void				parse_args(t_env *env, int argc, char **argv);
-void				parse_champs(t_env *env, int argc, char **argv, int i);
 void				ft_exit(int i, char *str);
 void				parse_files(t_env *e, char **argv);
 void				check_number(char *nb);

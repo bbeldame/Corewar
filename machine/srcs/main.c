@@ -26,7 +26,8 @@ int				main(int argc, char **argv)
 	parse_args(&env, argc, argv);
 	parse_files(&env, argv);
 	init_arena_and_processes(&env);
-	init_curses(&env);
+	if (env.visu)
+		init_curses(&env);
 	launch_lifecycle(&env);
 	anounce_the_winner(&env);
 	return (0);
