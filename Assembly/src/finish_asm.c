@@ -24,6 +24,7 @@ char 	*set_file_print(t_asm *param)
 		ret = ft_strjoin(ret, "\n");
 		file = file->next;
 	}
+	ret = ft_strjoin(ret, "\0");
 	return (ret);
 }
 
@@ -35,6 +36,6 @@ void 	finalize_asm(t_asm *param)
 	print_header(param);
 	ft_printf("header PRINT\n");
 	param->f_content = set_file_print(param);
-	print_body(param, param->f_content, 0);
+	print_body(param);
 	//complete_file(param);
 }

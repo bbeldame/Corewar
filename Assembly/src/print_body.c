@@ -12,15 +12,6 @@
 
 #include "../include/asm.h"
 
-int 	jump_nextline(char *str, int i)
-{
-	while (str[i] && str[i] != '\n')
-		i++;
-	if (str[i] == '\n')
-		i++;
-	return (i);
-}
-
 int 	get_param(t_asm *param, t_inst *ins)
 {
 	int flag;
@@ -39,7 +30,7 @@ int 	get_param(t_asm *param, t_inst *ins)
 	}
 	if (!flag && p_type & T_IND)
 		ins->ocp |= get_ind(param, ins, 0b11);
-	return (param->idx + ft_strlen(ins->ins));
+	return (ft_strlen(ins->ins));
 }
 
 void 	print_param(t_asm *param, t_inst *ins)
@@ -52,7 +43,9 @@ void 	print_param(t_asm *param, t_inst *ins)
 	while (++i < ins->nb_instr)
 	{
 		if (((unsigned)ins->ocp >> (6 - i * 2) & 0b11) == 0b01)
+		{
 			ft_putchar_fd(ins->param[i], param->fd);
+		}
 		else if (((unsigned)ins->ocp >> (6 - i * 2) & 0b11) == 0b11 || g_op_tab[ins->i_instr].label_size)
 		{
 			ft_putchar_fd((unsigned)ins->param[i] >> 8, param->fd);
@@ -68,45 +61,46 @@ void 	print_param(t_asm *param, t_inst *ins)
 	}
 }
 
-int 	print_params(t_asm *param, t_inst *ins, int i)
+int 	print_params(t_asm *param, char *line, t_inst *ins)
 {
-	char *f_content;
+	int 	i;
 
+	i = 0;
 	if (g_op_tab[ins->i_instr].ocp)
 		ins->octet++;
-	ins->nb_instr = -1;
+	ins->nb_instr = 0;
 	ins->ocp = 0;
-	f_content = param->f_content;
-	while (++ins->nb_instr < g_op_tab[ins->i_instr].nb_param)
+	while (ins->nb_instr < g_op_tab[ins->i_instr].nb_param)
 	{
-		while (is_white_space(f_content[i]) || f_content[i] == SEPARATOR_CHAR)
-			param->idx++;
-		if ((ins->ins = ft_strsub(f_content, i, get_param_end(f_content + i) - i)) == NULL)
+		while (is_white_space(line[i]) || line[i] == SEPARATOR_CHAR)
+			i++;
+		if ((ins->ins = ft_strsub(line, i, get_param_end(line + i))) == NULL)
 			return (0);
-		i = get_param(param, ins);
+		i += get_param(param, ins);
 		free(ins->ins);
+		ins->nb_instr++;
 	}
 	param->idx = i;
 	print_param(param, ins);
-	return (i);
+	return (1);
 }
 
-int 	get_instr(t_asm *param, int i, t_inst *ins)
+int 	get_instr(t_asm *param, char *line, t_inst *ins)
 {
-	char	*f_content;
 	int 	idx;
 	int 	label_size;
+	int 	i;
 
 	idx = 0;
-	f_content = param->f_content;
-	if (!f_content[i])
-		return (i);
+	i = 0;
+	if (!line)
+		return (0);
 	while (g_op_tab[idx].name)
 	{
-		label_size = get_size_inst(f_content + i);
-		if (!(ft_strncmp(f_content + i, g_op_tab[idx].name, label_size)))
+		label_size = get_size_inst(line);
+		if (!(ft_strncmp(line, g_op_tab[idx].name, label_size)))
 		{
-			i += ft_strlen(g_op_tab[idx].name);
+			i = ft_strlen(g_op_tab[idx].name);
 			break ;
 		}
 		idx++;
@@ -115,60 +109,56 @@ int 	get_instr(t_asm *param, int i, t_inst *ins)
 	ft_putchar_fd(idx + 1, param->fd);
 	ins->ins_octet = ins->octet;
 	ins->i_instr = idx;
-	if (!(i = print_params(param, ins, i)))
+	if (!print_params(param,line + i, ins))
 		return (0);
-	return (i);
+	return (1);
 }
 
-int 	get_label_pos(t_asm *param, t_inst *ins, int i)
+int 	get_label_pos(t_asm *param, char *line, t_inst *ins)
 {
 	t_list	*tmp;
 	t_label	*content;
 	int 	x;
 
 	tmp = param->labels;
-	while (is_white_space(param->f_content[i]))
-		i++;
 	while (tmp)
 	{
 		content = tmp->content;
 		x = ft_strlen(content->label);
-		if (ft_strncmp(content->label, param->f_content + i, x))
+		if (!ft_strncmp(content->label, line, x))
 		{
-			if (param->f_content[i + x + 1] != LABEL_CHAR)
-				return (i);
+			if (line[x] != LABEL_CHAR)
+				return (0);
 			content->addr = ins->octet + 1;
-			return (get_label_pos(param, ins, x + i));
+			return (0);
 		}
 		tmp = tmp->next;
 	}
-	return (i);
+	return (1);
 }
 
-void 	print_body(t_asm *param, char *f_content, int i)
+void 	print_body(t_asm *param)
 {
+	t_file_list	*files;
 	t_inst 		ins;
+	int 		i;
 
+	i = 0;
+	files = param->body;
 	ins.octet = 0;
-	ft_printf("print body\n");
-	while (f_content[i])
+	while (files)
 	{
-		if ((f_content[i] == COMMENT_CHAR) && (i = jump_nextline(f_content, i)))
-			continue;
-		if (!is_white_space(f_content[i]))
-		{
-			i = get_label_pos(param, &ins, i);
-			while (is_white_space(f_content[i]))
-				i++;
-			while (f_content[i] == COMMENT_CHAR)
-				i = jump_nextline(f_content, i);
-			while (is_white_space(f_content[i]))
-				i++;
-			if (!(i = get_instr(param, i, &ins)))
-				return ;
-		}
-		else
+		ft_printf("start files\n");
+		if ((i = is_label(files->line)))
+			get_label_pos(param, files->line, &ins);
+		while (is_white_space(files->line[i]))
 			i++;
+		ft_printf("%s\n", files->line + i);
+		if (files->line[i] != '\0' && files->line[i] != COMMENT_CHAR)
+		{
+			get_instr(param, files->line + i, &ins);
+		}
+		files = files->next;
 	}
 	param->prog_size = ins.octet;
 }
