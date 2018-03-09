@@ -17,11 +17,11 @@ int			func_live(t_env *env, t_process *current)
 	unsigned int	id;
 	int				i;
 
+	i = 0;
 	id = get_data_dir(env, M(current->pc + 1), 4);
-	env->player[0].live = 1;
+	//env->player[i].live++;
 	current->live++;
 	env->nb_lives += 1;
-	i = 0;
 	while (i < env->nb_players)
 	{
 		if (env->player[i].nb == (int)id)

@@ -75,7 +75,6 @@ void		launch_lifecycle(t_env *env)
 	}*/
 
 	int i = 0;
-	env->visu = 1;
 	while (i < 100)
 	{
 		if (env->visu == 1)

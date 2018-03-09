@@ -14,6 +14,8 @@
 
 void		init(t_env *env)
 {
+	env->visu = 0;
+	env->nb_players = 0;
 	env->dump = -1;
 	env->cycle_to_die = CYCLE_TO_DIE;
 	env->winner = 0;

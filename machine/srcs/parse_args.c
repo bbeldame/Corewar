@@ -45,12 +45,21 @@ void		add_player(t_env *env, char *nb, int argc, int *i)
 	env->player[env->nb_players].file_pos = *i;
 }
 
+void		parse_champs(t_env *env, int argc, char **argv, int i)
+{
+	if (ft_strequ(argv[i], "-n"))
+	add_player(env, argv[i + 1], argc, &i);
+else
+	add_player(env, "*", argc, &i);
+env->nb_players += 1;
+if (env->nb_players > MAX_PLAYERS)
+	ft_exit(2, "Maximum number of players is 4.");
+}
 void		parse_args(t_env *env, int argc, char **argv)
 {
 	int		i;
 
 	i = 1;
-	env->nb_players = 0;
 	if (ft_strequ(argv[i], "-dump"))
 	{
 		if (i + 3 > argc)
@@ -59,15 +68,14 @@ void		parse_args(t_env *env, int argc, char **argv)
 		env->dump = atoll(argv[i + 1]);
 		i += 2;
 	}
+	if (ft_strequ(argv[i], "-visu"))
+	{
+		env->visu = 1;
+		i++;
+	}
 	while (i < argc)
 	{
-		if (ft_strequ(argv[i], "-n"))
-			add_player(env, argv[i + 1], argc, &i);
-		else
-			add_player(env, "*", argc, &i);
-		env->nb_players += 1;
-		if (env->nb_players > MAX_PLAYERS)
-			ft_exit(2, "Maximum number of players is 4.");
+		parse_champs(env, argc, argv, i);
 		i++;
 	}
 	if (env->nb_players == 0)
