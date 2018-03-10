@@ -12,27 +12,6 @@
 
 #include "../include/asm.h"
 
-int 	get_param(t_asm *param, t_inst *ins)
-{
-	int flag;
-	int	p_type;
-
-	flag = 0;
-	p_type = g_op_tab[ins->i_instr].param[ins->nb_instr];
-	if (p_type & T_REG)
-		ins->ocp |= get_reg(ins);
-	if (p_type & T_DIR)
-	{
-		flag = ins->ocp;
-		if (*(ins->ins) == DIRECT_CHAR)
-			ins->ocp |= get_ind(param, ins, 0b10);
-		flag = flag != ins->ocp ? 1 : 0;
-	}
-	if (!flag && p_type & T_IND)
-		ins->ocp |= get_ind(param, ins, 0b11);
-	return (ft_strlen(ins->ins));
-}
-
 void 	print_param(t_asm *param, t_inst *ins)
 {
 	int i;
@@ -43,10 +22,9 @@ void 	print_param(t_asm *param, t_inst *ins)
 	while (++i < ins->nb_instr)
 	{
 		if (((unsigned)ins->ocp >> (6 - i * 2) & 0b11) == 0b01)
-		{
 			ft_putchar_fd(ins->param[i], param->fd);
-		}
-		else if (((unsigned)ins->ocp >> (6 - i * 2) & 0b11) == 0b11 || g_op_tab[ins->i_instr].label_size)
+		else if (((unsigned)ins->ocp >> (6 - i * 2) & 0b11) == 0b11
+			|| g_op_tab[ins->i_instr].label_size)
 		{
 			ft_putchar_fd((unsigned)ins->param[i] >> 8, param->fd);
 			ft_putchar_fd(ins->param[i], param->fd);
@@ -147,12 +125,10 @@ void 	print_body(t_asm *param)
 	ins.octet = 0;
 	while (files)
 	{
-		ft_printf("start files\n");
 		if ((i = is_label(files->line)))
 			get_label_pos(param, files->line, &ins);
 		while (is_white_space(files->line[i]))
 			i++;
-		ft_printf("%s\n", files->line + i);
 		if (files->line[i] != '\0' && files->line[i] != COMMENT_CHAR)
 		{
 			get_instr(param, files->line + i, &ins);
@@ -160,5 +136,4 @@ void 	print_body(t_asm *param)
 		files = files->next;
 	}
 	param->prog_size = ins.octet;
-	ft_printf("prog size = %d\n", param->prog_size);
 }

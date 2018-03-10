@@ -40,7 +40,6 @@ void 	complete_file(t_asm *param)
 	t_list 		*tmp;
 	t_labdir	*content;
 
-	ft_printf("complete size = %d\n", param->prog_size);
 	if (lseek(param->fd, PROG_NAME_LENGTH + 8, SEEK_SET) == -1)
 		return ;
 	ft_putchar_fd((unsigned)param->prog_size >> 24, param->fd);
@@ -69,20 +68,32 @@ void 	print_label_debug(t_asm *param)
 	while (tmp)
 	{
 		content = tmp->content;
-		ft_printf("label = >%s< addr = >%d< instr_addr >%d<\n", content->label, content->addr, content->instr_addr);
 		tmp = tmp->next;
 	}
 
+}
+
+int		get_ocp_return(t_inst *ins, int oc)
+{
+	if (ins->nb_instr == 0)
+		return (oc << 6);
+	else if (ins->nb_instr == 1)
+		return (oc << 4);
+	else
+		return (oc << 2);
 }
 
 void 	finalize_asm(t_asm *param)
 {
 	if ((param->fd = open(param->file_cor, O_CREAT | O_RDWR | O_TRUNC, 0755)) == -1)
 		exit_msg_error(15, 0, param);
+	ft_printf("Print Magic\n");
 	print_magic(param->fd);
+	ft_printf("Print Header\n");
 	print_header(param);
-	ft_printf("header PRINT\n");
+	ft_printf("Print Body\n");
 	print_body(param);
-	print_label_debug(param);
+	ft_printf("Complete file\n");
 	complete_file(param);
+	ft_printf("Writing output programe to \033[32m%s\033[00m\n", param->file_cor);
 }

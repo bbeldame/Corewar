@@ -12,16 +12,6 @@
 
 #include "../include/asm.h"
 
-int		get_ocp_return(t_inst *ins, int oc)
-{
-	if (ins->nb_instr == 0)
-		return (oc << 6);
-	else if (ins->nb_instr == 1)
-		return (oc << 4);
-	else
-		return (oc << 2);
-}
-
 int 	get_labdir_pos(t_asm *param, t_inst *ins, t_label *tmp, int oc)
 {
 	t_list		*new;
@@ -92,7 +82,7 @@ int 	get_ind(t_asm *param, t_inst *ins, int oc)
 	if (ins->ins[idx] == '-')
 		idx++;
 	while (ins->ins[idx])
-		if (ft_isdigit(ins->ins[idx++]))
+		if (!ft_isdigit(ins->ins[idx++]))
 			return (0);
 	ins->param[ins->nb_instr] = ft_atoi_oflow(ins->ins + i);
 	if (oc == 0b10)
@@ -105,4 +95,25 @@ int 	get_ind(t_asm *param, t_inst *ins, int oc)
 	else
 		ins->octet += 2;
 	return (get_ocp_return(ins, oc));
+}
+
+int 	get_param(t_asm *param, t_inst *ins)
+{
+	int flag;
+	int	p_type;
+
+	flag = 0;
+	p_type = g_op_tab[ins->i_instr].param[ins->nb_instr];
+	if (p_type & T_REG)
+		ins->ocp |= get_reg(ins);
+	if (p_type & T_DIR)
+	{
+		flag = ins->ocp;
+		if (*(ins->ins) == DIRECT_CHAR)
+			ins->ocp |= get_ind(param, ins, 0b10);
+		flag = flag != ins->ocp ? 1 : 0;
+	}
+	if (!flag && p_type & T_IND)
+		ins->ocp |= get_ind(param, ins, 0b11);
+	return (ft_strlen(ins->ins));
 }
