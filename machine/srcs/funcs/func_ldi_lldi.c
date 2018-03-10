@@ -6,7 +6,7 @@
 /*   By: bbeldame <bbeldame@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/04 22:23:45 by bbeldame          #+#    #+#             */
-/*   Updated: 2018/03/04 23:51:34 by bbeldame         ###   ########.fr       */
+/*   Updated: 2018/03/10 22:21:03 by bbeldame         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,16 +23,16 @@ static unsigned int	get_value_ldis(t_env *env, t_process *current,
 	if (restr)
 	{
 		value1 = (short int)get_data_all_types_dir_two(env, current,
-			M(current->pc + 2), ocp.one);
+			M((current->pc + 2)), ocp.one);
 		value2 = (short int)get_data_all_types_dir_two(env, current,
-			M(current->pc + 2 + size1), ocp.two);
+			M((current->pc + 2 + size1)), ocp.two);
 	}
 	else
 	{
-		value1 = (short int)get_data_all_types_dir_two_no_restrict(env, current,
-			M(current->pc + 2), ocp.one);
-		value2 = (short int)get_data_all_types_dir_two_no_restrict(env, current,
-			M(current->pc + 2 + size1), ocp.two);
+		value1 = (short int)get_data_all_types_dir_two_no_restrict(env,
+			current, M((current->pc + 2)), ocp.one);
+		value2 = (short int)get_data_all_types_dir_two_no_restrict(env,
+			current, M((current->pc + 2 + size1)), ocp.two);
 	}
 	return ((unsigned int)(value1 + value2));
 }
@@ -47,13 +47,12 @@ static int			both_ldis(t_env *env, t_process *current,
 	size1 = get_size_param(ocp.one, 2);
 	size2 = get_size_param(ocp.two, 2);
 	value = get_value_ldis(env, current, ocp, restr);
-	if (!verify_reg(env->arena[M(current->pc + 2 + size1 + size2)], 1, 1))
+	if (!verify_reg(env->arena[M((current->pc + 2 + size1 + size2))], 1, 1))
 		return (2 + size1 + size2 + 1);
-	current->reg[env->arena[M(current->pc + 2 + size1 + size2)] - 1] =
-		get_value(env, current->pc + value);
-	current->carry =
-		current->reg[env->arena[M(current->pc + 2 + size1 + size2)] - 1]
-			? 0 : 1;
+	if (size1 && size2)
+		current->reg[env->arena[M((current->pc + 2 + size1 + size2))] - 1] =
+			get_value(env, current->pc + value);
+	current->carry = get_value(env, current->pc + value) ? 0 : 1;
 	return (2 + size1 + size2 + 1);
 }
 

@@ -6,7 +6,7 @@
 /*   By: bbeldame <bbeldame@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/18 16:28:40 by msakwins          #+#    #+#             */
-/*   Updated: 2018/03/09 21:53:29 by bbeldame         ###   ########.fr       */
+/*   Updated: 2018/03/10 22:19:00 by bbeldame         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@
 # include "../../libft/includes/ft_printf.h"
 
 # define LBYTE(x)	(x & 0xFF)
-# define M(x)	(x % MEM_SIZE)
+# define M(x)   (x % MEM_SIZE < 0 ? x % MEM_SIZE + MEM_SIZE : x % MEM_SIZE)
 
 # define LIVE 0x01
 # define ZJMP 0x09
@@ -72,6 +72,8 @@ typedef struct		s_env
 	int				winner;
 	int				nb_checks;
 	int				nb_processes;
+	int				zaz_dump;
+	int				padding;
 	unsigned char	arena[MEM_SIZE];
 	t_player		player[MAX_PLAYERS + 1];
 	t_process		*head;

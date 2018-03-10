@@ -6,7 +6,7 @@
 /*   By: bbeldame <bbeldame@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/24 21:19:30 by bbeldame          #+#    #+#             */
-/*   Updated: 2018/03/09 22:58:50 by bbeldame         ###   ########.fr       */
+/*   Updated: 2018/03/10 22:47:12 by bbeldame         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,11 +43,12 @@ t_ocp				get_ocp(t_env *env, t_process *current)
 	ocp.two = 0;
 	ocp.three = 0;
 	byte_ocp = 0;
-	if (env->arena[M(current->pc)] != LIVE && env->arena[M(current->pc)]
-		!= ZJMP && env->arena[M(current->pc)]
-		!= FORK && env->arena[M(current->pc)] != LFORK)
+	if (env->arena[M((current->pc))] != LIVE &&
+		env->arena[M((current->pc))] != ZJMP &&
+		env->arena[M((current->pc))] != FORK &&
+		env->arena[M((current->pc))] != LFORK)
 	{
-		byte_ocp = env->arena[M(current->pc + 1)];
+		byte_ocp = env->arena[M((current->pc + 1))];
 		ocp.one = byte_ocp >> 6;
 		ocp.two = (byte_ocp >> 4) & 0x03;
 		ocp.three = (byte_ocp >> 2) & 0x03;

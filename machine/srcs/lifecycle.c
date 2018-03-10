@@ -6,7 +6,7 @@
 /*   By: bbeldame <bbeldame@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/25 18:43:15 by bbeldame          #+#    #+#             */
-/*   Updated: 2018/03/09 23:04:01 by bbeldame         ###   ########.fr       */
+/*   Updated: 2018/03/10 22:24:10 by bbeldame         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 static void increment_pc(t_env *env, t_process *current, int size)
 {
-	current->pc = M(current->pc + size);
+	current->pc = M((current->pc + size));
 	if (current->pc >= MEM_SIZE)
 		current->pc -= MEM_SIZE;
 	get_opcode(env, current);
@@ -67,14 +67,14 @@ void		launch_lifecycle(t_env *env)
 	cycle_to_die = env->cycle_to_die;
 	while (check)
 	{
-		if (env->cycle == env->dump)
-			print_dump(env);
 		if (env->visu)
 		{
 			init_curses(env);
 			visu(env, cycle_to_die);
 		}
 		exec_cycle(env);
+		if (env->cycle == env->dump)
+			print_dump(env);
 		check = check_cycles(env, &cycle_to_die);
 		cycle_to_die--;
 		if (cycle_to_die == 0)

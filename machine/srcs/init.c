@@ -6,7 +6,7 @@
 /*   By: bbeldame <bbeldame@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/18 16:07:14 by msakwins          #+#    #+#             */
-/*   Updated: 2018/03/09 23:18:51 by bbeldame         ###   ########.fr       */
+/*   Updated: 2018/03/10 21:16:03 by bbeldame         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,4 +22,5 @@ void		init(t_env *env)
 	env->nb_processes = 0;
 	env->nb_checks = 0;
 	env->head = NULL;
+	env->zaz_dump = 0;
 }

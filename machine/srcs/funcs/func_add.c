@@ -6,7 +6,7 @@
 /*   By: bbeldame <bbeldame@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/22 15:23:05 by msakwins          #+#    #+#             */
-/*   Updated: 2018/03/03 19:48:54 by bbeldame         ###   ########.fr       */
+/*   Updated: 2018/03/10 22:18:10 by bbeldame         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,9 +18,9 @@ int		func_add(t_env *env, t_process *current)
 	int		reg2_idx;
 	int		reg3_idx;
 
-	reg1_idx = env->arena[M(current->pc + 2)];
-	reg2_idx = env->arena[M(current->pc + 2 + 1)];
-	reg3_idx = env->arena[M(current->pc + 2 + 2)];
+	reg1_idx = env->arena[M((current->pc + 2))];
+	reg2_idx = env->arena[M((current->pc + 2 + 1))];
+	reg3_idx = env->arena[M((current->pc + 2 + 2))];
 	if (!verify_reg(reg1_idx, reg2_idx, reg3_idx))
 		return (2 + 1 + 1 + 1);
 	current->reg[reg3_idx - 1] = current->reg[reg1_idx - 1] +
