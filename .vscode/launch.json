@@ -8,10 +8,7 @@
             "request": "launch",
             "program": "${workspaceRoot}/corewar",
             "args": [
-                "-n",
-                "1337",
-                "/Users/bbeldame/resCore/t.cor",
-                "/Users/bbeldame/resCore/t.cor"
+                "/Users/bbeldame/Corewar/machine/champs/helltrain.cor"
             ],
             "cwd": "${workspaceRoot}",
             "stopOnEntry": false,
