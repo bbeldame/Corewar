@@ -6,15 +6,15 @@
 /*   By: arosset <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/28 17:34:02 by arosset           #+#    #+#             */
-/*   Updated: 2018/02/28 17:34:07 by arosset          ###   ########.fr       */
+/*   Updated: 2018/03/10 16:08:35 by arosset          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/asm.h"
 
-void 	print_param(t_asm *param, t_inst *ins)
+void	print_param(t_asm *param, t_inst *ins)
 {
-	int i;
+	int	i;
 
 	i = -1;
 	if (g_op_tab[ins->i_instr].ocp)
@@ -39,9 +39,9 @@ void 	print_param(t_asm *param, t_inst *ins)
 	}
 }
 
-int 	print_params(t_asm *param, char *line, t_inst *ins)
+int		print_params(t_asm *param, char *line, t_inst *ins)
 {
-	int 	i;
+	int	i;
 
 	i = 0;
 	if (g_op_tab[ins->i_instr].ocp)
@@ -62,11 +62,11 @@ int 	print_params(t_asm *param, char *line, t_inst *ins)
 	return (1);
 }
 
-int 	get_instr(t_asm *param, char *line, t_inst *ins)
+int		get_instr(t_asm *param, char *line, t_inst *ins)
 {
-	int 	idx;
-	int 	label_size;
-	int 	i;
+	int	idx;
+	int	label_size;
+	int	i;
 
 	idx = 0;
 	i = 0;
@@ -86,16 +86,16 @@ int 	get_instr(t_asm *param, char *line, t_inst *ins)
 	ft_putchar_fd(idx + 1, param->fd);
 	ins->ins_octet = ins->octet;
 	ins->i_instr = idx;
-	if (!print_params(param,line + i, ins))
+	if (!print_params(param, line + i, ins))
 		return (0);
 	return (1);
 }
 
-int 	get_label_pos(t_asm *param, char *line, t_inst *ins)
+int		get_label_pos(t_asm *param, char *line, t_inst *ins)
 {
 	t_list	*tmp;
 	t_label	*content;
-	int 	x;
+	int		x;
 
 	tmp = param->labels;
 	while (tmp)
@@ -114,11 +114,11 @@ int 	get_label_pos(t_asm *param, char *line, t_inst *ins)
 	return (1);
 }
 
-void 	print_body(t_asm *param)
+void	print_body(t_asm *param)
 {
 	t_file_list	*files;
-	t_inst 		ins;
-	int 		i;
+	t_inst		ins;
+	int			i;
 
 	i = 0;
 	files = param->body;

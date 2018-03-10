@@ -6,7 +6,7 @@
 /*   By: arosset <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/12 14:45:09 by arosset           #+#    #+#             */
-/*   Updated: 2018/03/04 15:59:41 by arosset          ###   ########.fr       */
+/*   Updated: 2018/03/10 16:10:32 by arosset          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,10 +89,8 @@ int		ft_parse_body(t_asm *param)
 	int	ret;
 
 	ret = 0;
-	//ft_printf("create list label\n");
 	if (!get_label(param))
 		return (0);
-	//ft_printf("parse body\n");
 	if (!check_body(param))
 		return (0);
 	return (1);

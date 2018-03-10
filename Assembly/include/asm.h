@@ -6,7 +6,7 @@
 /*   By: bbeldame <bbeldame@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/26 15:00:46 by arosset           #+#    #+#             */
-/*   Updated: 2018/03/04 15:47:26 by arosset          ###   ########.fr       */
+/*   Updated: 2018/03/10 16:11:53 by arosset          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,8 +72,8 @@ typedef struct			s_asm
 	t_file_list			*header;
 	t_file_list			*body;
 	t_list				*labels;
-	t_list 				*labdirs;
-	int 				prog_size;
+	t_list				*labdirs;
+	int					prog_size;
 }						t_asm;
 
 /*
@@ -87,16 +87,16 @@ void					exit_msg_error(int c_er, int n_line, t_asm *param);
 **		Finalisation asm
 */
 
-void					finalize_asm(t_asm *param);
+void					finalize_asm(t_asm *env);
 void					print_header(t_asm *param);
 void					print_magic(int fd);
 void					print_body(t_asm *param);
-int		get_ocp_return(t_inst *ins, int oc);
-int 	get_reg(t_inst *ins);
-int 	get_ind(t_asm *param, t_inst *ins, int oc);
-int		get_param_end(char *line);
-int 	get_param(t_asm *param, t_inst *ins);
-int		get_ocp_return(t_inst *ins, int oc);
+int						get_ocp_return(t_inst *ins, int oc);
+int						get_reg(t_inst *ins);
+int						get_ind(t_asm *param, t_inst *ins, int oc);
+int						get_param_end(char *line);
+int						get_param(t_asm *param, t_inst *ins);
+int						get_ocp_return(t_inst *ins, int oc);
 
 /*
 **		Parser
@@ -145,8 +145,8 @@ void					ft_print_usage(void);
 int						ft_open_file(char *s);
 char					*ft_skip_space(char *s);
 int						verif_line(char *line);
-int		get_size_inst(char *line);
-long	ft_atoi_oflow(char *str);
+int						get_size_inst(char *line);
+long					ft_atoi_oflow(char *str);
 
 /*
 ** 		Free

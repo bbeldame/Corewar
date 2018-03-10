@@ -6,13 +6,13 @@
 /*   By: arosset <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/08 16:03:54 by arosset           #+#    #+#             */
-/*   Updated: 2018/03/08 16:03:57 by arosset          ###   ########.fr       */
+/*   Updated: 2018/03/10 16:09:49 by arosset          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/asm.h"
 
-int 	get_labdir_pos(t_asm *param, t_inst *ins, t_label *tmp, int oc)
+int		get_labdir_pos(t_asm *param, t_inst *ins, t_label *tmp, int oc)
 {
 	t_list		*new;
 	t_labdir	*content;
@@ -40,11 +40,11 @@ int 	get_labdir_pos(t_asm *param, t_inst *ins, t_label *tmp, int oc)
 	return (get_ocp_return(ins, oc));
 }
 
-int 	ft_get_label(t_asm *param, t_inst *ins, int oc, int i)
+int		ft_get_label(t_asm *param, t_inst *ins, int oc, int i)
 {
-	t_list 	*elem;
-	t_label *tmp;
-	int 	idx;
+	t_list	*elem;
+	t_label	*tmp;
+	int		idx;
 
 	elem = param->labels;
 	while (elem)
@@ -59,7 +59,7 @@ int 	ft_get_label(t_asm *param, t_inst *ins, int oc, int i)
 	return (0);
 }
 
-int 	get_reg(t_inst *ins)
+int		get_reg(t_inst *ins)
 {
 	if (ins->ins[0] == 'r')
 	{
@@ -70,10 +70,10 @@ int 	get_reg(t_inst *ins)
 	return (0);
 }
 
-int 	get_ind(t_asm *param, t_inst *ins, int oc)
+int		get_ind(t_asm *param, t_inst *ins, int oc)
 {
-	int 	idx;
-	int 	i;
+	int	idx;
+	int	i;
 
 	i = (oc == 0b10 ? 0 : -1);
 	if (ins->ins[++i] == LABEL_CHAR)
@@ -97,10 +97,10 @@ int 	get_ind(t_asm *param, t_inst *ins, int oc)
 	return (get_ocp_return(ins, oc));
 }
 
-int 	get_param(t_asm *param, t_inst *ins)
+int		get_param(t_asm *param, t_inst *ins)
 {
-	int flag;
-	int	p_type;
+	int		flag;
+	int		p_type;
 
 	flag = 0;
 	p_type = g_op_tab[ins->i_instr].param[ins->nb_instr];

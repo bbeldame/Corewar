@@ -6,17 +6,17 @@
 /*   By: arosset <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/28 16:58:37 by arosset           #+#    #+#             */
-/*   Updated: 2018/02/28 16:58:39 by arosset          ###   ########.fr       */
+/*   Updated: 2018/03/10 16:06:02 by arosset          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/asm.h"
 
-void 	print_label_addr(t_asm *param, t_labdir *labdir)
+void	print_label_addr(t_asm *param, t_labdir *labdir)
 {
-	t_list 	*tmp;
+	t_list	*tmp;
 	t_label	*label;
-	int 	val;
+	int		val;
 
 	tmp = param->labels;
 	while (tmp)
@@ -35,9 +35,9 @@ void 	print_label_addr(t_asm *param, t_labdir *labdir)
 	}
 }
 
-void 	complete_file(t_asm *param)
+void	complete_file(t_asm *param)
 {
-	t_list 		*tmp;
+	t_list		*tmp;
 	t_labdir	*content;
 
 	if (lseek(param->fd, PROG_NAME_LENGTH + 8, SEEK_SET) == -1)
@@ -59,10 +59,10 @@ void 	complete_file(t_asm *param)
 	}
 }
 
-void 	print_label_debug(t_asm *param)
+void	print_label_debug(t_asm *param)
 {
-	t_list 	*tmp;
-	t_labdir *content;
+	t_list		*tmp;
+	t_labdir	*content;
 
 	tmp = param->labdirs;
 	while (tmp)
@@ -70,7 +70,6 @@ void 	print_label_debug(t_asm *param)
 		content = tmp->content;
 		tmp = tmp->next;
 	}
-
 }
 
 int		get_ocp_return(t_inst *ins, int oc)
@@ -83,17 +82,18 @@ int		get_ocp_return(t_inst *ins, int oc)
 		return (oc << 2);
 }
 
-void 	finalize_asm(t_asm *param)
+void	finalize_asm(t_asm *env)
 {
-	if ((param->fd = open(param->file_cor, O_CREAT | O_RDWR | O_TRUNC, 0755)) == -1)
-		exit_msg_error(15, 0, param);
+	if ((env->fd = open(env->file_cor, O_CREAT | O_RDWR | O_TRUNC, 0755)) == -1)
+		exit_msg_error(15, 0, env);
 	ft_printf("Print Magic\n");
-	print_magic(param->fd);
+	print_magic(env->fd);
 	ft_printf("Print Header\n");
-	print_header(param);
+	print_header(env);
 	ft_printf("Print Body\n");
-	print_body(param);
+	print_body(env);
 	ft_printf("Complete file\n");
-	complete_file(param);
-	ft_printf("Writing output programe to \033[32m%s\033[00m\n", param->file_cor);
+	complete_file(env);
+	ft_printf("Writing output programe to \033[32m%s\033[00m\n",
+			env->file_cor);
 }
