@@ -19,10 +19,12 @@
 char	*set_name_cor(char *name)
 {
 	char *file_cor;
+	char *tmp;
 
-	file_cor = ft_strnew(ft_strlen(name) - 2);
-	file_cor = ft_strncpy(file_cor, name, (ft_strlen(name) - 2));
-	file_cor = ft_strjoin(file_cor, ".cor");
+	tmp = ft_strnew(ft_strlen(name) - 2);
+	tmp = ft_strncpy(tmp, name, (ft_strlen(name) - 2));
+	file_cor = ft_strjoin(tmp, ".cor");
+	ft_strdel(&tmp);
 	return (file_cor);
 }
 
