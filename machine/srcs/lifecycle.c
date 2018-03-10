@@ -70,10 +70,17 @@ void		launch_lifecycle(t_env *env)
 		if (env->cycle == env->dump)
 			print_dump(env);
 		if (env->visu)
-			visu(env, env->cycle);
+		{
+			init_curses(env);
+			visu(env, cycle_to_die);
+		}
 		exec_cycle(env);
 		check = check_cycles(env, &cycle_to_die);
 		cycle_to_die--;
+		if (cycle_to_die == 0)
+		{
+			check = 1;
+		}
 		env->cycle++;
 	}
 	endwin();
