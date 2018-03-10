@@ -16,6 +16,7 @@ void	ft_lstaddtail(t_list **alst, t_list *new)
 {
 	t_list	*tmp;
 
+	tmp = NULL;
 	if (alst && *alst)
 	{
 		tmp = *alst;
