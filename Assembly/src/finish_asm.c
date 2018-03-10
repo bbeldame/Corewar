@@ -59,19 +59,6 @@ void	complete_file(t_asm *param)
 	}
 }
 
-void	print_label_debug(t_asm *param)
-{
-	t_list		*tmp;
-	t_labdir	*content;
-
-	tmp = param->labdirs;
-	while (tmp)
-	{
-		content = tmp->content;
-		tmp = tmp->next;
-	}
-}
-
 int		get_ocp_return(t_inst *ins, int oc)
 {
 	if (ins->nb_instr == 0)
@@ -86,13 +73,9 @@ void	finalize_asm(t_asm *env)
 {
 	if ((env->fd = open(env->file_cor, O_CREAT | O_RDWR | O_TRUNC, 0755)) == -1)
 		exit_msg_error(env, "Create file", -1);
-	//ft_printf("Print Magic\n");
 	print_magic(env->fd);
-	//ft_printf("Print Header\n");
 	print_header(env);
-	//ft_printf("Print Body\n");
 	print_body(env);
-	//ft_printf("Complete file\n");
 	complete_file(env);
 	ft_printf("Writing output programe to : \033[32m%s\033[00m\n",
 			env->file_cor);

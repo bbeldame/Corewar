@@ -153,6 +153,7 @@ long					ft_atoi_oflow(char *str);
 */
 
 void					free_file_list(t_file_list **list);
+void					clean_env(t_asm *env);
 
 /*
 ** 		Debug

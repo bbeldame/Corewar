@@ -18,9 +18,9 @@ int		get_labdir_pos(t_asm *param, t_inst *ins, t_label *tmp, int oc)
 	t_labdir	*content;
 
 	if ((new = (t_list*)malloc(sizeof(t_list))) == NULL)
-		return (0);
+		exit_msg_error(param, "Malloc", -1);
 	if ((content = (t_labdir*)malloc(sizeof(t_labdir))) == NULL)
-		return (0);
+		exit_msg_error(param, "Malloc", -1);
 	content->label = tmp->label;
 	content->instr_addr = ins->ins_octet;
 	content->addr = ins->octet + 1;
