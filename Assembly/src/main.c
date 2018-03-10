@@ -20,12 +20,16 @@ int		main(int ac, char **av)
 	i = 1;
 	if (ac == 2)
 	{
-		ft_check_ext(av[1]);
+		if (!ft_check_ext(av[1]))
+			return (0);
 		param = *init_t_asm(av[1]);
 		ft_parser(&param);
 		finalize_asm(&param);
 	}
 	else
+	{
 		ft_print_usage();
-	return (0);
+		return (0);
+	}
+	return (1);
 }

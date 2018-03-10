@@ -80,8 +80,8 @@ typedef struct			s_asm
 ** 		Fonction erreur
 */
 
-void					ft_error(char *s);
-void					exit_msg_error(int c_er, int n_line, t_asm *param);
+void					exit_msg_error(t_asm *env, char *msg, int n_line);
+void					exit_msg_header(t_asm *param, int c_er);
 
 /*
 **		Finalisation asm

@@ -1,0 +1,179 @@
+make: Nothing to be done for `all'.
+[33m=== TEST Divers: [00m
+[31m=== erreur: [00m
+[31mError[00m : "unit_test/file/bad_extension.txt" is not a .s
+[31mError[00m : Open failure
+[32m=== OK : [00m
+Writing output programe to : [32munit_test/file/good_extension.cor[00m
+
+[33m=== TEST HEADER: [00m
+[31m=== erreur: [00m
+[31mError[00m : Unkown champ comment
+===========
+[31mError[00m : Unkown champ name
+===========
+[31mError[00m : Unkown champ name
+===========
+[31mError[00m : Unkown champ name
+===========
+[31mError[00m : Unkown champ comment
+[32m=== OK : [00m
+Writing output programe to : [32munit_test/header/good_header.cor[00m
+
+[33m=== TEST BODY: [00m
+
+[33mlive [00m
+[31m=== erreur: [00m
+[31mError[00m : Unknow instruction at L4
+[31mError[00m : Unknow instruction at L4
+[32m=== OK : [00m
+Writing output programe to : [32munit_test/body/live/g_live.cor[00m
+
+[33mld [00m
+[31m=== erreur: [00m
+[31mError[00m : Unknow instruction at L6
+[31mError[00m : Unknow instruction at L6
+[31mError[00m : Unknow instruction at L6
+[31mError[00m : Unknow instruction at L6
+[31mError[00m : Unknow instruction at L6
+[32m=== OK : [00m
+Writing output programe to : [32munit_test/body/ld/g_ld_1.cor[00m
+Writing output programe to : [32munit_test/body/ld/g_ld_2.cor[00m
+
+[33mst [00m
+[31m=== erreur: [00m
+[31mError[00m : Unknow instruction at L6
+[31mError[00m : Unknow instruction at L6
+[31mError[00m : Unknow instruction at L6
+[31mError[00m : Unknow instruction at L6
+[31mError[00m : Unknow instruction at L6
+[32m=== OK : [00m
+Writing output programe to : [32munit_test/body/st/g_st_1.cor[00m
+Writing output programe to : [32munit_test/body/st/g_st_2.cor[00m
+
+[33madd [00m
+[31m=== erreur: [00m
+[31mError[00m : Unknow instruction at L4
+[31mError[00m : Unknow instruction at L4
+[31mError[00m : Unknow instruction at L4
+[31mError[00m : Unknow instruction at L4
+[31mError[00m : Unknow instruction at L4
+[32m=== OK : [00m
+Writing output programe to : [32munit_test/body/add/g_add_1.cor[00m
+
+[33msub [00m
+[31m=== erreur: [00m
+[31mError[00m : Unknow instruction at L4
+[31mError[00m : Unknow instruction at L4
+[31mError[00m : Unknow instruction at L4
+[31mError[00m : Unknow instruction at L4
+[31mError[00m : Unknow instruction at L4
+[32m=== OK : [00m
+Writing output programe to : [32munit_test/body/sub/g_sub_1.cor[00m
+
+[33mand [00m
+[31m=== erreur: [00m
+[31mError[00m : Unknow instruction at L6
+[31mError[00m : Unknow instruction at L6
+[32m=== OK : [00m
+Writing output programe to : [32munit_test/body/and/g_and_1.cor[00m
+
+[33mor [00m
+[31m=== erreur: [00m
+[31mError[00m : Unknow instruction at L6
+[31mError[00m : Unknow instruction at L6
+[32m=== OK : [00m
+Writing output programe to : [32munit_test/body/or/g_or_1.cor[00m
+
+[33mxor [00m
+[31m=== erreur: [00m
+[31mError[00m : Unknow instruction at L6
+[31mError[00m : Unknow instruction at L6
+[32m=== OK : [00m
+Writing output programe to : [32munit_test/body/xor/g_xor_1.cor[00m
+
+[33mzjump [00m
+[31m=== erreur: [00m
+[31mError[00m : Unknow instruction at L6
+[31mError[00m : Unknow instruction at L6
+[31mError[00m : Unknow instruction at L6
+Writing output programe to : [32munit_test/body/zjump/e_zjump_4.cor[00m
+[32m=== OK : [00m
+Writing output programe to : [32munit_test/body/zjump/g_zjump_1.cor[00m
+
+[33mldi [00m
+[31m=== erreur: [00m
+[31mError[00m : Unknow instruction at L6
+[31mError[00m : Unknow instruction at L6
+[31mError[00m : Unknow instruction at L6
+[31mError[00m : Unknow instruction at L6
+[32m=== OK : [00m
+Writing output programe to : [32munit_test/body/ldi/g_ldi_1.cor[00m
+
+[33msti [00m
+[31m=== erreur: [00m
+[31mError[00m : Unknow instruction at L6
+[31mError[00m : Unknow instruction at L6
+[31mError[00m : Unknow instruction at L6
+[31mError[00m : Unknow instruction at L6
+[32m=== OK : [00m
+Writing output programe to : [32munit_test/body/sti/g_sti_1.cor[00m
+
+[33mfork [00m
+[31m=== erreur: [00m
+[31mError[00m : Unknow instruction at L6
+[31mError[00m : Unknow instruction at L6
+[31mError[00m : Unknow instruction at L6
+[31mError[00m : Unknow instruction at L6
+[32m=== OK : [00m
+Writing output programe to : [32munit_test/body/fork/g_fork_1.cor[00m
+
+[33mlld [00m
+[31m=== erreur: [00m
+[31mError[00m : Unknow instruction at L6
+[31mError[00m : Unknow instruction at L6
+[31mError[00m : Unknow instruction at L6
+[31mError[00m : Unknow instruction at L6
+[32m=== OK : [00m
+Writing output programe to : [32munit_test/body/lld/g_lld_1.cor[00m
+
+[33mlldi [00m
+[31m=== erreur: [00m
+[31mError[00m : Unknow instruction at L6
+[31mError[00m : Unknow instruction at L6
+[31mError[00m : Unknow instruction at L6
+[31mError[00m : Unknow instruction at L6
+[32m=== OK : [00m
+Writing output programe to : [32munit_test/body/lldi/g_lldi_1.cor[00m
+
+[33mlfork [00m
+[31m=== erreur: [00m
+[31mError[00m : Unknow instruction at L6
+[31mError[00m : Unknow instruction at L6
+[31mError[00m : Unknow instruction at L6
+[31mError[00m : Unknow instruction at L6
+[32m=== OK : [00m
+Writing output programe to : [32munit_test/body/lfork/g_lfork_1.cor[00m
+
+[33maff [00m
+[31m=== erreur: [00m
+[31mError[00m : Unknow instruction at L4
+[31mError[00m : Unknow instruction at L4
+[31mError[00m : Unknow instruction at L4
+[32m=== OK : [00m
+Writing output programe to : [32munit_test/body/aff/g_aff_1.cor[00m
+[32m=== All instruction OK : [00m
+Writing output programe to : [32munit_test/body/good/all_instruction_valide.cor[00m
+
+[33m=== TEST champion : [00m
+[32m=== Ressource corewar : [00m
+[35m 42.s [00m
+Writing output programe to : [32munit_test/champs_ope/42.cor[00m
+[35m Backward.s [00m
+Writing output programe to : [32munit_test/champs_ope/Backward.cor[00m
+[35m barriere.s [00m
+Writing output programe to : [32munit_test/champs_ope/barriere.cor[00m
+[35m Car.s [00m
+Writing output programe to : [32munit_test/champs_ope/Car.cor[00m
+[35m Torpille.s [00m
+Writing output programe to : [32munit_test/champs_ope/Torpille.cor[00m

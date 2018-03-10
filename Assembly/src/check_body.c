@@ -78,7 +78,7 @@ int		check_body(t_asm *param)
 		if (files->line[i] != '\0' && files->line[i] != COMMENT_CHAR)
 		{
 			if (!check_inst(files->line + i, param))
-				exit_msg_error(22, files->num_l, param);
+				exit_msg_error(param, "Unknow instruction", files->num_l);
 		}
 		files = files->next;
 	}

@@ -35,6 +35,9 @@ int		ft_check_ext(char *str)
 	if ((str[ft_strlen(str) - 1] == 's') && (str[ft_strlen(str) - 2] == '.'))
 		return (1);
 	else
-		exit_msg_error(12, 0, NULL);
+	{
+		ft_printf("\033[31mError\033[00m : \"%s\" is not a .s\n", str);
+		return (0);
+	}
 	return (0);
 }

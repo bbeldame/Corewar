@@ -37,7 +37,7 @@ t_asm	*init_t_asm(char *name)
 	t_asm	*new_asm;
 
 	if (!(new_asm = malloc(sizeof(t_asm))))
-		exit_msg_error(10, 0, NULL);
+		exit_msg_error(NULL, "Malloc", -1);
 	new_asm->name_prg = NULL;
 	new_asm->comment_prg = NULL;
 	new_asm->file_s = name;
@@ -80,7 +80,7 @@ void	ft_add_end_file_list(t_file_list **list, char *line, int num_l)
 	t_file_list *tmp;
 
 	if (!(new = malloc(sizeof(t_file_list))))
-		exit_msg_error(10, 0, NULL);
+		exit_msg_error(NULL, "Malloc", -1);
 	new->line = ft_strdup(line);
 	new->num_l = num_l;
 	new->next = NULL;

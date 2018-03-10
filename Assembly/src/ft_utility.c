@@ -28,7 +28,7 @@ int		ft_open_file(char *s)
 
 	fd = open(s, O_RDONLY);
 	if (fd == -1)
-		exit_msg_error(11, 0, NULL);
+		exit_msg_error(NULL, "Open failure", -1);
 	return (fd);
 }
 

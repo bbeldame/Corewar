@@ -24,9 +24,9 @@ t_list	*init_label(char *label)
 	if (label == NULL)
 		return (NULL);
 	if ((new = (t_list*)malloc(sizeof(t_list))) == NULL)
-		exit_msg_error(10, 0, NULL);
+		exit_msg_error(NULL, "Malloc", -1);
 	if ((tmp = (t_label*)malloc(sizeof(t_label))) == NULL)
-		exit_msg_error(10, 0, NULL);
+		exit_msg_error(NULL, "Malloc", -1);
 	tmp->label = label;
 	tmp->addr = -1;
 	new->content = tmp;

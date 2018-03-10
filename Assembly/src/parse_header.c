@@ -40,7 +40,7 @@ int		add_name_comment(char *line, char verif, t_asm *param)
 	if (verif == 1)
 		param->comment_prg = ft_strsub(line, i, j);
 	if (!verif_end_line_param(line, i + j + 1))
-		exit_msg_error(16, 0, param);
+		exit_msg_error(param, "Syntax header", -1);
 	return (1);
 }
 
@@ -79,9 +79,9 @@ int		verif_name_comment(char *line, int verif)
 void	verif_len_header(t_asm *param)
 {
 	if (ft_strlen(param->name_prg) > PROG_NAME_LENGTH)
-		exit_msg_error(30, 0, param);
+		exit_msg_header(param, 1);
 	if (ft_strlen(param->comment_prg) > COMMENT_LENGTH)
-		exit_msg_error(31, 0, param);
+		exit_msg_header(param, 2);
 }
 
 /*
@@ -91,9 +91,9 @@ void	verif_len_header(t_asm *param)
 void	verif_exist_header(t_asm *param)
 {
 	if (!param->name_prg || ft_strlen(param->name_prg) < 1)
-		exit_msg_error(13, 0, param);
+		exit_msg_error(param, "Unkown champ name", -1);
 	if (!param->comment_prg || ft_strlen(param->comment_prg) < 1)
-		exit_msg_error(14, 0, param);
+		exit_msg_error(param, "Unkown champ comment", -1);
 }
 
 /*

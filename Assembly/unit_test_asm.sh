@@ -9,6 +9,7 @@ echo "\033[31m=== erreur: \033[00m"
 echo "\033[32m=== OK : \033[00m"
 ./asm unit_test/file/good_extension.s
 
+sleep 3
 echo "\n\033[33m=== TEST HEADER: \033[00m"
 
 echo "\033[31m=== erreur: \033[00m"
@@ -23,7 +24,7 @@ echo "==========="
 ./asm unit_test/header/E_char_in_head.s
 echo "\033[32m=== OK : \033[00m"
 ./asm unit_test/header/good_header.s
-
+sleep 3
 echo "\n\033[33m=== TEST BODY: \033[00m"
 
 echo "\n\033[33mlive \033[00m"
@@ -69,7 +70,7 @@ echo "\033[31m=== erreur: \033[00m"
 echo "\033[32m=== OK : \033[00m"
 ./asm unit_test/body/add/g_add_1.s
 
-
+sleep 3
 echo "\n\033[33msub \033[00m"
 echo "\033[31m=== erreur: \033[00m"
 ./asm unit_test/body/sub/e_sub_1.s
@@ -118,7 +119,7 @@ echo "\033[31m=== erreur: \033[00m"
 
 echo "\033[32m=== OK : \033[00m"
 ./asm unit_test/body/zjump/g_zjump_1.s
-
+sleep 3
 echo "\n\033[33mldi \033[00m"
 echo "\033[31m=== erreur: \033[00m"
 ./asm unit_test/body/ldi/e_ldi_1.s
