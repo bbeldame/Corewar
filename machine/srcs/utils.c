@@ -43,8 +43,9 @@ t_ocp				get_ocp(t_env *env, t_process *current)
 	ocp.two = 0;
 	ocp.three = 0;
 	byte_ocp = 0;
-	if (env->arena[M(current->pc)] != LIVE && env->arena[M(current->pc)] != ZJMP &&
-		env->arena[M(current->pc)] != FORK && env->arena[M(current->pc)] != LFORK)
+	if (env->arena[M(current->pc)] != LIVE && env->arena[M(current->pc)]
+		!= ZJMP && env->arena[M(current->pc)]
+		!= FORK && env->arena[M(current->pc)] != LFORK)
 	{
 		byte_ocp = env->arena[M(current->pc + 1)];
 		ocp.one = byte_ocp >> 6;

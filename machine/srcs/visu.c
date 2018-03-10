@@ -12,7 +12,7 @@
 
 #include "../includes/vm.h"
 
-void	curse_color()
+void	curse_color(void)
 {
 	start_color();
 	init_pair(1, COLOR_WHITE, COLOR_BLACK);
@@ -26,13 +26,11 @@ void	curse_color()
 
 void	print_curses(t_env *env, unsigned k, int y, int x)
 {
-
 	int				i;
 	t_process		*tmp;
-	
+
 	i = 0;
 	tmp = env->head;
-	i = 0;
 	while (i < env->nb_processes)
 	{
 		if (tmp->pc == k)
@@ -58,7 +56,7 @@ void	init_curses(t_env *env)
 	unsigned int	k;
 	int				y;
 	int				x;
-	
+
 	k = 0;
 	x = 5;
 	y = 1;
@@ -108,10 +106,10 @@ int		visu(t_env *env, int cycles_left)
 {
 	curses_players(env);
 	attron(COLOR_PAIR(7));
-    mvprintw (LINES - 5, 5, " Lives: %d ", env->nb_lives);
-	mvprintw (LINES - 3, 5, " Cycles: %d / %d", env->cycle_to_die - cycles_left, env->cycle_to_die);
-    refresh();
-	//sleep(1);
-    endwin();
-	return(0);
+	mvprintw(LINES - 5, 5, " Lives: %d ", env->nb_lives);
+	mvprintw(LINES - 3, 5, " Cycles: %d / %d",
+		env->cycle_to_die - cycles_left, env->cycle_to_die);
+	refresh();
+	endwin();
+	return (0);
 }

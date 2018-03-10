@@ -55,6 +55,7 @@ void		parse_champs(t_env *env, int argc, char **argv, int *i)
 	if (env->nb_players > MAX_PLAYERS)
 		ft_exit(2, "Maximum number of players is 4.");
 }
+
 void		parse_args(t_env *env, int argc, char **argv)
 {
 	int		i;
