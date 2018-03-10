@@ -73,7 +73,7 @@ void	set_file_list(t_asm *param, int fd)
 ** 		analyse le body 							ft_parse_body
 */
 
-void	ft_parser(t_asm *param)
+int		ft_parser(t_asm *param)
 {
 	int	fd;
 
@@ -83,4 +83,7 @@ void	ft_parser(t_asm *param)
 	free_file_list(&param->header);
 	if (!ft_parse_body(param))
 		exit_msg_error(param, "Parser", -1);
+	if (param->err == 1)
+		return (0);
+	return (1);
 }

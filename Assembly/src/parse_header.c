@@ -125,6 +125,7 @@ int		set_name_comment(t_asm *param)
 			break ;
 	}
 	verif_exist_header(param);
-	verif_len_header(param);
+	if (param->err == 0)
+		verif_len_header(param);
 	return (1);
 }

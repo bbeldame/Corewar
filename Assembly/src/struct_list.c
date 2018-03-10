@@ -45,6 +45,7 @@ t_asm	*init_t_asm(char *name)
 	new_asm->header = NULL;
 	new_asm->body = NULL;
 	new_asm->labels = NULL;
+	new_asm->err = 0;
 	return (new_asm);
 }
 

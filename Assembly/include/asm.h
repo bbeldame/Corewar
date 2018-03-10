@@ -73,6 +73,7 @@ typedef struct			s_asm
 	t_file_list			*body;
 	t_list				*labels;
 	t_list				*labdirs;
+	int					err;
 	int					prog_size;
 }						t_asm;
 
@@ -82,6 +83,7 @@ typedef struct			s_asm
 
 void					exit_msg_error(t_asm *env, char *msg, int n_line);
 void					exit_msg_header(t_asm *param, int c_er);
+void					msg_error(t_asm *env, char *msg, int n_line);
 
 /*
 **		Finalisation asm
@@ -102,7 +104,7 @@ int						get_ocp_return(t_inst *ins, int oc);
 **		Parser
 */
 
-void					ft_parser(t_asm *param);
+int						ft_parser(t_asm *param);
 int						ft_parse_body(t_asm *param);
 int						set_name_comment(t_asm *param);
 int						check_body(t_asm *param);

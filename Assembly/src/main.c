@@ -23,8 +23,8 @@ int		main(int ac, char **av)
 		if (!ft_check_ext(av[1]))
 			return (0);
 		param = *init_t_asm(av[1]);
-		ft_parser(&param);
-		finalize_asm(&param);
+		if (ft_parser(&param))
+			finalize_asm(&param);
 		clean_env(&param);
 	}
 	else

@@ -12,18 +12,17 @@
 
 #include "../include/asm.h"
 
-void	delete_asm(t_asm *param)
+void	msg_error(t_asm *env, char *msg, int n_line)
 {
-	if (param->name_prg)
-		ft_strdel(&param->name_prg);
-	if (param->comment_prg)
-		ft_strdel(&param->comment_prg);
-	if (param->file_cor)
-		ft_strdel(&param->file_cor);
-	if (param->header)
-		free_file_list(&param->header);
-	if (param->body)
-		free_file_list(&param->body);
+	if (n_line == -1)
+	{
+		ft_printf("\033[31mError\033[00m : %s\n");
+	}
+	else
+	{
+		ft_printf("\033[31mError\033[00m : %s at L%d\n", msg, n_line);
+	}
+	env->err = 1;
 }
 
 void	exit_msg_error(t_asm *env, char *msg, int n_line)
@@ -37,8 +36,8 @@ void	exit_msg_error(t_asm *env, char *msg, int n_line)
 		ft_printf("\033[31mError\033[00m : %s at L%d\n", msg, n_line);
 	}
 	if (env)
-		delete_asm(env);
-	exit(EXIT_FAILURE);
+		clean_env(env);
+	exit(1);
 }
 
 void	exit_msg_header(t_asm *param, int c_er)
@@ -49,4 +48,5 @@ void	exit_msg_header(t_asm *param, int c_er)
 	else if (c_er == 2)
 		ft_printf("Error : Champion comment too long (%d) max %d\n",
 			ft_strlen(param->comment_prg), COMMENT_LENGTH);
+	param->err = 1;
 }

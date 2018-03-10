@@ -9,7 +9,7 @@ ld %1, r1
 ld %:testlabel, r1
 
 st r1, r2
-#st r1, %:3
+#st r1, %:testlabel
 
 add r1, r2, r3
 
