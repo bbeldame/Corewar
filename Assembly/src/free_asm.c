@@ -28,8 +28,8 @@ void	free_t_list_labdir(t_list **list)
 		if ((*list)->content)
 		{
 			lab = (*list)->content;
-			//ft_strdel(&lab->label);
-			//ft_memdel((*list)->content);
+			// ft_strdel(&lab->label);
+			// ft_memdel((*list)->content);
 		}
 		free(*list);
 		*list = tmp;
@@ -83,4 +83,5 @@ void	clean_env(t_asm *env)
 	free_file_list(&env->body);
 	free_t_list_label(&env->labels);
 	free_t_list_labdir(&env->labdirs);
+	free(env);
 }
