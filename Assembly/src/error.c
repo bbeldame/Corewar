@@ -28,13 +28,9 @@ void	msg_error(t_asm *env, char *msg, int n_line)
 void	exit_msg_error(t_asm *env, char *msg, int n_line)
 {
 	if (n_line == -1)
-	{
 		ft_printf("\033[31mError\033[00m : %s\n");
-	}
 	else
-	{
 		ft_printf("\033[31mError\033[00m : %s at L%d\n", msg, n_line);
-	}
 	if (env)
 		clean_env(env);
 	exit(1);
@@ -43,10 +39,10 @@ void	exit_msg_error(t_asm *env, char *msg, int n_line)
 void	exit_msg_header(t_asm *param, int c_er)
 {
 	if (c_er == 1)
-		ft_printf("Error : Champion name too long (%d) max %d\n",
-			ft_strlen(param->name_prg), PROG_NAME_LENGTH);
+		ft_printf("\033[31mError\033[00m : Champion name too long \
+(%d) max %d\n", ft_strlen(param->name_prg), PROG_NAME_LENGTH);
 	else if (c_er == 2)
-		ft_printf("Error : Champion comment too long (%d) max %d\n",
-			ft_strlen(param->comment_prg), COMMENT_LENGTH);
+		ft_printf("\033[31mError\033[00m : Champion comment too long \
+(%d) max %d\n", ft_strlen(param->comment_prg), COMMENT_LENGTH);
 	param->err = 1;
 }

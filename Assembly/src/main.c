@@ -26,7 +26,6 @@ int		main(int ac, char **av)
 		if (ft_parser(&param))
 			finalize_asm(&param);
 		clean_env(&param);
-		//free(&param);
 	}
 	else
 	{
