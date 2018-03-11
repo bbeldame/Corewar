@@ -6,13 +6,13 @@
 /*   By: bbeldame <bbeldame@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/18 16:07:14 by msakwins          #+#    #+#             */
-/*   Updated: 2018/03/11 23:04:35 by bbeldame         ###   ########.fr       */
+/*   Updated: 2018/03/11 23:36:24 by bbeldame         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/vm.h"
 
-static void		gonna_free_for_nothing(t_env *e)
+void			gonna_free_for_nothing(t_env *e)
 {
 	int			i;
 	t_process	*tmp;

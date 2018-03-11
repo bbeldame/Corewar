@@ -6,7 +6,7 @@
 /*   By: bbeldame <bbeldame@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/18 16:07:14 by msakwins          #+#    #+#             */
-/*   Updated: 2018/03/11 23:26:39 by bbeldame         ###   ########.fr       */
+/*   Updated: 2018/03/11 23:36:40 by bbeldame         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,5 +32,6 @@ int				main(int argc, char **argv)
 	launch_lifecycle(&env);
 	end_curses(&env);
 	anounce_the_winner(&env);
+	gonna_free_for_nothing(&env);
 	return (0);
 }

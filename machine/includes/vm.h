@@ -6,7 +6,7 @@
 /*   By: bbeldame <bbeldame@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/18 16:28:40 by msakwins          #+#    #+#             */
-/*   Updated: 2018/03/11 23:24:28 by bbeldame         ###   ########.fr       */
+/*   Updated: 2018/03/11 23:36:30 by bbeldame         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -143,6 +143,7 @@ void				init_curse_color(void);
 void				print_curses(t_env *env, unsigned k, int y, int x);
 void				curses_players(t_env *env);
 void				end_curses(t_env *env);
+void				gonna_free_for_nothing(t_env *e);
 
 static const t_op	g_op[17] =
 {
