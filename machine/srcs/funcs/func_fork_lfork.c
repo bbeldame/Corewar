@@ -6,7 +6,7 @@
 /*   By: bbeldame <bbeldame@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/04 23:06:18 by bbeldame          #+#    #+#             */
-/*   Updated: 2018/03/11 23:06:49 by bbeldame         ###   ########.fr       */
+/*   Updated: 2018/03/12 00:22:20 by bbeldame         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,9 @@ static int			both_forks(t_env *env, t_process *current, int restr)
 	else
 		forked->pc = M((current->pc + value));
 	get_opcode(env, forked);
+	if (env->verbose)
+		ft_printf("(l)fork called from %d : forking to %hd\n",
+			current->id_champion, M((current->pc + value)));
 	tmp = env->head;
 	i = 1;
 	while (i++ < env->nb_processes)

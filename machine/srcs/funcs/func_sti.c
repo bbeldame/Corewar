@@ -6,7 +6,7 @@
 /*   By: bbeldame <bbeldame@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/22 15:23:05 by msakwins          #+#    #+#             */
-/*   Updated: 2018/03/10 22:25:40 by bbeldame         ###   ########.fr       */
+/*   Updated: 2018/03/12 00:49:04 by bbeldame         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,9 @@ static void		write_sti(t_env *env, t_process *current, unsigned int value)
 
 	reg_value = current->reg[env->arena[M((current->pc + 2))] - 1];
 	i = 0;
+	if (env->verbose)
+		ft_printf("Sti called from %d : storing %d to %d\n",
+			current->id_champion, reg_value, value);
 	while (i < REG_SIZE)
 	{
 		env->arena[M((current->pc + value + i))] =

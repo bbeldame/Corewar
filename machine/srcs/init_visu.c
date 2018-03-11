@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   visu.c                                             :+:      :+:    :+:   */
+/*   init_visu.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bbeldame <bbeldame@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/18 17:20:54 by msakwins          #+#    #+#             */
-/*   Updated: 2018/03/05 00:31:57 by bbeldame         ###   ########.fr       */
+/*   Updated: 2018/03/12 00:34:24 by bbeldame         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,9 @@ void	end_curses(t_env *env)
 	sleep(3);
 	erase();
 	refresh();
-	mvprintw(LINES / 2 - 5, COLS / 2 - 20, "Contestant %d, \"%s\", has won !\n", 1, env->player[env->winner].header->prog_name);
+	mvprintw(LINES / 2 - 5, COLS / 2 - 20,
+		"Contestant %d, \"%s\", has won !\n", env->player[env->winner].nb,
+		env->player[env->winner].header->prog_name);
 	refresh();
 	sleep(5);
 	endwin();

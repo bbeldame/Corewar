@@ -6,7 +6,7 @@
 /*   By: bbeldame <bbeldame@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/18 16:07:14 by msakwins          #+#    #+#             */
-/*   Updated: 2018/03/09 22:26:52 by bbeldame         ###   ########.fr       */
+/*   Updated: 2018/03/12 00:36:56 by bbeldame         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,18 @@ static void			check_livings(t_env *env)
 	}
 }
 
+static void			reset_players_lives(t_env *env)
+{
+	int			i;
+
+	i = 0;
+	while (i < env->nb_players)
+	{
+		env->player[i].live = 0;
+		i++;
+	}
+}
+
 int					check_cycles(t_env *env, int *cycle_to_die)
 {
 	if (*cycle_to_die == 0)
@@ -62,6 +74,7 @@ int					check_cycles(t_env *env, int *cycle_to_die)
 			env->nb_checks = 0;
 		}
 		check_livings(env);
+		reset_players_lives(env);
 		env->nb_lives = 0;
 		*cycle_to_die = env->cycle_to_die;
 	}
