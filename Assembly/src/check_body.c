@@ -32,14 +32,12 @@ int		get_size_inst(char *line)
 ** 		renvoi 0 pour idx == 16 ou si parse_params == 0
 */
 
-int		check_inst(char *line, t_asm *param, int num_l)
+int		check_inst(char *line, t_asm *param, int num_l, int i)
 {
 	int		idx;
-	int		i;
 	int		size;
 
 	idx = 0;
-	i = 0;
 	while (g_op_tab[idx].name)
 	{
 		size = get_size_inst(line);
@@ -51,9 +49,13 @@ int		check_inst(char *line, t_asm *param, int num_l)
 		idx++;
 	}
 	if (idx == 16)
+	{
+		msg_error(param, ft_strjoin("Unknow instruction : ",
+			ft_strsub(line, 0, size)), num_l);
 		return (0);
+	}
 	if (!parse_params(line + i, param, idx))
-		msg_error(param, ft_strjoin("Invalid parameters for : ",
+		msg_error(param, ft_strjoin("Invalid parameters : ",
 			g_op_tab[idx].name), num_l);
 	return (1);
 }
@@ -78,8 +80,7 @@ int		check_body(t_asm *param)
 			i++;
 		if (files->line[i] != '\0' && files->line[i] != COMMENT_CHAR)
 		{
-			if (!check_inst(files->line + i, param, files->num_l))
-				msg_error(param, "Unknow instruction ", files->num_l);
+			check_inst(files->line + i, param, files->num_l, 0);
 		}
 		files = files->next;
 	}

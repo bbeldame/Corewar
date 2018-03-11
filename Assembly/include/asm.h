@@ -78,30 +78,22 @@ typedef struct			s_asm
 }						t_asm;
 
 /*
-** 		Fonction erreur
-*/
-
-void					exit_msg_error(t_asm *env, char *msg, int n_line);
-void					exit_msg_header(t_asm *param, int c_er);
-void					msg_error(t_asm *env, char *msg, int n_line);
-
-/*
-**		Finalisation asm
+**		Print asm.cor
 */
 
 void					finalize_asm(t_asm *env);
 void					print_header(t_asm *param);
 void					print_magic(int fd);
 void					print_body(t_asm *param);
+
 int						get_ocp_return(t_inst *ins, int oc);
 int						get_reg(t_inst *ins);
 int						get_ind(t_asm *param, t_inst *ins, int oc);
 int						get_param_end(char *line);
 int						get_param(t_asm *param, t_inst *ins);
-int						get_ocp_return(t_inst *ins, int oc);
 
 /*
-**		Parser
+**		Parser asm.s
 */
 
 int						ft_parser(t_asm *param);
@@ -111,7 +103,7 @@ int						check_body(t_asm *param);
 int						parse_params(char *line, t_asm *param, int idx);
 
 /*
-**		Check des commandes du fichier .s
+**		Check parameters instruction
 */
 
 int						is_reg(char *param);
@@ -140,10 +132,8 @@ void					ft_lstaddtail(t_list **alst, t_list *new);
 ** 		Utilitaire
 */
 
-void					print_header(t_asm *param);
 int						is_white_space(char c);
 int						verif_end_line_param(char *str, int i);
-void					ft_print_usage(void);
 int						ft_open_file(char *s);
 char					*ft_skip_space(char *s);
 int						verif_line(char *line);
@@ -156,5 +146,14 @@ long					ft_atoi_oflow(char *str);
 
 void					free_file_list(t_file_list **list);
 void					clean_env(t_asm *env);
+
+/*
+** 		Fonction erreur
+*/
+
+void					exit_msg_error(t_asm *env, char *msg, int n_line);
+void					exit_msg_header(t_asm *param, int c_er);
+void					msg_error(t_asm *env, char *msg, int n_line);
+void					ft_print_usage(void);
 
 #endif

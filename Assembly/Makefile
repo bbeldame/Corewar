@@ -21,7 +21,7 @@ LIB_LINK		=	../libft/libft.a
 
 INC_PATH		= 	./include
 SRC_PATH		=	./src
-SRC_NAME 		=	main.c free_asm.c error.c parser.c ft_utility.c debug.c \
+SRC_NAME 		=	main.c free_asm.c error.c parser.c ft_utility.c \
 					struct_list.c set_name_extension.c parse_body.c \
 					print_header.c parse_header.c check_param.c op.c \
 					check_body.c parse_params.c finish_asm.c print_body.c\
@@ -76,3 +76,5 @@ test:
 
 
 re: fclean all
+
+#valgrind --track-origins=yes --leak-check=full ./asm test.s

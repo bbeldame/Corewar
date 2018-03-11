@@ -22,6 +22,7 @@ void	msg_error(t_asm *env, char *msg, int n_line)
 	{
 		ft_printf("\033[31mError\033[00m : %s in line %d\n", msg, n_line);
 	}
+	ft_strdel(&msg);
 	env->err = 1;
 }
 
