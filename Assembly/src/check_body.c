@@ -53,7 +53,7 @@ int		check_inst(char *line, t_asm *param, int num_l)
 	if (idx == 16)
 		return (0);
 	if (!parse_params(line + i, param, idx))
-		msg_error(param, ft_strjoin("Invalide parametre for : ",
+		msg_error(param, ft_strjoin("Invalid parameters for : ",
 			g_op_tab[idx].name), num_l);
 	return (1);
 }
@@ -79,7 +79,7 @@ int		check_body(t_asm *param)
 		if (files->line[i] != '\0' && files->line[i] != COMMENT_CHAR)
 		{
 			if (!check_inst(files->line + i, param, files->num_l))
-				msg_error(param, "Unknow instruction", files->num_l);
+				msg_error(param, "Unknow instruction ", files->num_l);
 		}
 		files = files->next;
 	}

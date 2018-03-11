@@ -25,7 +25,7 @@ SRC_NAME 		=	main.c free_asm.c error.c parser.c ft_utility.c debug.c \
 					struct_list.c set_name_extension.c parse_body.c \
 					print_header.c parse_header.c check_param.c op.c \
 					check_body.c parse_params.c finish_asm.c print_body.c\
-					get_param.c ft_atoi_oflow.c  
+					get_param.c ft_atoi_oflow.c
 OBJ_PATH		=	./obj
 
 OBJ_NAME		=	$(SRC_NAME:.c=.o)
@@ -70,6 +70,9 @@ fclean: clean
 norme:
 	@norminette src include
 
+test:
+	./asm_zaz test.s && mv test.cor test_zaz.cor
+	./asm test.s && diff test.cor test_zaz.cor
 
 
 re: fclean all

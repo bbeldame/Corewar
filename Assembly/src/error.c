@@ -20,7 +20,7 @@ void	msg_error(t_asm *env, char *msg, int n_line)
 	}
 	else
 	{
-		ft_printf("\033[31mError\033[00m : %s at L%d\n", msg, n_line);
+		ft_printf("\033[31mError\033[00m : %s in line %d\n", msg, n_line);
 	}
 	env->err = 1;
 }
@@ -30,7 +30,7 @@ void	exit_msg_error(t_asm *env, char *msg, int n_line)
 	if (n_line == -1)
 		ft_printf("\033[31mError\033[00m : %s\n");
 	else
-		ft_printf("\033[31mError\033[00m : %s at L%d\n", msg, n_line);
+		ft_printf("\033[31mError\033[00m : %s in line %d\n", msg, n_line);
 	if (env)
 		clean_env(env);
 	exit(1);
