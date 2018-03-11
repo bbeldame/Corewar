@@ -15,17 +15,17 @@
 int		main(int ac, char **av)
 {
 	int		i;
-	t_asm	param;
+	t_asm	*param;
 
 	i = 1;
 	if (ac == 2)
 	{
 		if (!ft_check_ext(av[1]))
 			return (0);
-		param = *init_t_asm(av[1]);
-		if (ft_parser(&param))
-			finalize_asm(&param);
-		clean_env(&param);
+		param = init_t_asm(av[1]);
+		if (ft_parser(param))
+			finalize_asm(param);
+		clean_env(param);
 	}
 	else
 	{

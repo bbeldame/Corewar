@@ -29,7 +29,8 @@ int		get_size_inst(char *line)
 /*
 **		Identifie l'instruction de la ligne avec idx (max 15) et
 **		envoi ses parametres pour verification a parse_params
-** 		renvoi 0 pour idx == 16 ou si parse_params == 0
+** 		renvoi 0 pour idx == 16 et modifie le flag param->err
+** 		modifie le flag param->err si parse_params renvoi 0
 */
 
 int		check_inst(char *line, t_asm *param, int num_l, int i)
@@ -63,7 +64,6 @@ int		check_inst(char *line, t_asm *param, int num_l, int i)
 /*
 **		separe les labels des instructions
 **		envoi les instructions a check_inst
-** 		coupe l'execution du programme si check_inst renvoi 0
 */
 
 int		check_body(t_asm *param)
