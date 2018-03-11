@@ -6,7 +6,7 @@
 /*   By: bbeldame <bbeldame@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/22 15:23:05 by msakwins          #+#    #+#             */
-/*   Updated: 2018/03/10 22:22:09 by bbeldame         ###   ########.fr       */
+/*   Updated: 2018/03/11 21:51:48 by bbeldame         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ static int		st_ind(t_env *env, t_process *current, unsigned int value)
 			LBYTE(value >> (8 * (3 - i)));
 		i++;
 	}
-	return (2 + 1 + 1);
+	return (2 + 1 + 2);
 }
 
 static int		st_reg(t_env *env, t_process *current, unsigned int value,

@@ -6,7 +6,7 @@
 /*   By: bbeldame <bbeldame@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/22 15:23:05 by msakwins          #+#    #+#             */
-/*   Updated: 2018/03/10 22:21:12 by bbeldame         ###   ########.fr       */
+/*   Updated: 2018/03/11 22:30:29 by bbeldame         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,12 @@ int			func_live(t_env *env, t_process *current)
 		{
 			env->player[i].live++;
 			env->winner = i;
-			ft_printf("Un processus dit que le joueur %d(%s) est en vie\n",
-				env->player[i].nb, env->player[i].header->prog_name);
+			if (!env->visu)
+			{
+				ft_printf("Un processus dit que le joueur %d(%s)",
+					env->player[i].nb, env->player[i].header->prog_name);
+				ft_printf(" est en vie\n");
+			}
 		}
 		i++;
 	}
