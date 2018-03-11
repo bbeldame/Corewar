@@ -6,7 +6,7 @@
 /*   By: bbeldame <bbeldame@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/18 20:25:46 by bbeldame          #+#    #+#             */
-/*   Updated: 2018/02/22 21:44:14 by bbeldame         ###   ########.fr       */
+/*   Updated: 2018/03/11 23:08:06 by bbeldame         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,12 +28,12 @@ static int		invert_endian(int x)
 	return (new_x);
 }
 
-static void		verify_header(t_header *header)
+static void		verify_header(t_header *header, t_env *e)
 {
 	if (header->prog_size > CHAMP_MAX_SIZE)
-		ft_exit(1, "Champ file too large");
+		ft_exit(e, 1, "Champ file too large");
 	if (header->magic != COREWAR_EXEC_MAGIC)
-		ft_exit(1, "Magic is not the good one");
+		ft_exit(e, 1, "Magic is not the good one");
 }
 
 static void		parse_header(t_env *e, int fd, int curr_player)
@@ -41,12 +41,12 @@ static void		parse_header(t_env *e, int fd, int curr_player)
 	t_header	*header;
 
 	if ((header = (t_header *)malloc(sizeof(t_header))) == NULL)
-		ft_exit(1, "Malloc failed");
+		ft_exit(e, 1, "Malloc failed");
 	if (read(fd, header, sizeof(t_header)) == -1)
-		ft_exit(1, "Cant read player file");
+		ft_exit(e, 1, "Cant read player file");
 	header->prog_size = invert_endian(header->prog_size);
 	header->magic = invert_endian(header->magic);
-	verify_header(header);
+	verify_header(header, e);
 	e->player[curr_player].header = header;
 }
 
@@ -56,9 +56,9 @@ static void		parse_instructions(t_env *e, int fd, int curr_player)
 
 	size = e->player[curr_player].header->prog_size;
 	if (!(e->player[curr_player].code = (char *)malloc(size)))
-		ft_exit(1, "Malloc for player code failed");
+		ft_exit(e, 1, "Malloc for player code failed");
 	if (!read(fd, e->player[curr_player].code, size))
-		ft_exit(1, "Read player code failed");
+		ft_exit(e, 1, "Read player code failed");
 }
 
 /*
@@ -77,14 +77,14 @@ void			parse_files(t_env *e, char **argv)
 		if (ft_strlen(argv[e->player[i].file_pos]) <= 4 ||
 				ft_strcmp(argv[e->player[i].file_pos] +
 					ft_strlen(argv[e->player[i].file_pos]) - 4, ".cor"))
-			ft_exit(2, "Not a .cor file");
+			ft_exit(e, 2, "Not a .cor file");
 		if ((fd = open(argv[e->player[i].file_pos], O_RDONLY)) == -1)
-			ft_exit(1, "Open error");
+			ft_exit(e, 1, "Open error");
 		parse_header(e, fd, i);
 		parse_instructions(e, fd, i);
 		e->player[i].live = 0;
 		if (close(fd) == -1)
-			ft_exit(1, "Close error");
+			ft_exit(e, 1, "Close error");
 		i++;
 	}
 }

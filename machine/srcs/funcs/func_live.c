@@ -6,7 +6,7 @@
 /*   By: bbeldame <bbeldame@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/22 15:23:05 by msakwins          #+#    #+#             */
-/*   Updated: 2018/03/11 22:30:29 by bbeldame         ###   ########.fr       */
+/*   Updated: 2018/03/11 23:23:52 by bbeldame         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,8 @@ int			func_live(t_env *env, t_process *current)
 	id = get_data_dir(env, M((current->pc + 1)), 4);
 	current->live++;
 	env->nb_lives += 1;
+	if (env->verbose)
+		ft_printf("Live called from %d\n", current->id_champion);
 	while (i < env->nb_players)
 	{
 		if (env->player[i].nb == (int)id)

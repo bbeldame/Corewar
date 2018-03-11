@@ -6,7 +6,7 @@
 /*   By: bbeldame <bbeldame@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/18 16:07:14 by msakwins          #+#    #+#             */
-/*   Updated: 2018/03/09 22:41:05 by bbeldame         ###   ########.fr       */
+/*   Updated: 2018/03/11 23:26:39 by bbeldame         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,8 @@
 
 static void		anounce_the_winner(t_env *env)
 {
-	ft_printf("Contestant 1, \"%s\", has won !\n",
+	ft_printf("Contestant %d, \"%s\", has won !\n",
+		env->player[env->winner].nb,
 		env->player[env->winner].header->prog_name);
 }
 

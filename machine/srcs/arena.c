@@ -6,7 +6,7 @@
 /*   By: bbeldame <bbeldame@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/18 16:07:14 by msakwins          #+#    #+#             */
-/*   Updated: 2018/03/11 00:03:49 by bbeldame         ###   ########.fr       */
+/*   Updated: 2018/03/11 23:04:47 by bbeldame         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ static t_process	*create_new_process(t_env *env, int i)
 	t_process	*process;
 
 	if (!(process = (t_process *)malloc(sizeof(t_process))))
-		ft_exit(1, "Malloc for process error");
+		ft_exit(env, 1, "Malloc for process error");
 	process->id_champion = i;
 	init_reg(process);
 	process->reg[0] = env->player[i].nb;

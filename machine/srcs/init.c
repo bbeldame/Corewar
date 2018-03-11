@@ -6,7 +6,7 @@
 /*   By: bbeldame <bbeldame@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/18 16:07:14 by msakwins          #+#    #+#             */
-/*   Updated: 2018/03/10 21:16:03 by bbeldame         ###   ########.fr       */
+/*   Updated: 2018/03/11 23:24:16 by bbeldame         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,8 @@ void		init(t_env *env)
 	while (i < env->nb_players)
 	{
 		env->player[i].nb = -1;
+		env->player[i].header = NULL;
 		i++;
 	}
+	env->verbose = 0;
 }

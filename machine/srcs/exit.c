@@ -6,13 +6,38 @@
 /*   By: bbeldame <bbeldame@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/18 16:07:14 by msakwins          #+#    #+#             */
-/*   Updated: 2018/03/04 23:53:29 by bbeldame         ###   ########.fr       */
+/*   Updated: 2018/03/11 23:04:35 by bbeldame         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/vm.h"
 
-void		ft_exit(int i, char *str)
+static void		gonna_free_for_nothing(t_env *e)
+{
+	int			i;
+	t_process	*tmp;
+	t_process	*tmp2;
+
+	i = 0;
+	while (i < e->nb_players)
+	{
+		if (e->player[i].header)
+			free(e->player[i].header);
+		i++;
+	}
+	i = 0;
+	tmp = e->head;
+	while (i < e->nb_processes)
+	{
+		tmp2 = tmp;
+		tmp = tmp->next;
+		if (tmp2)
+			free(tmp2);
+		i++;
+	}
+}
+
+void			ft_exit(t_env *e, int i, char *str)
 {
 	if (i == 4)
 	{
@@ -31,5 +56,6 @@ void		ft_exit(int i, char *str)
 	if (i == 2)
 		ft_putstr_fd("Do you even read the rules? ", 2);
 	ft_putendl_fd(str, 2);
+	gonna_free_for_nothing(e);
 	exit(1);
 }

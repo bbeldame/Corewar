@@ -6,7 +6,7 @@
 /*   By: bbeldame <bbeldame@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/04 23:06:18 by bbeldame          #+#    #+#             */
-/*   Updated: 2018/03/10 22:19:51 by bbeldame         ###   ########.fr       */
+/*   Updated: 2018/03/11 23:06:49 by bbeldame         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,12 +24,12 @@ static void			clone_reg(t_process *a, t_process *b)
 	}
 }
 
-static t_process	*clone_process(t_process *current)
+static t_process	*clone_process(t_env *e, t_process *current)
 {
 	t_process *process;
 
 	if (!(process = (t_process *)malloc(sizeof(t_process))))
-		ft_exit(1, "Malloc for process error");
+		ft_exit(e, 1, "Malloc for process error");
 	clone_reg(current, process);
 	process->idx_buffer = 0;
 	process->id_champion = current->id_champion;
@@ -46,7 +46,7 @@ static int			both_forks(t_env *env, t_process *current, int restr)
 	int			i;
 
 	value = (short int)get_data_dir(env, M((current->pc + 2)), 2);
-	forked = clone_process(current);
+	forked = clone_process(env, current);
 	if (restr)
 		forked->pc = M((current->pc + value % IDX_MOD));
 	else

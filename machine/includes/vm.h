@@ -6,7 +6,7 @@
 /*   By: bbeldame <bbeldame@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/18 16:28:40 by msakwins          #+#    #+#             */
-/*   Updated: 2018/03/11 01:49:38 by bbeldame         ###   ########.fr       */
+/*   Updated: 2018/03/11 23:24:28 by bbeldame         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,6 +73,7 @@ typedef struct		s_env
 	int				nb_checks;
 	int				nb_processes;
 	int				zaz_dump;
+	int				verbose;
 	int				padding;
 	unsigned char	arena[MEM_SIZE];
 	t_player		player[MAX_PLAYERS + 1];
@@ -95,9 +96,9 @@ typedef struct		s_op
 void				init_arena_and_processes(t_env *env);
 void				init(t_env *env);
 void				parse_args(t_env *env, int argc, char **argv);
-void				ft_exit(int i, char *str);
+void				ft_exit(t_env *e, int i, char *str);
 void				parse_files(t_env *e, char **argv);
-void				check_number(char *nb);
+void				check_number(t_env *e, char *nb);
 void				check_dup_number(t_env *env, int nb);
 void				parse_players(t_env *e);
 void				init_reg(t_process *process);
