@@ -47,6 +47,10 @@ static int			both_ldis(t_env *env, t_process *current,
 	size1 = get_size_param(ocp.one, 2);
 	size2 = get_size_param(ocp.two, 2);
 	value = get_value_ldis(env, current, ocp, restr);
+	if (env->verbose)
+		ft_printf("(l)ldi called from %d : loading %d in r%d\n",
+		current->id_champion, value,
+		env->arena[M((current->pc + 2 + size1 + size2))]);
 	if (!verify_reg(env->arena[M((current->pc + 2 + size1 + size2))], 1, 1))
 		return (2 + size1 + size2 + 1);
 	if (size1 && size2)

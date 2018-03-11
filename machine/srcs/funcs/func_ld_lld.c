@@ -35,6 +35,9 @@ static int		both_lds(t_env *env, t_process *current, t_ocp ocp, int restr)
 		value = get_data_ind(env, M((current->pc)), restr);
 	size = get_size_param(ocp.one, 4);
 	reg_idx = env->arena[M((current->pc + 2 + size))];
+	if (env->verbose)
+		ft_printf("(l)ld called from %d : loading %d in r%d\n",
+		current->id_champion, value, reg_idx);
 	if (ocp.one == REG_CODE || reg_idx > REG_NUMBER ||
 		ocp.two != REG_CODE || ocp.one == 0)
 		return (2 + size + 1);

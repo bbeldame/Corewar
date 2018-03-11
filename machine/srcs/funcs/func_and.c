@@ -29,6 +29,10 @@ int		func_and(t_env *env, t_process *current, t_ocp ocp)
 		M((current->pc + 2)), ocp.one);
 	value2 = get_data_all_types_dir_four(env, current,
 		M((current->pc + 2 + size1)), ocp.two);
+	if (env->verbose)
+		ft_printf("And called from %d : logical and between %d and %d to r%d\n",
+			current->id_champion, value1, value2,
+			env->arena[M((current->pc + 2 + size1 + size2))]);
 	if (!verify_reg(env->arena[M((current->pc + 2 + size1 + size2))], 0, 0))
 		return (2 + size1 + size2 + 1);
 	if (size1 && size2)
