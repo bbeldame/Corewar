@@ -6,7 +6,7 @@
 /*   By: bbeldame <bbeldame@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/18 16:07:14 by msakwins          #+#    #+#             */
-/*   Updated: 2018/03/11 23:24:16 by bbeldame         ###   ########.fr       */
+/*   Updated: 2018/03/11 23:47:36 by bbeldame         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ void		init(t_env *env)
 	env->head = NULL;
 	env->zaz_dump = 0;
 	i = 0;
-	while (i < env->nb_players)
+	while (i < MAX_PLAYERS)
 	{
 		env->player[i].nb = -1;
 		env->player[i].header = NULL;
