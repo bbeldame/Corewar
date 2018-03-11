@@ -14,6 +14,8 @@
 
 void		init(t_env *env)
 {
+	int		i;
+
 	env->visu = 0;
 	env->nb_players = 0;
 	env->dump = -1;
@@ -23,4 +25,10 @@ void		init(t_env *env)
 	env->nb_checks = 0;
 	env->head = NULL;
 	env->zaz_dump = 0;
+	i = 0;
+	while (i < env->nb_players)
+	{
+		env->player[i].nb = -1;
+		i++;
+	}
 }

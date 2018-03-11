@@ -141,6 +141,7 @@ void				init_curses(t_env *env);
 void				init_curse_color(void);
 void				print_curses(t_env *env, unsigned k, int y, int x);
 void				curses_players(t_env *env);
+void				end_curses(t_env *env);
 
 static const t_op	g_op[17] =
 {

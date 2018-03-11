@@ -37,7 +37,8 @@ SRCS_NAME =	main.c \
 			dump.c \
 			visu.c \
 			get_data_utils.c \
-			new_cycle.c
+			new_cycle.c \
+			init_visu.c
 
 FUNCS_NAME = func_add.c \
 			func_aff.c \

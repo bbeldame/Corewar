@@ -29,7 +29,7 @@ int				main(int argc, char **argv)
 	if (env.visu)
 		init_curse_color();
 	launch_lifecycle(&env);
+	end_curses(&env);
 	anounce_the_winner(&env);
-	endwin();
 	return (0);
 }

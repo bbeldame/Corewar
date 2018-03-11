@@ -12,22 +12,6 @@
 
 #include "../includes/vm.h"
 
-void	init_curse_color(void)
-{
-	initscr();
-	curs_set(FALSE);
-	start_color();
-
-	init_color(COLOR_WHITE, 220, 220, 220);
-	init_pair(1, COLOR_WHITE, COLOR_BLACK);
-	init_pair(2, COLOR_GREEN, COLOR_BLACK);
-	init_pair(3, COLOR_YELLOW, COLOR_BLACK);
-	init_pair(4, COLOR_MAGENTA, COLOR_BLACK);
-	init_pair(5, COLOR_BLUE, COLOR_BLACK);
-	init_pair(7, COLOR_CYAN, COLOR_BLACK);
-	init_pair(6, COLOR_RED, COLOR_BLACK);
-}
-
 void	print_curses(t_env *env, unsigned k, int y, int x)
 {
 	int				i;
@@ -107,12 +91,14 @@ int		visu(t_env *env, int cycles_left)
 	{
 		sleep(5);
 	}
+	erase();
+//	refresh();
 	curses_players(env);
+	init_curses(env);
 	attron(COLOR_PAIR(7));
 	mvprintw(LINES - 5, 5, " Lives: %d ", env->nb_lives);
 	mvprintw(LINES - 3, 5, " Cycles: %d / %d",
 		env->cycle_to_die - cycles_left, env->cycle_to_die);
 	mvprintw(LINES - 7, 5, " Total cycles : %d", env->cycle);
-	refresh();
 	return (0);
 }

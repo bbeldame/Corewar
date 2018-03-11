@@ -74,7 +74,7 @@ void		launch_lifecycle(t_env *env)
 	{
 		if (env->visu)
 		{
-			init_curses(env);
+	//		init_curses(env);
 			visu(env, cycle_to_die);
 		}
 		exec_cycle(env);
