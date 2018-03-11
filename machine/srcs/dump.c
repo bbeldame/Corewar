@@ -46,6 +46,8 @@ void			print_dump(t_env *e)
 	int		i;
 	int		hex;
 
+	if (e->visu)
+		endwin();
 	if (e->zaz_dump)
 		print_zaz_dump(e);
 	hex = 0;
