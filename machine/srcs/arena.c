@@ -55,8 +55,7 @@ void				init_arena_and_processes(t_env *env)
 		}
 		ft_memcpy(&(env->arena[i * MEM_SIZE / env->nb_players]),
 			env->player[i].code, env->player[i].header->prog_size);
-		ft_strdel(&(env->player[i].code));
-		i--;
+		ft_strdel(&(env->player[i--].code));
 	}
 	tmp->next = env->head;
 	env->head->prev = tmp;

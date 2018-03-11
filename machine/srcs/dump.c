@@ -6,13 +6,13 @@
 /*   By: bbeldame <bbeldame@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/18 16:07:14 by bbeldame          #+#    #+#             */
-/*   Updated: 2018/03/10 22:39:46 by bbeldame         ###   ########.fr       */
+/*   Updated: 2018/03/11 01:44:19 by bbeldame         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/vm.h"
 
-static void print_zaz_dump(t_env *e)
+static void		print_zaz_dump(t_env *e)
 {
 	int		i;
 	int		hex;
@@ -41,7 +41,7 @@ static void print_zaz_dump(t_env *e)
 	exit(1);
 }
 
-void		print_dump(t_env *e)
+void			print_dump(t_env *e)
 {
 	int		i;
 	int		hex;

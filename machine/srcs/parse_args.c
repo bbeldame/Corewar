@@ -6,7 +6,7 @@
 /*   By: bbeldame <bbeldame@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/18 16:07:14 by msakwins          #+#    #+#             */
-/*   Updated: 2018/03/10 21:35:08 by bbeldame         ###   ########.fr       */
+/*   Updated: 2018/03/11 01:45:24 by bbeldame         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,10 +62,7 @@ void		parse_args(t_env *env, int argc, char **argv)
 
 	i = 1;
 	if (ft_strequ(argv[i], "-zaz"))
-	{
-		env->zaz_dump = 1;
-		i++;
-	}
+		env->zaz_dump = i++ ? 1 : 1;
 	if (ft_strequ(argv[i], "-dump"))
 	{
 		if (i + 3 > argc)
