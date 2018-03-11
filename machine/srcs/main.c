@@ -6,7 +6,7 @@
 /*   By: bbeldame <bbeldame@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/18 16:07:14 by msakwins          #+#    #+#             */
-/*   Updated: 2018/03/11 23:36:40 by bbeldame         ###   ########.fr       */
+/*   Updated: 2018/03/11 23:41:29 by bbeldame         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,8 @@ int				main(int argc, char **argv)
 	if (env.visu)
 		init_curse_color();
 	launch_lifecycle(&env);
-	end_curses(&env);
+	if (env.visu)
+		end_curses(&env);
 	anounce_the_winner(&env);
 	gonna_free_for_nothing(&env);
 	return (0);
