@@ -12,8 +12,10 @@
 
 #include "../includes/vm.h"
 
-void	curse_color(void)
+void	init_curse_color(void)
 {
+	initscr();
+	curs_set(FALSE);
 	start_color();
 	init_pair(1, COLOR_WHITE, COLOR_BLACK);
 	init_pair(2, COLOR_GREEN, COLOR_BLACK);
@@ -37,7 +39,6 @@ void	print_curses(t_env *env, unsigned k, int y, int x)
 			attron(COLOR_PAIR(7));
 		tmp = tmp->next;
 		i++;
-		refresh();
 	}
 	mvprintw(y, x, "%02x ", LBYTE(env->arena[k]));
 	x = x + 2;
@@ -60,9 +61,6 @@ void	init_curses(t_env *env)
 	k = 0;
 	x = 5;
 	y = 1;
-	initscr();
-	curs_set(FALSE);
-	curse_color();
 	while (k < MEM_SIZE)
 	{
 		attron(COLOR_PAIR(1));
@@ -73,7 +71,6 @@ void	init_curses(t_env *env)
 			y++;
 			x = 5;
 		}
-		refresh();
 		k++;
 	}
 }
@@ -84,13 +81,11 @@ void	curses_players(t_env *env)
 	int			x;
 	int			y;
 	int			color;
-	int			max_color;
 
 	y = 1;
 	x = 205;
 	i = 0;
 	color = 3;
-	max_color = env->nb_players;
 	while (i < env->nb_players)
 	{
 		attron(COLOR_PAIR(color));
@@ -104,12 +99,18 @@ void	curses_players(t_env *env)
 
 int		visu(t_env *env, int cycles_left)
 {
+	keypad(stdscr, TRUE);
+	nodelay(stdscr, TRUE);
+	if ((getch()) == 32)
+	{
+		sleep(5);
+	}
 	curses_players(env);
 	attron(COLOR_PAIR(7));
 	mvprintw(LINES - 5, 5, " Lives: %d ", env->nb_lives);
 	mvprintw(LINES - 3, 5, " Cycles: %d / %d",
 		env->cycle_to_die - cycles_left, env->cycle_to_die);
+	mvprintw(LINES - 7, 5, " Total cycles : %d", env->cycle);
 	refresh();
-	endwin();
 	return (0);
 }

@@ -12,7 +12,7 @@
 
 #include "../includes/vm.h"
 
-static void increment_pc(t_env *env, t_process *current, int size)
+static void	increment_pc(t_env *env, t_process *current, int size)
 {
 	current->pc = M((current->pc + size));
 	if (current->pc >= MEM_SIZE)
@@ -30,7 +30,7 @@ static void	exec_instruction(t_env *env, t_process *current)
 	increment_pc(env, current, size);
 }
 
-static void exec_cycle(t_env *env)
+static void	exec_cycle(t_env *env)
 {
 	t_process	*tmp;
 	int			i;
@@ -53,16 +53,21 @@ static void exec_cycle(t_env *env)
 	}
 }
 
+void		init_lifecycle(t_env *env)
+{
+	env->cycle_to_die = CYCLE_TO_DIE;
+	env->cycle = 1;
+	env->nb_lives = 0;
+	env->nb_checks = 0;
+}
+
 void		launch_lifecycle(t_env *env)
 {
 	int		check;
 	int		cycle_to_die;
 
 	check = 1;
-	env->cycle_to_die = CYCLE_TO_DIE;
-	env->cycle = 1;
-	env->nb_lives = 0;
-	env->nb_checks = 0;
+	init_lifecycle(env);
 	load_all_opcode(env);
 	cycle_to_die = env->cycle_to_die;
 	while (check)
@@ -83,5 +88,4 @@ void		launch_lifecycle(t_env *env)
 		}
 		env->cycle++;
 	}
-	endwin();
 }

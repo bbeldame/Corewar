@@ -138,6 +138,11 @@ int					func_xor(t_env *env, t_process *current, t_ocp ocp);
 int					func_zjmp(t_env *e, t_process *current);
 int					visu(t_env *env, int i);
 void				init_curses(t_env *env);
+void				init_curse_color(void);
+void				print_curses(t_env *env, unsigned k, int y, int x);
+void				curses_players(t_env *env);
+
+
 
 static const t_op	g_op[17] =
 {
