@@ -17,6 +17,8 @@ void	init_curse_color(void)
 	initscr();
 	curs_set(FALSE);
 	start_color();
+
+	init_color(COLOR_WHITE, 220, 220, 220);
 	init_pair(1, COLOR_WHITE, COLOR_BLACK);
 	init_pair(2, COLOR_GREEN, COLOR_BLACK);
 	init_pair(3, COLOR_YELLOW, COLOR_BLACK);
