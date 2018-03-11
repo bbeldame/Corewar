@@ -16,43 +16,42 @@
 **		free tout les elements des t_list
 */
 
-void	free_t_list_labdir(t_list **list)
+void	free_t_list_labdir(t_list *list)
 {
 	t_list		*tmp;
-	t_labdir	*lab;
+	t_labdir	*labdir;
 
-	tmp = *list;
+	tmp = list;
 	while (tmp)
 	{
-		tmp = (*list)->next;
-		if ((*list)->content)
+		tmp = (list)->next;
+		if ((list)->content)
 		{
-			lab = (*list)->content;
-			// ft_strdel(&lab->label);
-			// ft_memdel((*list)->content);
+			labdir = (list)->content;
+			free(list->content);
 		}
-		free(*list);
-		*list = tmp;
+		free(list);
+		list = tmp;
 	}
 }
 
-void	free_t_list_label(t_list **list)
+void	free_t_list_label(t_list *list)
 {
 	t_list	*tmp;
-	t_label	*lab;
+	t_label	*label;
 
-	tmp = *list;
+	tmp = list;
 	while (tmp)
 	{
-		tmp = (*list)->next;
-		if ((*list)->content)
+		tmp = (list)->next;
+		if ((list)->content)
 		{
-			lab = (*list)->content;
-			ft_strdel(&lab->label);
-			ft_memdel((*list)->content);
+			label = (list)->content;
+			ft_strdel(&label->label);
+			free(list->content);
 		}
-		free(*list);
-		*list = tmp;
+		free(list);
+		list = tmp;
 	}
 }
 
@@ -81,7 +80,7 @@ void	clean_env(t_asm *env)
 	ft_strdel(&env->comment_prg);
 	ft_strdel(&env->file_cor);
 	free_file_list(&env->body);
-	free_t_list_label(&env->labels);
-	free_t_list_labdir(&env->labdirs);
+	free_t_list_label(env->labels);
+	free_t_list_labdir(env->labdirs);
 	free(env);
 }
