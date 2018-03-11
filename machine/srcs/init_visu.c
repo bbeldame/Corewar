@@ -33,7 +33,7 @@ void	end_curses(t_env *env)
 	sleep(3);
 	erase();
 	refresh();
-	mvprintw(LINES / 2, COLS / 2, "Contestant %d, \"%s\", has won !\n", 1, env->player[env->winner].header->prog_name);
+	mvprintw(LINES / 2 - 5, COLS / 2 - 20, "Contestant %d, \"%s\", has won !\n", 1, env->player[env->winner].header->prog_name);
 	refresh();
 	sleep(5);
 	endwin();

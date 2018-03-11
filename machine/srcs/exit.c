@@ -44,8 +44,11 @@ void			ft_exit(t_env *e, int i, char *str)
 		ft_putstr_fd("Rules: \n", 2);
 		ft_putstr_fd("1: usage: ./corewar [-dump nb] [[-n nb] champ1.cor]\n",
 			2);
-		ft_putstr_fd("2: option '-dump nb' dump the memory on the standard", 2);
+		ft_putstr_fd("2: option '-verbose' for a detailed corewar\n", 2);
+		ft_putstr_fd("3: option '-zaz' dump as zaz does\n", 2);
+		ft_putstr_fd("4: option '-dump nb' dump the memory on the standard", 2);
 		ft_putstr_fd("output after nb cycles and exit the corewar\n", 2);
+		ft_putstr_fd("5: option '-visu' to set a visualizer\n", 2);
 		ft_putstr_fd("3: option '-n nb' set a number for the next player\n", 2);
 		ft_putstr_fd("4: you can add 1 to 4 champions in the arena\n", 2);
 		exit(1);
