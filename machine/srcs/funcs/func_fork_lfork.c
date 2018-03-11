@@ -6,7 +6,7 @@
 /*   By: bbeldame <bbeldame@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/04 23:06:18 by bbeldame          #+#    #+#             */
-/*   Updated: 2018/03/12 00:22:20 by bbeldame         ###   ########.fr       */
+/*   Updated: 2018/03/12 00:56:05 by bbeldame         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,9 +62,8 @@ static int			both_forks(t_env *env, t_process *current, int restr)
 	env->head->prev = forked;
 	forked->next = env->head;
 	env->head = forked;
-	tmp->next = env->head;
+	tmp->next = env->nb_processes++ ? env->head : env->head;
 	env->head->prev = tmp;
-	env->nb_processes++;
 	return (3);
 }
 
