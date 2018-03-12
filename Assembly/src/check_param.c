@@ -106,14 +106,14 @@ int		is_ind(t_list *labels, char *param)
 		while (elem)
 		{
 			tmp = elem->content;
-			if (!ft_strncmp(param + 1, tmp->label, ft_strlen(tmp->label) - 1))
+			if (!ft_strncmp(param + 1, tmp->label, ft_strlen(tmp->label) - 1)
+				&& verif_end_line_param(param + 1, ft_strlen(tmp->label)))
 				return (1);
 			elem = elem->next;
 		}
 		return (0);
 	}
-	while (param[i])
-		if (!ft_isdigit(param[i++]))
-			return (0);
+	if (!check_end_ind(param, i))
+		return (0);
 	return (1);
 }

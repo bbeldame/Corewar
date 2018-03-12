@@ -110,6 +110,7 @@ int						is_reg(char *param);
 int						is_label(char *param);
 int						is_dir(t_list *labels, char *param);
 int						is_ind(t_list *labels, char *param);
+int						check_end_ind(char *param, int i);
 
 /*
 ** 		verif extension and name

@@ -72,6 +72,14 @@ int		verif_end_line_param(char *str, int i)
 	return (1);
 }
 
+int 	check_end_ind(char *param, int i)
+{
+	while (param[i])
+		if (!ft_isdigit(param[i++]))
+			return (0);
+	return (1);
+}
+
 /*
 **		separe chaque paramtre de l'instruction correspond a idx
 ** 		effectue une verification avec validate_param
