@@ -6,7 +6,7 @@
 /*   By: bbeldame <bbeldame@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/24 21:19:30 by bbeldame          #+#    #+#             */
-/*   Updated: 2018/03/10 22:47:12 by bbeldame         ###   ########.fr       */
+/*   Updated: 2018/03/12 23:36:57 by bbeldame         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,11 @@
 
 int					verify_reg(int r1, int r2, int r3)
 {
-	if (r1 < 0 || r1 > REG_NUMBER)
+	if (r1 < 1 || r1 > REG_NUMBER)
 		return (0);
-	if (r2 < 0 || r2 > REG_NUMBER)
+	if (r2 < 1 || r2 > REG_NUMBER)
 		return (0);
-	if (r3 < 0 || r3 > REG_NUMBER)
+	if (r3 < 1 || r3 > REG_NUMBER)
 		return (0);
 	return (1);
 }

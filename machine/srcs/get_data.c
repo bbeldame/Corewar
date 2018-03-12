@@ -6,7 +6,7 @@
 /*   By: bbeldame <bbeldame@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/25 20:55:34 by bbeldame          #+#    #+#             */
-/*   Updated: 2018/03/10 22:24:04 by bbeldame         ###   ########.fr       */
+/*   Updated: 2018/03/13 00:33:46 by bbeldame         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,9 +34,9 @@ unsigned int	get_jumper(t_env *e, int idx, int restr)
 {
 	unsigned int	jumper;
 
-	jumper = (LBYTE(e->arena[M((idx + 2))]) << 8 |
-		LBYTE(e->arena[M((idx + 3))]));
-	jumper = restr ? jumper % IDX_MOD : jumper;
+	jumper = (LBYTE(e->arena[M((idx))]) << 8 |
+		LBYTE(e->arena[M((idx + 1))]));
+	jumper = restr ? (short)jumper % IDX_MOD : jumper;
 	return (jumper);
 }
 
@@ -47,7 +47,7 @@ unsigned int	get_data_dir(t_env *e, int idx, int label_size)
 	if (label_size == 2)
 	{
 		res = (LBYTE(e->arena[M((idx))]) << 8 | LBYTE(e->arena[M((idx + 1))]));
-		return (res);
+		return (short)(res);
 	}
 	else
 	{

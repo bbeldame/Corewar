@@ -6,7 +6,7 @@
 /*   By: bbeldame <bbeldame@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/22 15:23:05 by msakwins          #+#    #+#             */
-/*   Updated: 2018/03/10 22:20:14 by bbeldame         ###   ########.fr       */
+/*   Updated: 2018/03/13 00:16:24 by bbeldame         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,12 +36,12 @@ static int		both_lds(t_env *env, t_process *current, t_ocp ocp, int restr)
 	size = get_size_param(ocp.one, 4);
 	reg_idx = env->arena[M((current->pc + 2 + size))];
 	if (env->verbose)
-		ft_printf("(l)ld called from %d : loading %d in r%d\n",
-		current->id_champion, value, reg_idx);
+		ft_printf("[%d] (l)ld called from %d : loading %d in r%d\n",
+		env->cycle, current->id_champion, value, reg_idx);
 	if (ocp.one == REG_CODE || reg_idx > REG_NUMBER ||
 		ocp.two != REG_CODE || ocp.one == 0)
 		return (2 + size + 1);
-	if (size)
+	if (size && verify_reg(reg_idx, 1, 1))
 		current->reg[reg_idx - 1] = value;
 	current->carry = value == 0 ? 1 : 0;
 	return (2 + size + 1);

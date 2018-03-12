@@ -6,7 +6,7 @@
 /*   By: bbeldame <bbeldame@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/22 15:23:05 by msakwins          #+#    #+#             */
-/*   Updated: 2018/03/10 22:23:01 by bbeldame         ###   ########.fr       */
+/*   Updated: 2018/03/12 23:36:43 by bbeldame         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ int		func_xor(t_env *env, t_process *current, t_ocp ocp)
 		ft_printf("Xor called from %d : logical xor between %d and %d to r%d\n",
 			current->id_champion, value1, value2,
 			env->arena[M((current->pc + 2 + size1 + size2))]);
-	if (!verify_reg(env->arena[M((current->pc + 2 + size1 + size2))], 0, 0))
+	if (!verify_reg(env->arena[M((current->pc + 2 + size1 + size2))], 1, 1))
 		return (2 + size1 + size2 + 1);
 	if (size1 && size2)
 		current->reg[env->arena[M((current->pc + 2 + size1 + size2))] - 1] =

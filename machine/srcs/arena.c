@@ -6,7 +6,7 @@
 /*   By: bbeldame <bbeldame@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/18 16:07:14 by msakwins          #+#    #+#             */
-/*   Updated: 2018/03/11 23:39:48 by bbeldame         ###   ########.fr       */
+/*   Updated: 2018/03/13 00:33:56 by bbeldame         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,6 @@ static t_process	*create_new_process(t_env *env, int i)
 	process->id_champion = i;
 	init_reg(process);
 	process->reg[0] = env->player[i].nb;
-	// process->reg[0] = 0xFFFFFFFF;
 	process->carry = 0;
 	process->opcode = 0;
 	process->pc = i * MEM_SIZE / env->nb_players;
