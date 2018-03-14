@@ -65,7 +65,9 @@ int		is_label(char *param)
 	while (ft_strchr(LABEL_CHARS, param[i]))
 		i++;
 	if (param[i] == LABEL_CHAR)
+	{
 		return (i + 1);
+	}
 	return (0);
 }
 

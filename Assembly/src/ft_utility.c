@@ -12,9 +12,22 @@
 
 #include "../include/asm.h"
 
-void	ft_print_usage(void)
+char	*ft_strjoin_my(char *s1, char *s2)
 {
-	ft_printf("Usage: ./asm <source_file.s>\n");
+	char	*new;
+
+	if (!s1 && !s2)
+		return (NULL);
+	if (!s1)
+		return (ft_strdup(s2));
+	if (!s2)
+		return (ft_strdup(s1));
+	if (!(new = ft_strnew(ft_strlen(s1) + ft_strlen(s2))))
+		return (NULL);
+	new = ft_strcat(new, s1);
+	new = ft_strcat(new, s2);
+	ft_strdel(&s2);
+	return (new);
 }
 
 /*

@@ -100,7 +100,7 @@ int						ft_parser(t_asm *param);
 int						ft_parse_body(t_asm *param);
 int						set_name_comment(t_asm *param);
 int						check_body(t_asm *param);
-int						parse_params(char *line, t_asm *param, int idx);
+int						parse_params(char *line, t_asm *param, int idx, int i);
 
 /*
 **		Check parameters instruction
@@ -140,6 +140,8 @@ char					*ft_skip_space(char *s);
 int						verif_line(char *line);
 int						get_size_inst(char *line);
 long					ft_atoi_oflow(char *str);
+int						verif_jump(char *line, int nb_param);
+char					*ft_strjoin_my(char *s1, char *s2);
 
 /*
 ** 		Free

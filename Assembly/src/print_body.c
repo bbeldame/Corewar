@@ -11,6 +11,7 @@
 /* ************************************************************************** */
 
 #include "../include/asm.h"
+#include <string.h>
 
 void	print_param(t_asm *param, t_inst *ins)
 {
@@ -102,7 +103,7 @@ int		get_label_pos(t_asm *param, char *line, t_inst *ins)
 	{
 		content = tmp->content;
 		x = ft_strlen(content->label);
-		if (!ft_strncmp(content->label, line, x))
+		if (!(ft_strncmp(line, content->label, x)) && line[x] == LABEL_CHAR)
 		{
 			if (line[x] != LABEL_CHAR)
 				return (0);

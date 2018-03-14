@@ -51,11 +51,11 @@ int		check_inst(char *line, t_asm *param, int num_l, int i)
 	}
 	if (idx == 16)
 	{
-		msg_error(param, ft_strjoin("Unknow instruction : ",
+		msg_error(param, ft_strjoin_my("Unknow instruction : ",
 			ft_strsub(line, 0, size)), num_l);
 		return (0);
 	}
-	if (!parse_params(line + i, param, idx))
+	if (!parse_params(line + i, param, idx, 0))
 		msg_error(param, ft_strjoin("Invalid parameters : ",
 			g_op_tab[idx].name), num_l);
 	return (1);
