@@ -140,6 +140,7 @@ char					*ft_skip_space(char *s);
 int						verif_line(char *line);
 int						get_size_inst(char *line);
 long					ft_atoi_oflow(char *str);
+int						verif_jump(char *line, int nb_param);
 
 /*
 ** 		Free

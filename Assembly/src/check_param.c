@@ -62,15 +62,12 @@ int		is_label(char *param)
 	int	i;
 
 	i = 0;
-	// ft_printf("param = >%s< ", param);
 	while (ft_strchr(LABEL_CHARS, param[i]))
 		i++;
 	if (param[i] == LABEL_CHAR)
 	{
-		// ft_printf("OK\n");
 		return (i + 1);
 	}
-	// ft_printf("pas bon\n");//
 	return (0);
 }
 

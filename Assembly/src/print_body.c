@@ -97,25 +97,19 @@ int		get_label_pos(t_asm *param, char *line, t_inst *ins)
 	t_list	*tmp;
 	t_label	*content;
 	int		x;
-	char 	*label;
 
 	tmp = param->labels;
 	while (tmp)
 	{
 		content = tmp->content;
-		//ft_printf("label en cour %s line = %s || ", content->label, line);
 		x = ft_strlen(content->label);
-		label = ft_strsub(line, 0, x);
-	//	ft_printf("label a verif : %s\n", label);
-		if (!(strncmp(line, content->label, x)) && line[x] == LABEL_CHAR)
+		if (!(ft_strncmp(line, content->label, x)) && line[x] == LABEL_CHAR)
 		{
 			if (line[x] != LABEL_CHAR)
 				return (0);
 			content->addr = ins->octet + 1;
-			//ft_printf("Label %s add\n", label);
 			return (0);
 		}
-		ft_strdel(&label);
 		tmp = tmp->next;
 	}
 	return (1);

@@ -72,7 +72,7 @@ int		verif_end_line_param(char *str, int i)
 	return (1);
 }
 
-int 	check_end_ind(char *param, int i)
+int		check_end_ind(char *param, int i)
 {
 	while (param[i])
 		if (!ft_isdigit(param[i++]))
@@ -86,25 +86,6 @@ int 	check_end_ind(char *param, int i)
 ** 		si erreur renvoi 0
 ** 		a la fin verifie la non presence de parametres suplementaires
 */
-
-int 	verif_jump(char *line, int nb_param)
-{
-	int 	jump;
-	int 	i;
-
-	jump = 0;
-	i = 0;
-	while (line[i])
-	{
-		if (line[i] == SEPARATOR_CHAR)
-			jump++;
-		i++;
-	}
-	if (jump > nb_param - 1)
-		return (0);
-	return (1);
-
-}
 
 int		parse_params(char *line, t_asm *param, int idx, int i)
 {

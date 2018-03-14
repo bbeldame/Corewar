@@ -12,6 +12,24 @@
 
 #include "../include/asm.h"
 
+int		verif_jump(char *line, int nb_param)
+{
+	int	jump;
+	int	i;
+
+	jump = 0;
+	i = 0;
+	while (line[i])
+	{
+		if (line[i] == SEPARATOR_CHAR)
+			jump++;
+		i++;
+	}
+	if (jump > nb_param - 1)
+		return (0);
+	return (1);
+}
+
 /*
 **		transforme tout les \t en espace
 */
