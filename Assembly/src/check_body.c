@@ -51,7 +51,7 @@ int		check_inst(char *line, t_asm *param, int num_l, int i)
 	}
 	if (idx == 16)
 	{
-		msg_error(param, ft_strjoin("Unknow instruction : ",
+		msg_error(param, ft_strjoin_my("Unknow instruction : ",
 			ft_strsub(line, 0, size)), num_l);
 		return (0);
 	}

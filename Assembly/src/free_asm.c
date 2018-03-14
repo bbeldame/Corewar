@@ -76,11 +76,19 @@ void	free_file_list(t_file_list **list)
 
 void	clean_env(t_asm *env)
 {
-	ft_strdel(&env->name_prg);
-	ft_strdel(&env->comment_prg);
-	ft_strdel(&env->file_cor);
-	free_file_list(&env->body);
-	free_t_list_label(env->labels);
-	free_t_list_labdir(env->labdirs);
+	if (env->name_prg)
+		ft_strdel(&env->name_prg);
+	if (env->comment_prg)
+		ft_strdel(&env->comment_prg);
+	if (env->file_cor)
+		ft_strdel(&env->file_cor);
+	if (env->body)
+		free_file_list(&env->body);
+	if (env->header)
+		free_file_list(&env->header);
+	if (env->labels)
+		free_t_list_label(env->labels);
+	if (env->labdirs)
+		free_t_list_labdir(env->labdirs);
 	free(env);
 }

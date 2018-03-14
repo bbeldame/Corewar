@@ -12,6 +12,11 @@
 
 #include "../include/asm.h"
 
+void	ft_print_usage(void)
+{
+	ft_printf("Usage: ./asm <source_file.s>\n");
+}
+
 void	msg_error(t_asm *env, char *msg, int n_line)
 {
 	if (n_line == -1)
