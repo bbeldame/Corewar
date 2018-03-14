@@ -87,16 +87,35 @@ int 	check_end_ind(char *param, int i)
 ** 		a la fin verifie la non presence de parametres suplementaires
 */
 
-int		parse_params(char *line, t_asm *param, int idx)
+int 	verif_jump(char *line, int nb_param)
+{
+	int 	jump;
+	int 	i;
+
+	jump = 0;
+	i = 0;
+	while (line[i])
+	{
+		if (line[i] == SEPARATOR_CHAR)
+			jump++;
+		i++;
+	}
+	if (jump > nb_param - 1)
+		return (0);
+	return (1);
+
+}
+
+int		parse_params(char *line, t_asm *param, int idx, int i)
 {
 	int		nb_instr;
-	int		i;
 	char	*inst;
 
-	i = 0;
 	nb_instr = 0;
 	while (nb_instr < g_op_tab[idx].nb_param)
 	{
+		if (!verif_jump(line, g_op_tab[idx].nb_param))
+			return (0);
 		while (is_white_space(line[i]) || line[i] == SEPARATOR_CHAR)
 			i++;
 		if ((inst = ft_strsub(line, i, get_param_end(line + i))) == NULL)

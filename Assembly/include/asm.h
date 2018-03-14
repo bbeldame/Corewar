@@ -100,7 +100,7 @@ int						ft_parser(t_asm *param);
 int						ft_parse_body(t_asm *param);
 int						set_name_comment(t_asm *param);
 int						check_body(t_asm *param);
-int						parse_params(char *line, t_asm *param, int idx);
+int						parse_params(char *line, t_asm *param, int idx, int i);
 
 /*
 **		Check parameters instruction
