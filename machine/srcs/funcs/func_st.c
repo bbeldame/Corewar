@@ -6,7 +6,7 @@
 /*   By: bbeldame <bbeldame@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/22 15:23:05 by msakwins          #+#    #+#             */
-/*   Updated: 2018/03/13 00:24:43 by bbeldame         ###   ########.fr       */
+/*   Updated: 2018/03/14 22:56:52 by bbeldame         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ static int		st_ind(t_env *env, t_process *current, unsigned int value)
 	second_arg = (short int)get_jumper(env, M((current->pc + 3)), 1);
 	i = 0;
 	if (env->verbose)
-		ft_printf("[%d] St called from %d : storing %d to %d\n",
+		ft_printf("[%5d] St called from %d : storing %d to %d\n",
 			env->cycle, current->id_champion, value, second_arg);
 	while (i < REG_SIZE)
 	{
@@ -38,9 +38,9 @@ static int		st_reg(t_env *env, t_process *current, unsigned int value,
 
 	second_arg = env->arena[M((current->pc + 3))];
 	if (env->verbose)
-		ft_printf("[%d] St called from %d : storing %d to r%d\n",
+		ft_printf("[%5d] St called from %d : storing %d to r%d\n",
 			env->cycle, current->id_champion, value, second_arg);
-	if (second_arg > REG_NUMBER && second_arg <= 0)
+	if (second_arg > REG_NUMBER || second_arg <= 0)
 		return (2 + 1 + 1);
 	if (size)
 		current->reg[second_arg - 1] = value;

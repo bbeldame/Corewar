@@ -6,7 +6,7 @@
 /*   By: bbeldame <bbeldame@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/04 23:06:18 by bbeldame          #+#    #+#             */
-/*   Updated: 2018/03/12 22:41:31 by bbeldame         ###   ########.fr       */
+/*   Updated: 2018/03/14 20:36:50 by bbeldame         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ static t_process	*clone_process(t_env *e, t_process *current)
 	clone_reg(current, process);
 	process->idx_buffer = 0;
 	process->id_champion = current->id_champion;
-	process->live = 0;
+	process->live = current->live;
 	process->carry = current->carry;
 	return (process);
 }
@@ -53,8 +53,8 @@ static int			both_forks(t_env *env, t_process *current, int restr)
 		forked->pc = M((current->pc + value));
 	get_opcode(env, forked);
 	if (env->verbose)
-		ft_printf("(l)fork called from %d : forking to %hd\n",
-			current->id_champion, M((current->pc + value)));
+		ft_printf("[%5d] (l)fork called from %d : forking to %hd\n",
+			env->cycle, current->id_champion, M((current->pc + value)));
 	tmp = env->head;
 	i = 1;
 	while (i++ < env->nb_processes)

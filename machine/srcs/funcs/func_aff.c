@@ -6,7 +6,7 @@
 /*   By: bbeldame <bbeldame@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/22 15:23:05 by msakwins          #+#    #+#             */
-/*   Updated: 2018/03/12 22:46:30 by bbeldame         ###   ########.fr       */
+/*   Updated: 2018/03/14 20:28:06 by bbeldame         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,8 @@ int		func_aff(t_env *env, t_process *current)
 	}
 	current->buffer[current->idx_buffer] = (char)reg;
 	if (env->verbose)
-		ft_printf("Aff called from %d\n", current->id_champion);
+		ft_printf("[%5d] Aff called from %d\n", env->cycle,
+			current->id_champion);
 	current->idx_buffer++;
 	if (reg == 0)
 	{

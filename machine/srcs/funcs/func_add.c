@@ -6,7 +6,7 @@
 /*   By: bbeldame <bbeldame@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/22 15:23:05 by msakwins          #+#    #+#             */
-/*   Updated: 2018/03/11 23:22:15 by bbeldame         ###   ########.fr       */
+/*   Updated: 2018/03/14 20:27:29 by bbeldame         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,8 @@ int		func_add(t_env *env, t_process *current)
 	reg2_idx = env->arena[M((current->pc + 2 + 1))];
 	reg3_idx = env->arena[M((current->pc + 2 + 2))];
 	if (env->verbose)
-		ft_printf("Add called from %d : adding r%d and r%d to r%d\n",
-			current->id_champion, reg1_idx, reg2_idx, reg3_idx);
+		ft_printf("[%5d] Add called from %d : adding r%d and r%d to r%d\n",
+			env->cycle, current->id_champion, reg1_idx, reg2_idx, reg3_idx);
 	if (!verify_reg(reg1_idx, reg2_idx, reg3_idx))
 		return (2 + 1 + 1 + 1);
 	current->reg[reg3_idx - 1] = current->reg[reg1_idx - 1] +

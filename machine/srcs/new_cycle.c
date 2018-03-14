@@ -6,7 +6,7 @@
 /*   By: bbeldame <bbeldame@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/18 16:07:14 by msakwins          #+#    #+#             */
-/*   Updated: 2018/03/12 00:36:56 by bbeldame         ###   ########.fr       */
+/*   Updated: 2018/03/14 21:57:37 by bbeldame         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,10 @@ int					check_cycles(t_env *env, int *cycle_to_die)
 	{
 		env->nb_checks++;
 		if (env->nb_lives >= NBR_LIVE)
+		{
 			env->cycle_to_die -= CYCLE_DELTA;
+			env->nb_checks = 0;
+		}
 		if (env->nb_checks == MAX_CHECKS)
 		{
 			env->cycle_to_die -= CYCLE_DELTA;
