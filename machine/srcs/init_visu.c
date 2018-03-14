@@ -16,15 +16,15 @@ void	init_curse_color(void)
 {
 	initscr();
 	start_color();
-
 	init_color(COLOR_WHITE, 220, 220, 220);
-	init_pair(1, COLOR_WHITE, COLOR_BLACK);
-	init_pair(2, COLOR_GREEN, COLOR_BLACK);
-	init_pair(3, COLOR_YELLOW, COLOR_BLACK);
-	init_pair(4, COLOR_MAGENTA, COLOR_BLACK);
-	init_pair(5, COLOR_BLUE, COLOR_BLACK);
-	init_pair(7, COLOR_CYAN, COLOR_BLACK);
-	init_pair(6, COLOR_RED, COLOR_BLACK);
+	init_color(COLOR_GREEN, 150, 150, 150);
+	init_pair(1, COLOR_YELLOW, COLOR_BLACK);
+	init_pair(2, COLOR_MAGENTA, COLOR_BLACK);
+	init_pair(3, COLOR_BLUE, COLOR_BLACK);
+	init_pair(4, COLOR_RED, COLOR_BLACK);
+	init_pair(5, COLOR_WHITE, COLOR_BLACK);
+	init_pair(6, COLOR_CYAN, COLOR_BLACK);
+	init_pair(7, COLOR_GREEN, COLOR_BLACK);
 	curs_set(FALSE);
 }
 
