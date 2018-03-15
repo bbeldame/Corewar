@@ -19,7 +19,7 @@ int		verif_jump(char *line, int nb_param)
 
 	jump = 0;
 	i = 0;
-	while (line[i])
+	while (line[i] && line[i] != COMMENT_CHAR)
 	{
 		if (line[i] == SEPARATOR_CHAR)
 			jump++;
