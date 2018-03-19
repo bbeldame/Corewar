@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_param.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: arosset <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: bbeldame <bbeldame@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/08 16:03:54 by arosset           #+#    #+#             */
-/*   Updated: 2018/03/10 16:09:49 by arosset          ###   ########.fr       */
+/*   Updated: 2018/03/19 22:53:13 by bbeldame         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,15 +44,12 @@ int		ft_get_label(t_asm *param, t_inst *ins, int oc, int i)
 {
 	t_list	*elem;
 	t_label	*tmp;
-	int		idx;
 
 	elem = param->labels;
 	while (elem)
 	{
 		tmp = elem->content;
-		idx = ft_strlen(ins->ins + i + 1) > ft_strlen(tmp->label) - 1 ?
-			ft_strlen(ins->ins + i + 1) : ft_strlen(tmp->label) - 1;
-		if (!ft_strncmp(ins->ins + i + 1, tmp->label, idx))
+		if (ft_strequ(ins->ins + i + 1, tmp->label))
 			return (get_labdir_pos(param, ins, tmp, oc));
 		elem = elem->next;
 	}
