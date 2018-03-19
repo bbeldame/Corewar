@@ -42,6 +42,7 @@ typedef struct			s_labdir
 	char				*label;
 	int					instr_addr;
 	int					addr;
+	int					oct_size;
 }						t_labdir;
 
 typedef struct			s_file_list

@@ -24,19 +24,13 @@ int		get_labdir_pos(t_asm *param, t_inst *ins, t_label *tmp, int oc)
 	content->label = tmp->label;
 	content->instr_addr = ins->ins_octet;
 	content->addr = ins->octet + 1;
+	ins->octet += (oc == 0b10 && !g_op_tab[ins->i_instr].label_size) ? 4 : 2;
+	content->oct_size = (oc == 0b10 &&
+		!g_op_tab[ins->i_instr].label_size) ? 4 : 2;
 	new->content = content;
 	new->next = NULL;
 	ins->param[ins->nb_instr] = 0;
 	ft_lstaddtail(&param->labdirs, new);
-	if (oc == 0b10)
-	{
-		if (g_op_tab[ins->i_instr].label_size)
-			ins->octet += 2;
-		else
-			ins->octet += 4;
-	}
-	else
-		ins->octet += 2;
 	return (get_ocp_return(ins, oc));
 }
 

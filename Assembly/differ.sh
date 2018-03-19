@@ -1,8 +1,8 @@
 #!/bin/sh/
 
-./asm test.s
-hexdump test.cor > me
-./asm_zaz test.s
-hexdump test.cor > zaz
+./asm $1.s
+hexdump $1.cor > me
+./asm_zaz $1.s
+hexdump $1.cor > zaz
 diff me zaz
-rm -rf  me zaz
+rm -rf me zaz

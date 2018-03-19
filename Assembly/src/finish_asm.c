@@ -25,9 +25,15 @@ void	print_label_addr(t_asm *param, t_labdir *labdir)
 		if (!ft_strcmp(labdir->label, label->label))
 		{
 			val = label->addr - labdir->instr_addr;
+			if (labdir->oct_size == 4)
+			{
+				ft_putchar_fd(val >> 24, param->fd);
+				ft_putchar_fd(val >> 16, param->fd);
+			}
 			ft_putchar_fd(val >> 8, param->fd);
 			ft_putchar_fd(val, param->fd);
-			if (lseek(param->fd, -(labdir->addr + 1), SEEK_CUR) == -1)
+			if (lseek(param->fd, -(labdir->addr +
+				labdir->oct_size - 1), SEEK_CUR) == -1)
 				return ;
 			return ;
 		}
